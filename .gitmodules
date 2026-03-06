@@ -1,0 +1,6 @@
+[submodule "website-skills"]
+	path = website-skills
+	url = https://github.com/peterbamuhigire/website-skills.git
+[submodule ".claude/skills"]
+	path = .claude/skills
+	url = https://github.com/peterbamuhigire/website-skills.git
