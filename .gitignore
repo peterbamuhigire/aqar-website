@@ -20,3 +20,8 @@ Thumbs.db
 
 # Astro
 .astro/
+
+# PHP
+vendor/
+composer.phar
+config/mail.php

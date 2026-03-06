@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aqarproperty.co.uk/sitemap.xml
+
+# Block internal directories
+Disallow: /config/
+Disallow: /includes/
+Disallow: /vendor/
+Disallow: /docs/
+Disallow: /photo-bank/

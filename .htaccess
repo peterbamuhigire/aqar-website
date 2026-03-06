@@ -1,0 +1,21 @@
+RewriteEngine On
+RewriteBase /aqar-website/
+
+# Redirect root to English homepage
+RewriteRule ^$ en/ [R=302,L]
+
+# Allow direct access to static assets
+RewriteRule \.(css|js|jpg|jpeg|png|svg|woff2|woff|ttf|eot|ico|gif|webp|map)$ - [L]
+
+# Allow direct file and directory access
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Add trailing slash to language-prefixed paths that lack one
+RewriteRule ^(en|fr)$ $1/ [R=301,L]
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(en|fr)/(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+
+# Route language-prefixed paths to router.php
+RewriteRule ^(en|fr)/(.*)$ router.php?lang=$1&path=$2 [QSA,L]
