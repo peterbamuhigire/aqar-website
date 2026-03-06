@@ -1,0 +1,404 @@
+{
+  "images": [
+    {
+      "filename": "CoreLogoDarkEdition.png",
+      "width": 1000,
+      "height": 545,
+      "aspect_ratio": "200:109",
+      "category": "branding",
+      "recognized_purpose": "Company logo",
+      "used_on": []
+    },
+    {
+      "filename": "CoreLogoLightEdition.png",
+      "width": 1000,
+      "height": 545,
+      "aspect_ratio": "200:109",
+      "category": "branding",
+      "recognized_purpose": "Company logo",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-01.jpg",
+      "width": 2000,
+      "height": 1091,
+      "aspect_ratio": "2000:1091",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-02.jpg",
+      "width": 2000,
+      "height": 1333,
+      "aspect_ratio": "2000:1333",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-03.jpg",
+      "width": 3000,
+      "height": 2000,
+      "aspect_ratio": "3:2",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-04.jpg",
+      "width": 2000,
+      "height": 3000,
+      "aspect_ratio": "2:3",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-05.jpg",
+      "width": 2000,
+      "height": 3000,
+      "aspect_ratio": "2:3",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-06.jpg",
+      "width": 2000,
+      "height": 3000,
+      "aspect_ratio": "2:3",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-07.jpg",
+      "width": 2000,
+      "height": 3000,
+      "aspect_ratio": "2:3",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-08.jpg",
+      "width": 2000,
+      "height": 3000,
+      "aspect_ratio": "2:3",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-09.jpg",
+      "width": 2000,
+      "height": 1333,
+      "aspect_ratio": "2000:1333",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-10.jpg",
+      "width": 2000,
+      "height": 1334,
+      "aspect_ratio": "1000:667",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-11.jpg",
+      "width": 2000,
+      "height": 1000,
+      "aspect_ratio": "2:1",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-12.jpg",
+      "width": 2000,
+      "height": 1207,
+      "aspect_ratio": "2000:1207",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-13.jpg",
+      "width": 2000,
+      "height": 1333,
+      "aspect_ratio": "2000:1333",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-14.jpg",
+      "width": 2000,
+      "height": 1334,
+      "aspect_ratio": "1000:667",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-15.jpg",
+      "width": 2000,
+      "height": 1333,
+      "aspect_ratio": "2000:1333",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-16.jpg",
+      "width": 2000,
+      "height": 1335,
+      "aspect_ratio": "400:267",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "AQAR-PROPERTY-17.jpg",
+      "width": 2000,
+      "height": 1125,
+      "aspect_ratio": "16:9",
+      "category": "hero",
+      "recognized_purpose": "Hero/property image",
+      "used_on": []
+    },
+    {
+      "filename": "PETER-PHOTO.jpg",
+      "width": 2000,
+      "height": 2667,
+      "aspect_ratio": "2000:2667",
+      "category": "team",
+      "recognized_purpose": "Team member photo",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-ADD-MAINTENANCE-RECORD.jpg",
+      "width": 2000,
+      "height": 1021,
+      "aspect_ratio": "2000:1021",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-EMPLOYEE-LIST-HR-PROPERTY-MANAGEMENT-COMPANY.jpg",
+      "width": 2000,
+      "height": 1030,
+      "aspect_ratio": "200:103",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-GPS-REPORTS.jpg",
+      "width": 2000,
+      "height": 1031,
+      "aspect_ratio": "2000:1031",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-INCOME-EXPENSES-FOR-THE-PROPERTY-MANAGEMENT-COMPANY.jpg",
+      "width": 2000,
+      "height": 1021,
+      "aspect_ratio": "2000:1021",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-INSPECTION-TEMPLATES.jpg",
+      "width": 2000,
+      "height": 1009,
+      "aspect_ratio": "2000:1009",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-LANDLORDS-LIST.jpg",
+      "width": 2000,
+      "height": 1016,
+      "aspect_ratio": "250:127",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-LEASE-EXPIRY-REPORT.jpg",
+      "width": 2000,
+      "height": 1008,
+      "aspect_ratio": "125:63",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-LOGIN.jpg",
+      "width": 2371,
+      "height": 1240,
+      "aspect_ratio": "2371:1240",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-MAINTENANCE-REPORT.jpg",
+      "width": 2000,
+      "height": 1010,
+      "aspect_ratio": "200:101",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-MANAGEMENT-FEES-FOR-THE-PROPERTY-MANAGEMENT-COMPANY.jpg",
+      "width": 2000,
+      "height": 1027,
+      "aspect_ratio": "2000:1027",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-MONTHLY-REPORT-COLLECTIONS-COMMISION,-FOR-MANAGEMENT.jpg",
+      "width": 2000,
+      "height": 1008,
+      "aspect_ratio": "125:63",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-MONTHLY-REPORT-REMMITANCE-DETAILS-FOR-LANDLORD-WITH-COMMISION-DUE-TO-COMPANY.jpg",
+      "width": 2000,
+      "height": 1009,
+      "aspect_ratio": "2000:1009",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-MONTHLY-REPORT-STATUS-OF-TENANCY-FOR-PARTICULAR-LANDLORD.jpg",
+      "width": 2000,
+      "height": 1026,
+      "aspect_ratio": "1000:513",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-NEW-TENANCIES.jpg",
+      "width": 2000,
+      "height": 1011,
+      "aspect_ratio": "2000:1011",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-OCCUPANCY-COMPARISON.jpg",
+      "width": 2000,
+      "height": 995,
+      "aspect_ratio": "400:199",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-OCCUPANCY-RATES.jpg",
+      "width": 2000,
+      "height": 988,
+      "aspect_ratio": "500:247",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-PERMISSIONS-ROLES-MANAGEMENT-RBAC.jpg",
+      "width": 2000,
+      "height": 1053,
+      "aspect_ratio": "2000:1053",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-PORTFOLIOS-BY-VALUE.jpg",
+      "width": 2000,
+      "height": 1044,
+      "aspect_ratio": "500:261",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-PROPERTIES-LIST.jpg",
+      "width": 2000,
+      "height": 1021,
+      "aspect_ratio": "2000:1021",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-RENT-DUE.jpg",
+      "width": 2000,
+      "height": 997,
+      "aspect_ratio": "2000:997",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-RENT-INVOICE.jpg",
+      "width": 2000,
+      "height": 1010,
+      "aspect_ratio": "200:101",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-RENT-PAYMENT.jpg",
+      "width": 2000,
+      "height": 1027,
+      "aspect_ratio": "2000:1027",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-VACANT-UNITS.jpg",
+      "width": 2000,
+      "height": 1019,
+      "aspect_ratio": "2000:1019",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    },
+    {
+      "filename": "SCREENSHOT-VENDOR-MANAGEMENT.jpg",
+      "width": 2512,
+      "height": 1237,
+      "aspect_ratio": "2512:1237",
+      "category": "screenshot",
+      "recognized_purpose": "Software screenshot",
+      "used_on": []
+    }
+  ],
+  "logo": {
+    "light": "CoreLogoLightEdition.png",
+    "dark": "CoreLogoDarkEdition.png"
+  }
+}

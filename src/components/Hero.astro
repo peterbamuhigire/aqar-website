@@ -1,0 +1,53 @@
+---
+import type { Language } from '../utils/i18n';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  lang: Language;
+  title: string;
+  subtitle?: string;
+  bgImage: ImageMetadata;
+  overlay?: string;
+  fullHeight?: boolean;
+}
+
+const {
+  lang,
+  title,
+  subtitle,
+  bgImage,
+  overlay = 'from-charcoal/80 to-charcoal/40',
+  fullHeight = false,
+} = Astro.props;
+---
+
+<section class:list={['relative overflow-hidden', fullHeight ? 'min-h-screen' : 'min-h-[60vh]', 'flex items-center']}>
+  <!-- Background image -->
+  <Image
+    src={bgImage}
+    alt=""
+    loading="eager"
+    class="absolute inset-0 h-full w-full object-cover"
+    widths={[640, 1024, 1536, 2048]}
+    sizes="100vw"
+  />
+
+  <!-- Gradient overlay -->
+  <div class:list={['absolute inset-0 bg-gradient-to-r', overlay]}></div>
+
+  <!-- Content -->
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 w-full">
+    <h1 class="animate-on-scroll font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight max-w-3xl">
+      {title}
+    </h1>
+    {subtitle && (
+      <p class="animate-on-scroll stagger-1 mt-6 text-lg sm:text-xl text-neutral-200 max-w-2xl leading-relaxed">
+        {subtitle}
+      </p>
+    )}
+    <div class="mt-10 animate-on-scroll stagger-2">
+      <slot />
+    </div>
+  </div>
+</section>

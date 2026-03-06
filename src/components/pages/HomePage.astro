@@ -1,0 +1,419 @@
+---
+import type { Language } from '../../utils/i18n';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../Hero.astro';
+import CtaBanner from '../CtaBanner.astro';
+import Lightbox from '../Lightbox.astro';
+import { Cloud, Download, Lock, Smartphone } from 'lucide-astro';
+
+// Images
+import heroBg from '../../assets/images/AQAR-PROPERTY-01.jpg';
+import screenshotProperties from '../../assets/images/SCREENSHOT-PROPERTIES-LIST.jpg';
+import screenshotRent from '../../assets/images/SCREENSHOT-RENT-PAYMENT.jpg';
+import screenshotLandlords from '../../assets/images/SCREENSHOT-LANDLORDS-LIST.jpg';
+import screenshotReport from '../../assets/images/SCREENSHOT-MONTHLY-REPORT-REMMITANCE-DETAILS-FOR-LANDLORD-WITH-COMMISION-DUE-TO-COMPANY.jpg';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const t = {
+  en: {
+    title: 'AQAR — Property Management Software',
+    description: 'Cloud-based property management software for landlords and property managers. Rent collection, tenant management, maintenance tracking, and financial reports.',
+    heroTitle: 'Property Management Software That Works as Hard as You Do',
+    heroSubtitle: 'Rent collection, tenant management, maintenance tracking, and financial reports — all in one place. No installation required.',
+    tryDemo: 'Try Demo',
+    whatsappUs: 'WhatsApp Us',
+    trustClients: '36+',
+    trustClientsLabel: 'Clients',
+    trustSince: '2018',
+    trustSinceLabel: 'Since',
+    trustReach: 'East Africa & Beyond',
+    trustReachLabel: 'Reach',
+    featuresTitle: 'Powerful Features, Simple Interface',
+    featuresSubtitle: 'Everything you need to manage your properties efficiently.',
+    feature1Title: 'Rent Collection',
+    feature1Desc: 'Automated rent tracking with reconciliation that matches payments to tenants. No more spreadsheet headaches.',
+    feature2Title: 'Tenant Management',
+    feature2Desc: 'Centralised tenant database with built-in messaging. Know every tenant, track every conversation.',
+    feature3Title: 'Financial Reports',
+    feature3Desc: 'Crystal-clear financial visibility. Income, expenses, management fees, and landlord payouts — all in one place.',
+    showcaseTitle: 'See Everything at a Glance',
+    showcaseSubtitle: 'A clean, intuitive dashboard that puts your entire property portfolio at your fingertips.',
+    whyTitle: 'Why Property Managers Choose AQAR',
+    why1Title: 'Cloud-Based',
+    why1Desc: 'Access your data from anywhere. No servers to maintain, no IT headaches.',
+    why2Title: 'No Installation',
+    why2Desc: 'Open your browser and start managing. Works instantly on any device.',
+    why3Title: 'Data Encrypted',
+    why3Desc: 'Your data is encrypted in transit and at rest. Firewall-protected servers with easy backups.',
+    why4Title: 'Any Device',
+    why4Desc: 'Works beautifully on phones, tablets, and desktops. Manage on the go.',
+    faqTitle: 'Frequently Asked Questions',
+    clickToExpand: 'Click to expand',
+    faqs: [
+      { q: 'How much does Aqar cost?', a: 'We offer flexible plans based on the number of properties you manage. Contact us on WhatsApp (+256 784 464178) or email info@aqarproperty.co.uk for a personalised quote.' },
+      { q: 'Do I need to install anything?', a: 'No. Aqar is fully cloud-based. You access it through your web browser on any device — phone, tablet, or computer. No downloads, no installations.' },
+      { q: 'Can I try it before I commit?', a: 'Yes. We have a live demo at property.chwezi.co.za where you can explore the full system without signing up.' },
+      { q: 'Is my data safe?', a: 'Your data is encrypted both in transit and at rest. Our servers are protected by firewalls, and we provide easy encrypted backup options. You own your data.' },
+      { q: 'Can I manage multiple properties?', a: 'Yes. Aqar is designed for managing portfolios of any size — from a single building to hundreds of properties across different locations.' },
+    ],
+  },
+  fr: {
+    title: 'AQAR — Logiciel de Gestion Immobilière',
+    description: 'Logiciel de gestion immobilière basé sur le cloud pour les propriétaires et les gestionnaires de biens. Perception des loyers, gestion des locataires, suivi de l\'entretien et rapports financiers.',
+    heroTitle: 'Un logiciel de gestion immobilière qui travaille aussi dur que vous',
+    heroSubtitle: 'Perception des loyers, gestion des locataires, suivi de l\'entretien et rapports financiers — tout en un seul endroit. Aucune installation requise.',
+    tryDemo: 'Essayer la Démo',
+    whatsappUs: 'WhatsApp',
+    trustClients: '36+',
+    trustClientsLabel: 'Clients',
+    trustSince: '2018',
+    trustSinceLabel: 'Depuis',
+    trustReach: 'Afrique de l\'Est et au-delà',
+    trustReachLabel: 'Portée',
+    featuresTitle: 'Des fonctionnalités puissantes, une interface simple',
+    featuresSubtitle: 'Tout ce dont vous avez besoin pour gérer vos propriétés efficacement.',
+    feature1Title: 'Perception des Loyers',
+    feature1Desc: 'Suivi automatisé des loyers avec rapprochement des paiements par locataire. Fini les maux de tête liés aux tableurs.',
+    feature2Title: 'Gestion des Locataires',
+    feature2Desc: 'Base de données centralisée des locataires avec messagerie intégrée. Connaissez chaque locataire, suivez chaque conversation.',
+    feature3Title: 'Rapports Financiers',
+    feature3Desc: 'Visibilité financière cristalline. Revenus, dépenses, frais de gestion et versements aux propriétaires — tout au même endroit.',
+    showcaseTitle: 'Tout voir d\'un coup d\'œil',
+    showcaseSubtitle: 'Un tableau de bord propre et intuitif qui met l\'ensemble de votre portefeuille immobilier à portée de main.',
+    whyTitle: 'Pourquoi les gestionnaires choisissent AQAR',
+    why1Title: 'Basé sur le Cloud',
+    why1Desc: 'Accédez à vos données de n\'importe où. Pas de serveurs à entretenir, pas de soucis informatiques.',
+    why2Title: 'Aucune Installation',
+    why2Desc: 'Ouvrez votre navigateur et commencez à gérer. Fonctionne instantanément sur tout appareil.',
+    why3Title: 'Données Chiffrées',
+    why3Desc: 'Vos données sont chiffrées en transit et au repos. Serveurs protégés par pare-feu avec sauvegardes faciles.',
+    why4Title: 'Tout Appareil',
+    why4Desc: 'Fonctionne parfaitement sur téléphones, tablettes et ordinateurs. Gérez en déplacement.',
+    faqTitle: 'Questions Fréquemment Posées',
+    clickToExpand: 'Cliquez pour développer',
+    faqs: [
+      { q: 'Combien coûte Aqar ?', a: 'Nous proposons des plans flexibles basés sur le nombre de propriétés que vous gérez. Contactez-nous sur WhatsApp (+256 784 464178) ou par e-mail à info@aqarproperty.co.uk pour un devis personnalisé.' },
+      { q: 'Dois-je installer quelque chose ?', a: 'Non. Aqar est entièrement basé sur le cloud. Vous y accédez via votre navigateur web sur n\'importe quel appareil — téléphone, tablette ou ordinateur. Aucun téléchargement, aucune installation.' },
+      { q: 'Puis-je l\'essayer avant de m\'engager ?', a: 'Oui. Nous disposons d\'une démo en direct sur property.chwezi.co.za où vous pouvez explorer le système complet sans inscription.' },
+      { q: 'Mes données sont-elles en sécurité ?', a: 'Vos données sont chiffrées en transit et au repos. Nos serveurs sont protégés par des pare-feu et nous offrons des options de sauvegarde chiffrée faciles. Vous êtes propriétaire de vos données.' },
+      { q: 'Puis-je gérer plusieurs propriétés ?', a: 'Oui. Aqar est conçu pour gérer des portefeuilles de toute taille — d\'un seul bâtiment à des centaines de propriétés dans différents emplacements.' },
+    ],
+  },
+};
+
+const c = t[lang];
+
+const featureCards = [
+  {
+    title: c.feature1Title,
+    desc: c.feature1Desc,
+    screenshot: screenshotRent,
+    icon: 'rent',
+  },
+  {
+    title: c.feature2Title,
+    desc: c.feature2Desc,
+    screenshot: screenshotLandlords,
+    icon: 'tenant',
+  },
+  {
+    title: c.feature3Title,
+    desc: c.feature3Desc,
+    screenshot: screenshotReport,
+    icon: 'report',
+  },
+];
+
+const whyCards = [
+  { title: c.why1Title, desc: c.why1Desc, icon: 'cloud' },
+  { title: c.why2Title, desc: c.why2Desc, icon: 'download' },
+  { title: c.why3Title, desc: c.why3Desc, icon: 'lock' },
+  { title: c.why4Title, desc: c.why4Desc, icon: 'smartphone' },
+];
+---
+
+<BaseLayout lang={lang} title={c.title} description={c.description} pageKey="">
+  <!-- ===================== 1. HERO ===================== -->
+  <Hero
+    lang={lang}
+    title={c.heroTitle}
+    subtitle={c.heroSubtitle}
+    bgImage={heroBg}
+    fullHeight={true}
+  >
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a
+        href="https://property.chwezi.co.za"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-lg bg-primary-600 px-8 py-3.5 text-base font-bold text-white shadow-lg hover:bg-primary-700 transition-colors duration-200"
+      >
+        {c.tryDemo}
+      </a>
+      <a
+        href="https://wa.me/256784464178"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-lg bg-secondary-500 px-8 py-3.5 text-base font-bold text-white shadow-lg hover:bg-secondary-600 transition-colors duration-200"
+      >
+        {c.whatsappUs}
+      </a>
+    </div>
+
+    <!-- Dashboard Screenshot in Laptop Frame -->
+    <div class="mt-12 lg:mt-16 animate-on-scroll stagger-3">
+      <div
+        class="relative mx-auto max-w-4xl screenshot-trigger"
+        onclick="window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: this.querySelector('img').currentSrc || this.querySelector('img').src, alt: 'AQAR Dashboard', caption: 'AQAR Property Management Dashboard' } }))"
+      >
+        <div class="rounded-xl bg-neutral-800 p-2 sm:p-3 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
+          <!-- Browser chrome -->
+          <div class="flex items-center gap-1.5 px-3 py-2 bg-neutral-700 rounded-t-lg">
+            <span class="h-2.5 w-2.5 rounded-full bg-red-400"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>
+            <span class="ml-3 text-xs text-neutral-400 font-mono">property.chwezi.co.za</span>
+          </div>
+          <Image
+            src={screenshotProperties}
+            alt="AQAR Property Management Dashboard"
+            class="w-full rounded-b-lg"
+            widths={[640, 1024, 1536]}
+            sizes="(max-width: 768px) 100vw, 900px"
+          />
+          <!-- Expand hint -->
+          <div class="expand-hint absolute inset-0 flex items-center justify-center bg-charcoal/30 rounded-xl">
+            <span class="bg-white/90 text-charcoal px-4 py-2 rounded-lg text-sm font-semibold">{c.clickToExpand}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Hero>
+
+  <!-- ===================== 2. TRUST BAR ===================== -->
+  <section class="bg-surface py-16">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+        <div class="animate-on-scroll">
+          <div
+            class="text-4xl sm:text-5xl font-display font-extrabold text-primary-600"
+            x-data="{ count: 0, target: 36 }"
+            x-intersect.once="
+              let interval = setInterval(() => {
+                if (count < target) { count++; } else { clearInterval(interval); }
+              }, 40);
+            "
+          >
+            <span x-text="count + '+'">36+</span>
+          </div>
+          <p class="mt-2 text-neutral-600 font-semibold">{c.trustClientsLabel}</p>
+        </div>
+        <div class="animate-on-scroll stagger-1">
+          <div
+            class="text-4xl sm:text-5xl font-display font-extrabold text-primary-600"
+            x-data="{ count: 2000, target: 2018 }"
+            x-intersect.once="
+              let interval = setInterval(() => {
+                if (count < target) { count++; } else { clearInterval(interval); }
+              }, 50);
+            "
+          >
+            <span x-text="count">2018</span>
+          </div>
+          <p class="mt-2 text-neutral-600 font-semibold">{c.trustSinceLabel}</p>
+        </div>
+        <div class="animate-on-scroll stagger-2">
+          <div class="text-2xl sm:text-3xl font-display font-extrabold text-primary-600">
+            {c.trustReach}
+          </div>
+          <p class="mt-2 text-neutral-600 font-semibold">{c.trustReachLabel}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 3. FEATURES PREVIEW ===================== -->
+  <section class="bg-charcoal py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="animate-on-scroll font-display text-3xl sm:text-4xl font-extrabold text-white">
+          {c.featuresTitle}
+        </h2>
+        <p class="animate-on-scroll stagger-1 mt-4 text-lg text-neutral-300 max-w-2xl mx-auto">
+          {c.featuresSubtitle}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {featureCards.map((card, i) => (
+          <div class={`animate-on-scroll stagger-${i + 1} bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-primary-500/40 transition-colors duration-300`}>
+            <!-- Screenshot thumbnail -->
+            <div
+              class="screenshot-trigger relative overflow-hidden"
+              onclick={`window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: this.querySelector('img').currentSrc || this.querySelector('img').src, alt: '${card.title}', caption: '${card.title}' } }))`}
+            >
+              <Image
+                src={card.screenshot}
+                alt={card.title}
+                class="w-full h-48 object-cover object-top"
+                widths={[400, 640]}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div class="expand-hint absolute inset-0 flex items-center justify-center bg-charcoal/40">
+                <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+              </div>
+            </div>
+            <!-- Card body -->
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                {card.icon === 'rent' && (
+                  <div class="flex-shrink-0 h-10 w-10 rounded-lg bg-primary-600/20 flex items-center justify-center">
+                    <svg class="h-5 w-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                )}
+                {card.icon === 'tenant' && (
+                  <div class="flex-shrink-0 h-10 w-10 rounded-lg bg-primary-600/20 flex items-center justify-center">
+                    <svg class="h-5 w-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                )}
+                {card.icon === 'report' && (
+                  <div class="flex-shrink-0 h-10 w-10 rounded-lg bg-primary-600/20 flex items-center justify-center">
+                    <svg class="h-5 w-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                )}
+                <h3 class="font-display text-lg font-bold text-white">{card.title}</h3>
+              </div>
+              <p class="text-neutral-300 text-sm leading-relaxed">{card.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 4. PRODUCT SHOWCASE ===================== -->
+  <section class="bg-surface py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="animate-on-scroll font-display text-3xl sm:text-4xl font-extrabold text-charcoal">
+        {c.showcaseTitle}
+      </h2>
+      <p class="animate-on-scroll stagger-1 mt-4 text-lg text-neutral-600 max-w-2xl mx-auto">
+        {c.showcaseSubtitle}
+      </p>
+
+      <div class="mt-12 animate-on-scroll stagger-2">
+        <div
+          class="relative mx-auto max-w-5xl screenshot-trigger"
+          onclick="window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: this.querySelector('img').currentSrc || this.querySelector('img').src, alt: 'AQAR Dashboard Overview', caption: 'AQAR Property Management — Full Dashboard' } }))"
+        >
+          <div class="rounded-xl bg-neutral-800 p-2 sm:p-3 shadow-2xl">
+            <!-- Browser chrome -->
+            <div class="flex items-center gap-1.5 px-3 py-2 bg-neutral-700 rounded-t-lg">
+              <span class="h-2.5 w-2.5 rounded-full bg-red-400"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>
+              <span class="ml-3 text-xs text-neutral-400 font-mono">property.chwezi.co.za</span>
+            </div>
+            <Image
+              src={screenshotProperties}
+              alt="AQAR Property Management Dashboard"
+              class="w-full rounded-b-lg"
+              widths={[640, 1024, 1536, 2048]}
+              sizes="(max-width: 768px) 100vw, 1100px"
+            />
+            <div class="expand-hint absolute inset-0 flex items-center justify-center bg-charcoal/30 rounded-xl">
+              <span class="bg-white/90 text-charcoal px-4 py-2 rounded-lg text-sm font-semibold">{c.clickToExpand}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 5. WHY AQAR ===================== -->
+  <section class="bg-charcoal py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="animate-on-scroll font-display text-3xl sm:text-4xl font-extrabold text-white text-center mb-16">
+        {c.whyTitle}
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {whyCards.map((card, i) => (
+          <div class={`animate-on-scroll stagger-${i + 1} glass rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300`}>
+            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary-600/20">
+              {card.icon === 'cloud' && <Cloud class="h-7 w-7 text-primary-400" />}
+              {card.icon === 'download' && <Download class="h-7 w-7 text-primary-400" />}
+              {card.icon === 'lock' && <Lock class="h-7 w-7 text-primary-400" />}
+              {card.icon === 'smartphone' && <Smartphone class="h-7 w-7 text-primary-400" />}
+            </div>
+            <h3 class="font-display text-lg font-bold text-charcoal">{card.title}</h3>
+            <p class="mt-2 text-sm text-neutral-700 leading-relaxed">{card.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 6. FAQ ACCORDION ===================== -->
+  <section class="bg-surface py-20 sm:py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="animate-on-scroll font-display text-3xl sm:text-4xl font-extrabold text-charcoal text-center mb-12">
+        {c.faqTitle}
+      </h2>
+
+      <div class="space-y-4" x-data="{ active: null }">
+        {c.faqs.map((faq, i) => (
+          <div class={`animate-on-scroll stagger-${i + 1} rounded-xl border border-neutral-200 bg-white overflow-hidden`}>
+            <button
+              class="flex w-full items-center justify-between px-6 py-4 text-left font-display font-bold text-charcoal hover:bg-neutral-50 transition-colors duration-200"
+              @click={`active = active === ${i} ? null : ${i}`}
+              :aria-expanded={`active === ${i}`}
+            >
+              <span>{faq.q}</span>
+              <svg
+                class="h-5 w-5 flex-shrink-0 text-primary-600 transition-transform duration-200"
+                :class={`{ 'rotate-180': active === ${i} }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div
+              x-show={`active === ${i}`}
+              x-collapse
+              x-cloak
+            >
+              <div class="px-6 pb-4 text-neutral-600 leading-relaxed">
+                {faq.a}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 7. CTA BANNER ===================== -->
+  <CtaBanner lang={lang} />
+
+  <!-- Lightbox -->
+  <Lightbox />
+</BaseLayout>

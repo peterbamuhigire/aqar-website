@@ -1,0 +1,275 @@
+---
+import type { Language } from '../../utils/i18n';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../Hero.astro';
+import CtaBanner from '../CtaBanner.astro';
+import Lightbox from '../Lightbox.astro';
+
+// Images
+import heroBg from '../../assets/images/AQAR-PROPERTY-05.jpg';
+import screenshotRent from '../../assets/images/SCREENSHOT-RENT-PAYMENT.jpg';
+import screenshotLandlords from '../../assets/images/SCREENSHOT-LANDLORDS-LIST.jpg';
+import screenshotMaintenance from '../../assets/images/SCREENSHOT-ADD-MAINTENANCE-RECORD.jpg';
+import screenshotReport from '../../assets/images/SCREENSHOT-MONTHLY-REPORT-REMMITANCE-DETAILS-FOR-LANDLORD-WITH-COMMISION-DUE-TO-COMPANY.jpg';
+import screenshotInspection from '../../assets/images/SCREENSHOT-INSPECTION-TEMPLATES.jpg';
+import screenshotLogin from '../../assets/images/SCREENSHOT-LOGIN.jpg';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const t = {
+  en: {
+    title: 'Features — AQAR Property Management Software',
+    description: 'Explore all features of AQAR: rent collection, tenant management, maintenance tracking, financial reports, lease management, and mobile access.',
+    heroTitle: 'Everything You Need to Manage Properties',
+    heroSubtitle: 'Six powerful modules designed to streamline every aspect of property management.',
+    features: [
+      {
+        title: 'Rent Collection & Reconciliation',
+        desc: 'Automated rent tracking with reconciliation that matches payments to tenants. No more spreadsheet headaches.',
+        bullets: [
+          'Automated rent reminders sent to tenants',
+          'Payment reconciliation — match deposits to units automatically',
+          'Track arrears and partial payments',
+          'Management fee calculation and landlord remittance reports',
+        ],
+        screenshot: screenshotRent,
+        screenshotAlt: 'Rent Payment Screenshot',
+      },
+      {
+        title: 'Tenant Management & Communication',
+        desc: 'Centralised tenant database with built-in messaging. Know every tenant, track every conversation.',
+        bullets: [
+          'Centralised tenant profiles with contact details, lease history, and notes',
+          'Inbuilt messaging system — communicate without leaving the platform',
+          'Record incidents and complaints with timestamps',
+          'Tenant onboarding and offboarding workflows',
+        ],
+        screenshot: screenshotLandlords,
+        screenshotAlt: 'Landlords List Screenshot',
+      },
+      {
+        title: 'Maintenance Tracking',
+        desc: 'Log maintenance requests, assign tasks, track resolution. Tenants stay informed, nothing falls through the cracks.',
+        bullets: [
+          'Tenants submit maintenance requests through the system',
+          'Assign tasks to maintenance staff or contractors',
+          'Track status from reported to resolved',
+          'Maintenance cost tracking per property and unit',
+        ],
+        screenshot: screenshotMaintenance,
+        screenshotAlt: 'Add Maintenance Record Screenshot',
+      },
+      {
+        title: 'Financial Reports & Landlord Remittances',
+        desc: 'Crystal-clear financial visibility. Income, expenses, management fees, and landlord payouts — all in one place.',
+        bullets: [
+          'Customisable financial reports (income, expenses, profit/loss)',
+          'Automated management fee calculations',
+          'Landlord remittance statements generated automatically',
+          'Expense tracking per property, per unit, per category',
+        ],
+        screenshot: screenshotReport,
+        screenshotAlt: 'Monthly Report Screenshot',
+      },
+      {
+        title: 'Lease Agreement Management',
+        desc: 'Every lease tracked, every renewal flagged. Full history from day one.',
+        bullets: [
+          'Digital lease agreement records',
+          'Lease expiry alerts and renewal tracking',
+          'Complete lease history per tenant',
+          'Terms and conditions documentation',
+        ],
+        screenshot: screenshotInspection,
+        screenshotAlt: 'Inspection Templates Screenshot',
+      },
+      {
+        title: 'Mobile Access & Security',
+        desc: 'Manage properties from anywhere. Your data is encrypted and backed up.',
+        bullets: [
+          'Cloud-based — accessible on any device with a browser',
+          'No installation required',
+          'Data encryption in transit and at rest',
+          'Server firewall protection',
+          'Easy encrypted backups',
+          'Works on mobile, tablet, and desktop',
+        ],
+        screenshot: screenshotLogin,
+        screenshotAlt: 'Login Screenshot',
+      },
+    ],
+  },
+  fr: {
+    title: 'Fonctionnalités — AQAR Logiciel de Gestion Immobilière',
+    description: 'Découvrez toutes les fonctionnalités d\'AQAR : perception des loyers, gestion des locataires, suivi de l\'entretien, rapports financiers, gestion des baux et accès mobile.',
+    heroTitle: 'Tout ce dont vous avez besoin pour gérer vos propriétés',
+    heroSubtitle: 'Six modules puissants conçus pour simplifier chaque aspect de la gestion immobilière.',
+    features: [
+      {
+        title: 'Perception et Rapprochement des Loyers',
+        desc: 'Suivi automatisé des loyers avec rapprochement des paiements par locataire. Fini les maux de tête liés aux tableurs.',
+        bullets: [
+          'Rappels de loyer automatiques envoyés aux locataires',
+          'Rapprochement des paiements — associer automatiquement les dépôts aux unités',
+          'Suivi des arriérés et des paiements partiels',
+          'Calcul des frais de gestion et rapports de versement aux propriétaires',
+        ],
+        screenshot: screenshotRent,
+        screenshotAlt: 'Capture d\'écran Paiement des Loyers',
+      },
+      {
+        title: 'Gestion des Locataires et Communication',
+        desc: 'Base de données centralisée des locataires avec messagerie intégrée. Connaissez chaque locataire, suivez chaque conversation.',
+        bullets: [
+          'Profils centralisés des locataires avec coordonnées, historique des baux et notes',
+          'Système de messagerie intégré — communiquez sans quitter la plateforme',
+          'Enregistrement des incidents et des plaintes avec horodatage',
+          'Processus d\'intégration et de départ des locataires',
+        ],
+        screenshot: screenshotLandlords,
+        screenshotAlt: 'Capture d\'écran Liste des Propriétaires',
+      },
+      {
+        title: 'Suivi de la Maintenance',
+        desc: 'Enregistrez les demandes de maintenance, attribuez les tâches, suivez la résolution. Les locataires restent informés, rien ne passe entre les mailles du filet.',
+        bullets: [
+          'Les locataires soumettent des demandes de maintenance via le système',
+          'Attribution des tâches au personnel de maintenance ou aux entrepreneurs',
+          'Suivi du statut du signalement à la résolution',
+          'Suivi des coûts de maintenance par propriété et par unité',
+        ],
+        screenshot: screenshotMaintenance,
+        screenshotAlt: 'Capture d\'écran Ajout de Maintenance',
+      },
+      {
+        title: 'Rapports Financiers et Versements aux Propriétaires',
+        desc: 'Visibilité financière cristalline. Revenus, dépenses, frais de gestion et versements aux propriétaires — tout au même endroit.',
+        bullets: [
+          'Rapports financiers personnalisables (revenus, dépenses, profit/perte)',
+          'Calcul automatique des frais de gestion',
+          'Génération automatique des relevés de versement aux propriétaires',
+          'Suivi des dépenses par propriété, par unité, par catégorie',
+        ],
+        screenshot: screenshotReport,
+        screenshotAlt: 'Capture d\'écran Rapport Mensuel',
+      },
+      {
+        title: 'Gestion des Baux',
+        desc: 'Chaque bail suivi, chaque renouvellement signalé. Historique complet depuis le premier jour.',
+        bullets: [
+          'Enregistrements numériques des contrats de bail',
+          'Alertes d\'expiration de bail et suivi des renouvellements',
+          'Historique complet des baux par locataire',
+          'Documentation des termes et conditions',
+        ],
+        screenshot: screenshotInspection,
+        screenshotAlt: 'Capture d\'écran Modèles d\'Inspection',
+      },
+      {
+        title: 'Accès Mobile et Sécurité',
+        desc: 'Gérez vos propriétés de n\'importe où. Vos données sont chiffrées et sauvegardées.',
+        bullets: [
+          'Basé sur le cloud — accessible sur tout appareil avec un navigateur',
+          'Aucune installation requise',
+          'Chiffrement des données en transit et au repos',
+          'Protection par pare-feu du serveur',
+          'Sauvegardes chiffrées faciles',
+          'Fonctionne sur mobile, tablette et ordinateur',
+        ],
+        screenshot: screenshotLogin,
+        screenshotAlt: 'Capture d\'écran Connexion',
+      },
+    ],
+  },
+};
+
+const c = t[lang];
+---
+
+<BaseLayout lang={lang} title={c.title} description={c.description} pageKey="features">
+  <!-- ===================== HERO ===================== -->
+  <Hero
+    lang={lang}
+    title={c.heroTitle}
+    subtitle={c.heroSubtitle}
+    bgImage={heroBg}
+  />
+
+  <!-- ===================== FEATURE SECTIONS ===================== -->
+  {c.features.map((feature, i) => {
+    const isDark = i % 2 === 0;
+    const imageLeft = i % 2 === 1;
+
+    return (
+      <section class:list={[isDark ? 'bg-charcoal' : 'bg-surface', 'py-20 sm:py-24']}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class:list={[
+            'grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center',
+            imageLeft && 'lg:grid-flow-dense',
+          ]}>
+            <!-- Text side -->
+            <div class:list={[imageLeft && 'lg:col-start-2']}>
+              <h2 class={`animate-on-scroll font-display text-3xl sm:text-4xl font-extrabold ${isDark ? 'text-white' : 'text-charcoal'} leading-tight`}>
+                {feature.title}
+              </h2>
+              <p class={`animate-on-scroll stagger-1 mt-4 text-lg ${isDark ? 'text-neutral-300' : 'text-neutral-600'} leading-relaxed`}>
+                {feature.desc}
+              </p>
+              <ul class="mt-6 space-y-3">
+                {feature.bullets.map((bullet, j) => (
+                  <li class={`animate-on-scroll stagger-${j + 2} flex items-start gap-3`}>
+                    <svg class="h-5 w-5 flex-shrink-0 mt-0.5 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class={isDark ? 'text-neutral-300' : 'text-neutral-700'}>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Screenshot side -->
+            <div class:list={[imageLeft && 'lg:col-start-1']}>
+              <div
+                class="animate-on-scroll screenshot-trigger relative"
+                onclick={`window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: this.querySelector('img').currentSrc || this.querySelector('img').src, alt: '${feature.screenshotAlt.replace(/'/g, "\\'")}', caption: '${feature.title.replace(/'/g, "\\'")}' } }))`}
+              >
+                <div class="rounded-xl bg-neutral-800 p-2 sm:p-3 shadow-2xl">
+                  <!-- Browser chrome -->
+                  <div class="flex items-center gap-1.5 px-3 py-2 bg-neutral-700 rounded-t-lg">
+                    <span class="h-2.5 w-2.5 rounded-full bg-red-400"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>
+                    <span class="ml-3 text-xs text-neutral-400 font-mono">property.chwezi.co.za</span>
+                  </div>
+                  <Image
+                    src={feature.screenshot}
+                    alt={feature.screenshotAlt}
+                    class="w-full rounded-b-lg"
+                    widths={[400, 640, 1024]}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  <div class="expand-hint absolute inset-0 flex items-center justify-center bg-charcoal/30 rounded-xl">
+                    <svg class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  })}
+
+  <!-- ===================== CTA BANNER ===================== -->
+  <CtaBanner lang={lang} />
+
+  <!-- Lightbox -->
+  <Lightbox />
+</BaseLayout>

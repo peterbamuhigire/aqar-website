@@ -1,27 +1,24 @@
-# Dependencies
-node_modules/
-
-# Build output
+# build output
 dist/
-
-# Environment
-.env
-.env.*
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Editor
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Astro
+# generated types
 .astro/
 
-# PHP
-vendor/
-composer.phar
-config/mail.php
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/

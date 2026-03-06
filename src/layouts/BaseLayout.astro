@@ -1,0 +1,103 @@
+---
+import type { Language } from '../utils/i18n';
+import { getHrefLangPath, ogLocales, languages } from '../utils/i18n';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  lang: Language;
+  title: string;
+  description: string;
+  ogImage?: string;
+  pageKey: string;
+}
+
+const { lang, title, description, ogImage, pageKey } = Astro.props;
+
+const siteUrl = 'https://aqarproperty.co.uk';
+const canonicalUrl = new URL(getHrefLangPath(lang, pageKey), siteUrl).href;
+const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).href : new URL('/og-default.jpg', siteUrl).href;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'AQAR Property Management',
+  url: siteUrl,
+  logo: `${siteUrl}/favicon.svg`,
+  description: 'Cloud-based property management software for landlords and managers in East Africa and worldwide.',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+256-784-464178',
+    contactType: 'customer service',
+    availableLanguage: ['English', 'French'],
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Sserumaga Road, Bukoto',
+    addressLocality: 'Kampala',
+    addressCountry: 'UG',
+  },
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content={ogLocales[lang]} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+
+    <!-- Hreflang -->
+    {languages.map((l) => (
+      <link rel="alternate" hreflang={l} href={new URL(getHrefLangPath(l, pageKey), siteUrl).href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL(getHrefLangPath('en', pageKey), siteUrl).href} />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  </head>
+  <body class="bg-surface text-neutral-800 font-body min-h-screen flex flex-col">
+    <Header lang={lang} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+
+    <!-- Alpine.js -->
+    <script>
+      import Alpine from 'alpinejs';
+      window.Alpine = Alpine;
+      Alpine.start();
+    </script>
+
+    <!-- Scroll animation observer -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

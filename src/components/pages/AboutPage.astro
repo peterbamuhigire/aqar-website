@@ -1,0 +1,225 @@
+---
+import type { Language } from '../../utils/i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import Lightbox from '../../components/Lightbox.astro';
+import { Image } from 'astro:assets';
+
+import heroBg from '../../assets/images/AQAR-PROPERTY-08.jpg';
+import screenshotProperties from '../../assets/images/SCREENSHOT-PROPERTIES-LIST.jpg';
+import peterPhoto from '../../assets/images/PETER-PHOTO.jpg';
+import coreLogo from '../../assets/images/CoreLogoLightEdition.png';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    title: 'About AQAR | Built in Africa, for Africa',
+    description: 'Discover the story behind AQAR property management software — built by Chwezi Core Systems in Kampala, Uganda.',
+    heroTitle: 'Built in Africa, for Africa',
+    heroSubtitle: 'The story of how we set out to solve property management for East Africa.',
+    problemTitle: 'The Problem We Saw',
+    problemP1: 'Property managers across East Africa were drowning in paperwork. Rent records in exercise books. Tenant complaints on sticky notes. Financial reports cobbled together in spreadsheets at month-end. Landlords calling every week asking "where\'s my money?" and getting vague answers.',
+    problemP2: 'The tools that existed were built for Western markets \u2014 priced in dollars, designed for different regulations, and ignorant of how property management actually works in Kampala, Nairobi, or Dar es Salaam.',
+    builtTitle: 'What We Built',
+    builtP1: 'Aqar is property management software built in Africa, for Africa. It replaces the exercise books, the spreadsheets, and the phone calls with one clear system.',
+    builtP2: 'Rent collection, tenant management, maintenance tracking, financial reports \u2014 all accessible from a phone or laptop, anywhere.',
+    builtP3: 'No installation. No complex setup. Log in and start managing.',
+    screenshotAlt: 'AQAR Properties List Dashboard',
+    screenshotCaption: 'The AQAR properties dashboard \u2014 manage all your properties in one place.',
+    peterTitle: 'Peter Bamuhigire',
+    peterRole: 'Lead Developer',
+    peterBio1: 'Peter is an IT consultant and software developer with over 15 years of experience across more than 10 African countries and 6 industries. He has built and deployed software systems in Uganda, Kenya, Tanzania, Rwanda, DRC, Senegal, Sierra Leone, Guinea, and the United Kingdom.',
+    peterBio2: 'He is bilingual (English and French) and combines deep technical skill with real business consulting experience. He does not just write code \u2014 he understands the business problems the code needs to solve.',
+    peterBio3: 'Peter is the lead developer behind three SaaS products: Maduuka (business management), Aqar (property management), and Longhorn ERP (enterprise resource planning).',
+    chweziTitle: 'Chwezi Core Systems',
+    chweziDesc: 'Chwezi Core Systems Limited is the company behind Aqar. Based in Kampala, Uganda, Chwezi is an ICT consultancy firm specialising in custom software development, enterprise systems, business consulting, and security services. The company operates across East Africa and beyond.',
+    productsTitle: 'Our Products',
+    products: [
+      { name: 'Aqar', desc: 'Property management software for landlords and property managers.' },
+      { name: 'Maduuka', desc: 'Point-of-sale and business management for SMEs.' },
+      { name: 'Longhorn ERP', desc: 'Enterprise resource planning for growing organisations.' },
+    ],
+  },
+  fr: {
+    title: '\u00c0 Propos d\u2019AQAR | Con\u00e7u en Afrique, pour l\u2019Afrique',
+    description: 'D\u00e9couvrez l\u2019histoire derri\u00e8re le logiciel de gestion immobili\u00e8re AQAR \u2014 con\u00e7u par Chwezi Core Systems \u00e0 Kampala, en Ouganda.',
+    heroTitle: 'Con\u00e7u en Afrique, pour l\u2019Afrique',
+    heroSubtitle: 'L\u2019histoire de notre mission pour r\u00e9soudre la gestion immobili\u00e8re en Afrique de l\u2019Est.',
+    problemTitle: 'Le Probl\u00e8me que Nous Avons Identifi\u00e9',
+    problemP1: 'Les gestionnaires de biens \u00e0 travers l\u2019Afrique de l\u2019Est se noyaient dans la paperasse. Des registres de loyers dans des cahiers d\u2019exercice. Des plaintes de locataires sur des post-it. Des rapports financiers assembl\u00e9s \u00e0 la h\u00e2te dans des tableurs en fin de mois. Des propri\u00e9taires qui appellent chaque semaine pour demander \u00ab o\u00f9 est mon argent ? \u00bb et re\u00e7oivent des r\u00e9ponses vagues.',
+    problemP2: 'Les outils existants \u00e9taient con\u00e7us pour les march\u00e9s occidentaux \u2014 factures en dollars, con\u00e7us pour des r\u00e9glementations diff\u00e9rentes et ignorant le fonctionnement r\u00e9el de la gestion immobili\u00e8re \u00e0 Kampala, Nairobi ou Dar es Salaam.',
+    builtTitle: 'Ce que Nous Avons Construit',
+    builtP1: 'Aqar est un logiciel de gestion immobili\u00e8re con\u00e7u en Afrique, pour l\u2019Afrique. Il remplace les cahiers, les tableurs et les appels t\u00e9l\u00e9phoniques par un syst\u00e8me clair et unifi\u00e9.',
+    builtP2: 'Perception des loyers, gestion des locataires, suivi de la maintenance, rapports financiers \u2014 tout accessible depuis un t\u00e9l\u00e9phone ou un ordinateur portable, partout.',
+    builtP3: 'Aucune installation. Aucune configuration complexe. Connectez-vous et commencez \u00e0 g\u00e9rer.',
+    screenshotAlt: 'Tableau de bord AQAR \u2014 Liste des propri\u00e9t\u00e9s',
+    screenshotCaption: 'Le tableau de bord AQAR \u2014 g\u00e9rez toutes vos propri\u00e9t\u00e9s en un seul endroit.',
+    peterTitle: 'Peter Bamuhigire',
+    peterRole: 'D\u00e9veloppeur Principal',
+    peterBio1: 'Peter est un consultant en TI et d\u00e9veloppeur de logiciels avec plus de 15 ans d\u2019exp\u00e9rience dans plus de 10 pays africains et 6 secteurs d\u2019activit\u00e9. Il a con\u00e7u et d\u00e9ploy\u00e9 des syst\u00e8mes informatiques en Ouganda, au Kenya, en Tanzanie, au Rwanda, en RDC, au S\u00e9n\u00e9gal, en Sierra Leone, en Guin\u00e9e et au Royaume-Uni.',
+    peterBio2: 'Il est bilingue (anglais et fran\u00e7ais) et combine une expertise technique approfondie avec une v\u00e9ritable exp\u00e9rience en conseil aux entreprises. Il ne se contente pas d\u2019\u00e9crire du code \u2014 il comprend les probl\u00e8mes commerciaux que le code doit r\u00e9soudre.',
+    peterBio3: 'Peter est le d\u00e9veloppeur principal de trois produits SaaS : Maduuka (gestion d\u2019entreprise), Aqar (gestion immobili\u00e8re) et Longhorn ERP (planification des ressources d\u2019entreprise).',
+    chweziTitle: 'Chwezi Core Systems',
+    chweziDesc: 'Chwezi Core Systems Limited est la soci\u00e9t\u00e9 derri\u00e8re Aqar. Bas\u00e9e \u00e0 Kampala, en Ouganda, Chwezi est une soci\u00e9t\u00e9 de conseil en TIC sp\u00e9cialis\u00e9e dans le d\u00e9veloppement de logiciels sur mesure, les syst\u00e8mes d\u2019entreprise, le conseil aux entreprises et les services de s\u00e9curit\u00e9. La soci\u00e9t\u00e9 op\u00e8re en Afrique de l\u2019Est et au-del\u00e0.',
+    productsTitle: 'Nos Produits',
+    products: [
+      { name: 'Aqar', desc: 'Logiciel de gestion immobili\u00e8re pour propri\u00e9taires et gestionnaires de biens.' },
+      { name: 'Maduuka', desc: 'Point de vente et gestion d\u2019entreprise pour les PME.' },
+      { name: 'Longhorn ERP', desc: 'Planification des ressources d\u2019entreprise pour les organisations en croissance.' },
+    ],
+  },
+};
+
+const t = content[lang];
+---
+
+<BaseLayout lang={lang} title={t.title} description={t.description} pageKey="about">
+  <Lightbox />
+
+  <!-- Hero -->
+  <Hero lang={lang} title={t.heroTitle} subtitle={t.heroSubtitle} bgImage={heroBg} />
+
+  <!-- The Problem -->
+  <section class="bg-surface py-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="animate-on-scroll font-display text-3xl sm:text-4xl font-extrabold text-charcoal mb-8">
+        {t.problemTitle}
+      </h2>
+      <p class="animate-on-scroll stagger-1 text-lg text-neutral-700 leading-relaxed mb-6">
+        {t.problemP1}
+      </p>
+      <p class="animate-on-scroll stagger-2 text-lg text-neutral-700 leading-relaxed">
+        {t.problemP2}
+      </p>
+    </div>
+  </section>
+
+  <!-- What We Built -->
+  <section class="bg-charcoal py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Laptop frame with screenshot -->
+        <div class="animate-on-scroll order-2 lg:order-1">
+          <div class="relative mx-auto max-w-lg">
+            <!-- Laptop bezel -->
+            <div class="rounded-t-xl bg-neutral-800 p-2 pb-0">
+              <div class="flex items-center gap-1.5 px-2 pb-2">
+                <span class="h-2.5 w-2.5 rounded-full bg-red-400"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>
+              </div>
+              <div
+                class="screenshot-trigger relative overflow-hidden rounded-t-sm"
+                @click={`$dispatch('open-lightbox', { src: '${screenshotProperties.src}', alt: '${t.screenshotAlt}', caption: '${t.screenshotCaption}' })`}
+              >
+                <Image
+                  src={screenshotProperties}
+                  alt={t.screenshotAlt}
+                  class="w-full"
+                  widths={[400, 600, 800]}
+                  sizes="(max-width: 768px) 90vw, 500px"
+                />
+                <div class="expand-hint absolute inset-0 flex items-center justify-center bg-charcoal/30">
+                  <span class="rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-charcoal shadow-lg">
+                    {lang === 'en' ? 'Click to expand' : 'Cliquez pour agrandir'}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!-- Laptop base -->
+            <div class="h-4 rounded-b-xl bg-neutral-700"></div>
+            <div class="mx-auto h-2 w-1/3 rounded-b-lg bg-neutral-600"></div>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="order-1 lg:order-2">
+          <h2 class="animate-on-scroll font-display text-3xl sm:text-4xl font-extrabold text-white mb-8">
+            {t.builtTitle}
+          </h2>
+          <p class="animate-on-scroll stagger-1 text-lg text-neutral-300 leading-relaxed mb-4">
+            {t.builtP1}
+          </p>
+          <p class="animate-on-scroll stagger-2 text-lg text-neutral-300 leading-relaxed mb-4">
+            {t.builtP2}
+          </p>
+          <p class="animate-on-scroll stagger-3 text-lg text-secondary-400 font-semibold leading-relaxed">
+            {t.builtP3}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Peter Bamuhigire -->
+  <section class="bg-surface py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Photo -->
+        <div class="animate-on-scroll flex justify-center">
+          <div class="relative">
+            <div class="absolute -inset-3 rounded-full bg-gradient-to-br from-primary-400 to-secondary-400 opacity-30 blur-lg"></div>
+            <Image
+              src={peterPhoto}
+              alt="Peter Bamuhigire"
+              class="relative h-64 w-64 sm:h-80 sm:w-80 rounded-full object-cover shadow-xl ring-4 ring-white"
+              widths={[256, 320, 512]}
+              sizes="(max-width: 640px) 256px, 320px"
+            />
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div>
+          <h2 class="animate-on-scroll font-display text-3xl sm:text-4xl font-extrabold text-charcoal mb-2">
+            {t.peterTitle}
+          </h2>
+          <p class="animate-on-scroll stagger-1 text-primary-600 font-semibold text-lg mb-6">{t.peterRole}</p>
+          <p class="animate-on-scroll stagger-1 text-neutral-700 leading-relaxed mb-4">{t.peterBio1}</p>
+          <p class="animate-on-scroll stagger-2 text-neutral-700 leading-relaxed mb-4">{t.peterBio2}</p>
+          <p class="animate-on-scroll stagger-3 text-neutral-700 leading-relaxed">{t.peterBio3}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chwezi Core Systems -->
+  <section class="bg-charcoal py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <div class="animate-on-scroll mb-8">
+        <Image
+          src={coreLogo}
+          alt="Chwezi Core Systems"
+          class="mx-auto h-16 w-auto"
+          widths={[200, 300]}
+          sizes="200px"
+        />
+      </div>
+      <h2 class="animate-on-scroll stagger-1 font-display text-3xl sm:text-4xl font-extrabold text-white mb-6">
+        {t.chweziTitle}
+      </h2>
+      <p class="animate-on-scroll stagger-2 text-lg text-neutral-300 leading-relaxed max-w-3xl mx-auto mb-12">
+        {t.chweziDesc}
+      </p>
+
+      <h3 class="animate-on-scroll font-display text-2xl font-bold text-white mb-8">{t.productsTitle}</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {t.products.map((product, i) => (
+          <div class={`animate-on-scroll stagger-${i + 1} rounded-xl bg-white/5 border border-white/10 p-6 text-left`}>
+            <h4 class="font-display text-xl font-bold text-secondary-400 mb-3">{product.name}</h4>
+            <p class="text-neutral-400 text-sm leading-relaxed">{product.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CtaBanner lang={lang} />
+</BaseLayout>

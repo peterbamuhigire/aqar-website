@@ -1,0 +1,124 @@
+---
+import type { Language } from '../utils/i18n';
+import { getLocalizedPath } from '../utils/i18n';
+import { Image } from 'astro:assets';
+import coreLogo from '../assets/images/CoreLogoLightEdition.png';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const descriptions = {
+  en: 'Cloud-based property management software for landlords and managers in East Africa and worldwide.',
+  fr: 'Logiciel de gestion immobili\u00e8re en ligne pour les propri\u00e9taires et gestionnaires en Afrique de l\'Est et dans le monde.',
+};
+
+const navLabels = {
+  en: {
+    navTitle: 'Navigation',
+    home: 'Home',
+    features: 'Features',
+    about: 'About',
+    blog: 'Blog',
+    contact: 'Contact',
+    terms: 'Terms',
+    privacy: 'Privacy',
+  },
+  fr: {
+    navTitle: 'Navigation',
+    home: 'Accueil',
+    features: 'Fonctionnalit\u00e9s',
+    about: '\u00c0 propos',
+    blog: 'Blog',
+    contact: 'Contact',
+    terms: 'Conditions',
+    privacy: 'Confidentialit\u00e9',
+  },
+};
+
+const contactLabels = {
+  en: { title: 'Contact' },
+  fr: { title: 'Contact' },
+};
+
+const labels = navLabels[lang];
+const contact = contactLabels[lang];
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-charcoal text-neutral-400">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <!-- Brand column -->
+      <div>
+        <a href={getLocalizedPath('', lang)} class="inline-block text-2xl font-display font-extrabold tracking-tight text-white mb-4">
+          <span class="text-secondary-500">A</span>QAR
+        </a>
+        <p class="text-sm leading-relaxed max-w-xs">
+          {descriptions[lang]}
+        </p>
+      </div>
+
+      <!-- Nav column -->
+      <div>
+        <h3 class="text-sm font-display font-bold text-white uppercase tracking-wider mb-4">
+          {labels.navTitle}
+        </h3>
+        <ul class="space-y-2">
+          <li><a href={getLocalizedPath('', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.home}</a></li>
+          <li><a href={getLocalizedPath('features', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.features}</a></li>
+          <li><a href={getLocalizedPath('about', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.about}</a></li>
+          <li><a href={getLocalizedPath('blog', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.blog}</a></li>
+          <li><a href={getLocalizedPath('contact', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.contact}</a></li>
+          <li class="pt-2 border-t border-white/10">
+            <a href={getLocalizedPath('terms', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.terms}</a>
+          </li>
+          <li>
+            <a href={getLocalizedPath('privacy', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.privacy}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact column -->
+      <div>
+        <h3 class="text-sm font-display font-bold text-white uppercase tracking-wider mb-4">
+          {contact.title}
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="tel:+256784464178" class="hover:text-white transition-colors duration-200">+256 784 464178</a>
+          </li>
+          <li>
+            <a href="tel:+256741430561" class="hover:text-white transition-colors duration-200">+256 741 430561</a>
+          </li>
+          <li>
+            <a href="mailto:info@aqarproperty.co.uk" class="hover:text-white transition-colors duration-200">info@aqarproperty.co.uk</a>
+          </li>
+          <li class="leading-relaxed">
+            Sserumaga Road, Bukoto,<br />
+            Kampala, Uganda
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
+      <p>&copy; {year} AQAR Property Management. All rights reserved.</p>
+      <div class="flex items-center gap-2">
+        <span>Powered by</span>
+        <a href="https://chwezi.tech" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity duration-200">
+          <Image src={coreLogo} alt="Chwezi Core Systems" width={80} height={20} class="h-5 w-auto" />
+        </a>
+        <span class="mx-1">&middot;</span>
+        <a href="https://bamuhigire.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200">
+          Peter Bamuhigire
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

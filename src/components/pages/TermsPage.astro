@@ -1,0 +1,165 @@
+---
+import type { Language } from '../../utils/i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+
+import heroBg from '../../assets/images/AQAR-PROPERTY-09.jpg';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const meta = {
+  en: {
+    title: 'Terms and Conditions | AQAR Property Management',
+    description: 'Read the terms and conditions for using the AQAR property management platform.',
+    heroTitle: 'Terms and Conditions',
+    heroSubtitle: 'Please read these terms carefully before using our services.',
+  },
+  fr: {
+    title: 'Conditions G\u00e9n\u00e9rales | AQAR Gestion Immobili\u00e8re',
+    description: 'Lisez les conditions g\u00e9n\u00e9rales d\u2019utilisation de la plateforme de gestion immobili\u00e8re AQAR.',
+    heroTitle: 'Conditions G\u00e9n\u00e9rales',
+    heroSubtitle: 'Veuillez lire attentivement ces conditions avant d\u2019utiliser nos services.',
+  },
+};
+
+const t = meta[lang];
+const lastUpdated = '1 March 2026';
+const lastUpdatedFr = '1er mars 2026';
+
+const termsHtml = {
+  en: `
+<p><strong>Last updated:</strong> ${lastUpdated}</p>
+
+<h2>1. Introduction</h2>
+<p>These Terms and Conditions ("Terms") govern your access to and use of the AQAR property management platform ("Service"), operated by Chwezi Core Systems Limited ("Company", "we", "us", or "our"), a company registered in Uganda with offices at Sserumaga Road, Bukoto, Kampala.</p>
+<p>By accessing or using the Service, you agree to be bound by these Terms. If you do not agree, you must not use the Service.</p>
+
+<h2>2. Service Description</h2>
+<p>AQAR is a cloud-based property management platform that provides tools for rent collection, tenant management, maintenance tracking, financial reporting, and portfolio management. The Service is accessed via web browser and does not require local software installation.</p>
+
+<h2>3. Account Registration</h2>
+<p>To use certain features of the Service, you must create an account. You agree to provide accurate, current, and complete information during registration and to keep your account information up to date. You are responsible for maintaining the confidentiality of your login credentials and for all activities that occur under your account.</p>
+
+<h2>4. Demo Access</h2>
+<p>We provide a free demonstration version of the Service at property.chwezi.co.za. Demo access does not require registration and is provided for evaluation purposes only. Data entered into the demo environment may be reset periodically without notice.</p>
+
+<h2>5. Acceptable Use</h2>
+<p>You agree to use the Service only for lawful purposes and in accordance with these Terms. You must not:</p>
+<ul>
+<li>Use the Service for any illegal or unauthorised purpose</li>
+<li>Attempt to gain unauthorised access to any part of the Service or its related systems</li>
+<li>Interfere with or disrupt the integrity or performance of the Service</li>
+<li>Upload or transmit viruses, malware, or any other malicious code</li>
+<li>Use the Service to store or transmit any content that infringes upon the rights of any third party</li>
+<li>Reverse engineer, decompile, or disassemble any aspect of the Service</li>
+</ul>
+
+<h2>6. Data Ownership</h2>
+<p>You retain all rights to the data you enter into the Service ("Your Data"). We do not claim ownership of Your Data. You grant us a limited licence to process, store, and display Your Data solely for the purpose of providing the Service to you.</p>
+
+<h2>7. Data Security</h2>
+<p>We implement reasonable technical and organisational measures to protect Your Data against unauthorised access, alteration, disclosure, or destruction. However, no method of electronic transmission or storage is completely secure, and we cannot guarantee absolute security.</p>
+
+<h2>8. Payment Terms</h2>
+<p>Certain features of the Service require a paid subscription. Fees are billed in advance on a monthly or annual basis as agreed. All fees are non-refundable unless otherwise stated. We reserve the right to change pricing with 30 days' written notice.</p>
+
+<h2>9. Service Availability</h2>
+<p>We strive to maintain high availability of the Service but do not guarantee uninterrupted access. The Service may be temporarily unavailable due to maintenance, updates, or circumstances beyond our control. We will endeavour to provide reasonable notice of planned maintenance.</p>
+
+<h2>10. Limitation of Liability</h2>
+<p>To the maximum extent permitted by applicable law, the Company shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or business opportunities, arising out of or in connection with your use of the Service.</p>
+<p>Our total liability for any claims arising under these Terms shall not exceed the amount you have paid to us for the Service during the twelve (12) months preceding the claim.</p>
+
+<h2>11. Termination</h2>
+<p>Either party may terminate the use of the Service at any time. We may suspend or terminate your access if you breach these Terms. Upon termination, your right to use the Service ceases immediately. We will provide reasonable opportunity for you to export Your Data before deletion.</p>
+
+<h2>12. Governing Law</h2>
+<p>These Terms shall be governed by and construed in accordance with the laws of the Republic of Uganda. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts of Uganda.</p>
+
+<h2>13. Changes to Terms</h2>
+<p>We reserve the right to modify these Terms at any time. We will notify registered users of material changes via email or through the Service. Your continued use of the Service after such modifications constitutes acceptance of the updated Terms.</p>
+
+<h2>14. Contact</h2>
+<p>If you have questions about these Terms, please contact us:</p>
+<ul>
+<li>Email: <a href="mailto:info@aqarproperty.co.uk">info@aqarproperty.co.uk</a></li>
+<li>Phone: <a href="tel:+256784464178">+256 784 464178</a></li>
+<li>Address: Sserumaga Road, Bukoto, Kampala, Uganda</li>
+</ul>
+`,
+  fr: `
+<p><strong>Derni\u00e8re mise \u00e0 jour :</strong> ${lastUpdatedFr}</p>
+
+<h2>1. Introduction</h2>
+<p>Les pr\u00e9sentes Conditions G\u00e9n\u00e9rales (\u00ab Conditions \u00bb) r\u00e9gissent votre acc\u00e8s et votre utilisation de la plateforme de gestion immobili\u00e8re AQAR (\u00ab Service \u00bb), exploit\u00e9e par Chwezi Core Systems Limited (\u00ab Soci\u00e9t\u00e9 \u00bb, \u00ab nous \u00bb ou \u00ab notre \u00bb), une soci\u00e9t\u00e9 enregistr\u00e9e en Ouganda avec des bureaux \u00e0 Sserumaga Road, Bukoto, Kampala.</p>
+<p>En acc\u00e9dant ou en utilisant le Service, vous acceptez d\u2019\u00eatre li\u00e9 par ces Conditions. Si vous n\u2019acceptez pas, vous ne devez pas utiliser le Service.</p>
+
+<h2>2. Description du Service</h2>
+<p>AQAR est une plateforme de gestion immobili\u00e8re en ligne qui fournit des outils pour la perception des loyers, la gestion des locataires, le suivi de la maintenance, les rapports financiers et la gestion de portefeuille. Le Service est accessible via un navigateur web et ne n\u00e9cessite aucune installation de logiciel local.</p>
+
+<h2>3. Inscription au Compte</h2>
+<p>Pour utiliser certaines fonctionnalit\u00e9s du Service, vous devez cr\u00e9er un compte. Vous acceptez de fournir des informations exactes, actuelles et compl\u00e8tes lors de l\u2019inscription et de maintenir ces informations \u00e0 jour. Vous \u00eates responsable de la confidentialit\u00e9 de vos identifiants de connexion et de toutes les activit\u00e9s effectu\u00e9es sous votre compte.</p>
+
+<h2>4. Acc\u00e8s \u00e0 la D\u00e9mo</h2>
+<p>Nous fournissons une version de d\u00e9monstration gratuite du Service sur property.chwezi.co.za. L\u2019acc\u00e8s \u00e0 la d\u00e9mo ne n\u00e9cessite pas d\u2019inscription et est fourni uniquement \u00e0 des fins d\u2019\u00e9valuation. Les donn\u00e9es saisies dans l\u2019environnement de d\u00e9mo peuvent \u00eatre r\u00e9initialis\u00e9es p\u00e9riodiquement sans pr\u00e9avis.</p>
+
+<h2>5. Utilisation Acceptable</h2>
+<p>Vous acceptez d\u2019utiliser le Service uniquement \u00e0 des fins l\u00e9gales et conform\u00e9ment \u00e0 ces Conditions. Vous ne devez pas :</p>
+<ul>
+<li>Utiliser le Service \u00e0 des fins ill\u00e9gales ou non autoris\u00e9es</li>
+<li>Tenter d\u2019obtenir un acc\u00e8s non autoris\u00e9 \u00e0 toute partie du Service ou de ses syst\u00e8mes associ\u00e9s</li>
+<li>Interf\u00e9rer avec ou perturber l\u2019int\u00e9grit\u00e9 ou les performances du Service</li>
+<li>T\u00e9l\u00e9charger ou transmettre des virus, des logiciels malveillants ou tout autre code malveillant</li>
+<li>Utiliser le Service pour stocker ou transmettre du contenu portant atteinte aux droits de tiers</li>
+<li>D\u00e9compiler, d\u00e9sassembler ou proc\u00e9der \u00e0 l\u2019ing\u00e9nierie inverse de tout aspect du Service</li>
+</ul>
+
+<h2>6. Propri\u00e9t\u00e9 des Donn\u00e9es</h2>
+<p>Vous conservez tous les droits sur les donn\u00e9es que vous saisissez dans le Service (\u00ab Vos Donn\u00e9es \u00bb). Nous ne revendiquons aucun droit de propri\u00e9t\u00e9 sur Vos Donn\u00e9es. Vous nous accordez une licence limit\u00e9e pour traiter, stocker et afficher Vos Donn\u00e9es uniquement dans le but de vous fournir le Service.</p>
+
+<h2>7. S\u00e9curit\u00e9 des Donn\u00e9es</h2>
+<p>Nous mettons en \u0153uvre des mesures techniques et organisationnelles raisonnables pour prot\u00e9ger Vos Donn\u00e9es contre tout acc\u00e8s, modification, divulgation ou destruction non autoris\u00e9. Cependant, aucune m\u00e9thode de transmission ou de stockage \u00e9lectronique n\u2019est enti\u00e8rement s\u00e9curis\u00e9e, et nous ne pouvons garantir une s\u00e9curit\u00e9 absolue.</p>
+
+<h2>8. Conditions de Paiement</h2>
+<p>Certaines fonctionnalit\u00e9s du Service n\u00e9cessitent un abonnement payant. Les frais sont factur\u00e9s \u00e0 l\u2019avance sur une base mensuelle ou annuelle selon l\u2019accord. Tous les frais sont non remboursables sauf indication contraire. Nous nous r\u00e9servons le droit de modifier les tarifs avec un pr\u00e9avis \u00e9crit de 30 jours.</p>
+
+<h2>9. Disponibilit\u00e9 du Service</h2>
+<p>Nous nous effor\u00e7ons de maintenir une haute disponibilit\u00e9 du Service mais ne garantissons pas un acc\u00e8s ininterrompu. Le Service peut \u00eatre temporairement indisponible en raison de maintenance, de mises \u00e0 jour ou de circonstances ind\u00e9pendantes de notre volont\u00e9. Nous nous efforcerons de fournir un pr\u00e9avis raisonnable pour toute maintenance planifi\u00e9e.</p>
+
+<h2>10. Limitation de Responsabilit\u00e9</h2>
+<p>Dans les limites maximales autoris\u00e9es par la loi applicable, la Soci\u00e9t\u00e9 ne sera pas responsable de tout dommage indirect, accessoire, sp\u00e9cial, cons\u00e9cutif ou punitif, y compris mais sans s\u2019y limiter, la perte de profits, de donn\u00e9es ou d\u2019opportunit\u00e9s commerciales, r\u00e9sultant de ou en lien avec votre utilisation du Service.</p>
+<p>Notre responsabilit\u00e9 totale pour toute r\u00e9clamation d\u00e9coulant de ces Conditions ne d\u00e9passera pas le montant que vous nous avez pay\u00e9 pour le Service au cours des douze (12) mois pr\u00e9c\u00e9dant la r\u00e9clamation.</p>
+
+<h2>11. R\u00e9siliation</h2>
+<p>Chaque partie peut r\u00e9silier l\u2019utilisation du Service \u00e0 tout moment. Nous pouvons suspendre ou r\u00e9silier votre acc\u00e8s si vous enfreignez ces Conditions. \u00c0 la r\u00e9siliation, votre droit d\u2019utiliser le Service cesse imm\u00e9diatement. Nous vous offrirons une possibilit\u00e9 raisonnable d\u2019exporter Vos Donn\u00e9es avant leur suppression.</p>
+
+<h2>12. Droit Applicable</h2>
+<p>Ces Conditions sont r\u00e9gies par et interpr\u00e9t\u00e9es conform\u00e9ment aux lois de la R\u00e9publique d\u2019Ouganda. Tout litige d\u00e9coulant de ces Conditions sera soumis \u00e0 la comp\u00e9tence exclusive des tribunaux d\u2019Ouganda.</p>
+
+<h2>13. Modifications des Conditions</h2>
+<p>Nous nous r\u00e9servons le droit de modifier ces Conditions \u00e0 tout moment. Nous informerons les utilisateurs inscrits de tout changement important par e-mail ou via le Service. Votre utilisation continu\u00e9e du Service apr\u00e8s de telles modifications constitue une acceptation des Conditions mises \u00e0 jour.</p>
+
+<h2>14. Contact</h2>
+<p>Si vous avez des questions concernant ces Conditions, veuillez nous contacter :</p>
+<ul>
+<li>E-mail : <a href="mailto:info@aqarproperty.co.uk">info@aqarproperty.co.uk</a></li>
+<li>T\u00e9l\u00e9phone : <a href="tel:+256784464178">+256 784 464178</a></li>
+<li>Adresse : Sserumaga Road, Bukoto, Kampala, Ouganda</li>
+</ul>
+`,
+};
+---
+
+<BaseLayout lang={lang} title={t.title} description={t.description} pageKey="terms">
+  <Hero lang={lang} title={t.heroTitle} subtitle={t.heroSubtitle} bgImage={heroBg} />
+
+  <section class="bg-surface py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <article class="animate-on-scroll prose" set:html={termsHtml[lang]} />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,82 @@
+---
+import type { Language } from '../../utils/i18n';
+import { getLocalizedPath } from '../../utils/i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  lang: Language;
+  title: string;
+  excerpt: string;
+  author: string;
+  date: string;
+  content: string;
+  image: ImageMetadata;
+}
+
+const { lang, title, excerpt, author, date, content, image } = Astro.props;
+
+const labels = {
+  en: {
+    backToBlog: 'Back to Blog',
+    by: 'By',
+    published: 'Published',
+  },
+  fr: {
+    backToBlog: 'Retour au Blog',
+    by: 'Par',
+    published: 'Publi\u00e9 le',
+  },
+};
+
+const t = labels[lang];
+const blogUrl = getLocalizedPath('blog', lang);
+const pageTitle = `${title} | AQAR Blog`;
+---
+
+<BaseLayout lang={lang} title={pageTitle} description={excerpt} pageKey="blog">
+  <!-- Hero -->
+  <Hero lang={lang} title={title} subtitle={excerpt} bgImage={image} />
+
+  <!-- Article -->
+  <section class="bg-surface py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <!-- Meta -->
+      <div class="animate-on-scroll flex flex-wrap items-center gap-4 text-sm text-neutral-500 mb-10 pb-6 border-b border-neutral-200">
+        <a
+          href={blogUrl}
+          class="inline-flex items-center gap-1 text-primary-600 hover:text-primary-800 font-semibold transition-colors duration-200"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          {t.backToBlog}
+        </a>
+        <span class="text-neutral-300">|</span>
+        <span>{t.by} <strong class="text-neutral-700">{author}</strong></span>
+        <span class="text-neutral-300">|</span>
+        <span>{t.published} {date}</span>
+      </div>
+
+      <!-- Prose content -->
+      <article class="animate-on-scroll stagger-1 prose" set:html={content} />
+
+      <!-- Back link -->
+      <div class="animate-on-scroll mt-12 pt-8 border-t border-neutral-200">
+        <a
+          href={blogUrl}
+          class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-800 font-semibold transition-colors duration-200"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          {t.backToBlog}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner lang={lang} />
+</BaseLayout>

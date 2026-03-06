@@ -1,0 +1,242 @@
+---
+import type { Language } from '../../utils/i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import { Image } from 'astro:assets';
+
+import heroBg from '../../assets/images/AQAR-PROPERTY-06.jpg';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    title: 'Contact AQAR | Get in Touch',
+    description: 'Contact AQAR Property Management for a demo, partnership enquiry, or support. Based in Kampala, Uganda.',
+    heroTitle: 'Get in Touch',
+    heroSubtitle: 'We would love to hear from you. Reach out for a demo, support, or partnership enquiry.',
+    formTitle: 'Send Us a Message',
+    nameLabel: 'Name',
+    namePlaceholder: 'Your full name',
+    emailLabel: 'Email',
+    emailPlaceholder: 'you@example.com',
+    phoneLabel: 'Phone (optional)',
+    phonePlaceholder: '+256 7XX XXX XXX',
+    messageLabel: 'Message',
+    messagePlaceholder: 'How can we help you?',
+    sendBtn: 'Send Message',
+    sending: 'Sending...',
+    successMsg: 'Thank you! Your message has been sent. We will be in touch shortly.',
+    errorMsg: 'Something went wrong. Please try again or contact us via WhatsApp.',
+    whatsappTitle: 'Prefer WhatsApp?',
+    whatsappDesc: 'Chat with us directly for a quick response.',
+    whatsappBtn: 'Open WhatsApp',
+    contactTitle: 'Contact Details',
+    phone: 'Phone',
+    altPhone: 'Alternative',
+    email: 'Email',
+    address: 'Address',
+    addressValue: 'Sserumaga Road, Bukoto\nKampala, Uganda',
+    hoursTitle: 'Business Hours',
+    weekdays: 'Monday \u2013 Friday: 8:00 AM \u2013 6:00 PM (EAT)',
+    saturday: 'Saturday: 9:00 AM \u2013 1:00 PM (EAT)',
+    mapTitle: 'Find Us',
+  },
+  fr: {
+    title: 'Contact AQAR | Contactez-nous',
+    description: 'Contactez AQAR Gestion Immobili\u00e8re pour une d\u00e9mo, une demande de partenariat ou du support. Bas\u00e9 \u00e0 Kampala, en Ouganda.',
+    heroTitle: 'Contactez-nous',
+    heroSubtitle: 'Nous serions ravis de vous entendre. Contactez-nous pour une d\u00e9mo, du support ou un partenariat.',
+    formTitle: 'Envoyez-nous un Message',
+    nameLabel: 'Nom',
+    namePlaceholder: 'Votre nom complet',
+    emailLabel: 'E-mail',
+    emailPlaceholder: 'vous@exemple.com',
+    phoneLabel: 'T\u00e9l\u00e9phone (optionnel)',
+    phonePlaceholder: '+256 7XX XXX XXX',
+    messageLabel: 'Message',
+    messagePlaceholder: 'Comment pouvons-nous vous aider ?',
+    sendBtn: 'Envoyer le message',
+    sending: 'Envoi en cours...',
+    successMsg: 'Merci ! Votre message a \u00e9t\u00e9 envoy\u00e9. Nous vous recontacterons sous peu.',
+    errorMsg: 'Une erreur est survenue. Veuillez r\u00e9essayer ou nous contacter via WhatsApp.',
+    whatsappTitle: 'Vous pr\u00e9f\u00e9rez WhatsApp ?',
+    whatsappDesc: 'Discutez directement avec nous pour une r\u00e9ponse rapide.',
+    whatsappBtn: 'Ouvrir WhatsApp',
+    contactTitle: 'Coordonn\u00e9es',
+    phone: 'T\u00e9l\u00e9phone',
+    altPhone: 'Alternative',
+    email: 'E-mail',
+    address: 'Adresse',
+    addressValue: 'Sserumaga Road, Bukoto\nKampala, Ouganda',
+    hoursTitle: 'Heures d\u2019Ouverture',
+    weekdays: 'Lundi \u2013 Vendredi : 8h00 \u2013 18h00 (EAT)',
+    saturday: 'Samedi : 9h00 \u2013 13h00 (EAT)',
+    mapTitle: 'Nous Trouver',
+  },
+};
+
+const t = content[lang];
+---
+
+<BaseLayout lang={lang} title={t.title} description={t.description} pageKey="contact">
+  <!-- Hero -->
+  <Hero lang={lang} title={t.heroTitle} subtitle={t.heroSubtitle} bgImage={heroBg} />
+
+  <!-- Contact Content -->
+  <section class="bg-surface py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+        <!-- Left: Contact Form -->
+        <div class="animate-on-scroll">
+          <h2 class="font-display text-2xl font-bold text-charcoal mb-6">{t.formTitle}</h2>
+
+          <form
+            x-data="{ sending: false, sent: false, error: false }"
+            @submit.prevent="
+              sending = true;
+              error = false;
+              const data = Object.fromEntries(new FormData($el));
+              const mailto = 'mailto:info@aqarproperty.co.uk?subject=' + encodeURIComponent('Contact from ' + data.name) + '&body=' + encodeURIComponent('Name: ' + data.name + '\nEmail: ' + data.email + '\nPhone: ' + (data.phone || 'N/A') + '\n\nMessage:\n' + data.message);
+              window.open(mailto, '_blank');
+              sending = false;
+              sent = true;
+            "
+            class="space-y-5"
+          >
+            <!-- Success message -->
+            <div x-show="sent" x-cloak class="rounded-lg bg-success-50 border border-success-200 p-4 text-success-800 text-sm">
+              {t.successMsg}
+            </div>
+
+            <!-- Error message -->
+            <div x-show="error" x-cloak class="rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm">
+              {t.errorMsg}
+            </div>
+
+            <div>
+              <label for="name" class="block text-sm font-semibold text-neutral-700 mb-1">{t.nameLabel}</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder={t.namePlaceholder}
+                class="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-semibold text-neutral-700 mb-1">{t.emailLabel}</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder={t.emailPlaceholder}
+                class="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="phone" class="block text-sm font-semibold text-neutral-700 mb-1">{t.phoneLabel}</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder={t.phonePlaceholder}
+                class="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-semibold text-neutral-700 mb-1">{t.messageLabel}</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="5"
+                placeholder={t.messagePlaceholder}
+                class="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-colors resize-y"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              :disabled="sending"
+              class="inline-flex items-center rounded-lg bg-primary-600 px-8 py-3.5 text-base font-bold text-white shadow-lg hover:bg-primary-700 focus:ring-2 focus:ring-primary-300 focus:outline-none transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              <span x-show="!sending">{t.sendBtn}</span>
+              <span x-show="sending" x-cloak>{t.sending}</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Right: WhatsApp + Contact Details + Map -->
+        <div class="space-y-8">
+          <!-- WhatsApp CTA -->
+          <div class="animate-on-scroll rounded-xl bg-secondary-500 p-8 text-white">
+            <h3 class="font-display text-xl font-bold mb-3">{t.whatsappTitle}</h3>
+            <p class="text-secondary-100 mb-5">{t.whatsappDesc}</p>
+            <a
+              href="https://wa.me/256784464178"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-bold text-secondary-700 shadow hover:bg-neutral-100 transition-colors duration-200"
+            >
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              {t.whatsappBtn}
+            </a>
+          </div>
+
+          <!-- Contact Details -->
+          <div class="animate-on-scroll stagger-1 rounded-xl bg-white border border-neutral-200 p-8">
+            <h3 class="font-display text-xl font-bold text-charcoal mb-5">{t.contactTitle}</h3>
+            <dl class="space-y-4 text-sm">
+              <div class="flex gap-3">
+                <dt class="font-semibold text-neutral-600 w-24 shrink-0">{t.phone}</dt>
+                <dd><a href="tel:+256784464178" class="text-primary-600 hover:text-primary-800 transition-colors">+256 784 464178</a></dd>
+              </div>
+              <div class="flex gap-3">
+                <dt class="font-semibold text-neutral-600 w-24 shrink-0">{t.altPhone}</dt>
+                <dd><a href="tel:+256741430561" class="text-primary-600 hover:text-primary-800 transition-colors">+256 741 430561</a></dd>
+              </div>
+              <div class="flex gap-3">
+                <dt class="font-semibold text-neutral-600 w-24 shrink-0">{t.email}</dt>
+                <dd><a href="mailto:info@aqarproperty.co.uk" class="text-primary-600 hover:text-primary-800 transition-colors">info@aqarproperty.co.uk</a></dd>
+              </div>
+              <div class="flex gap-3">
+                <dt class="font-semibold text-neutral-600 w-24 shrink-0">{t.address}</dt>
+                <dd class="text-neutral-700 whitespace-pre-line">{t.addressValue}</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Business Hours -->
+          <div class="animate-on-scroll stagger-2 rounded-xl bg-white border border-neutral-200 p-8">
+            <h3 class="font-display text-xl font-bold text-charcoal mb-4">{t.hoursTitle}</h3>
+            <ul class="space-y-2 text-sm text-neutral-700">
+              <li>{t.weekdays}</li>
+              <li>{t.saturday}</li>
+            </ul>
+          </div>
+
+          <!-- Map -->
+          <div class="animate-on-scroll stagger-3 rounded-xl overflow-hidden border border-neutral-200">
+            <h3 class="font-display text-lg font-bold text-charcoal px-6 py-4 bg-white">{t.mapTitle}</h3>
+            <iframe
+              title="AQAR Office Location - Bukoto, Kampala"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=32.5900%2C0.3450%2C32.5980%2C0.3520&layer=mapnik&marker=0.3485%2C32.5940"
+              class="w-full h-64 border-0"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

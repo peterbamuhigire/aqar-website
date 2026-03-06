@@ -1,0 +1,231 @@
+---
+import type { Language } from '../../utils/i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+
+import heroBg from '../../assets/images/AQAR-PROPERTY-04.jpg';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const meta = {
+  en: {
+    title: 'Privacy Policy | AQAR Property Management',
+    description: 'Learn how AQAR Property Management collects, uses, and protects your personal data.',
+    heroTitle: 'Privacy Policy',
+    heroSubtitle: 'Your privacy is important to us. Learn how we handle your data.',
+  },
+  fr: {
+    title: 'Politique de Confidentialit\u00e9 | AQAR Gestion Immobili\u00e8re',
+    description: 'D\u00e9couvrez comment AQAR Gestion Immobili\u00e8re collecte, utilise et prot\u00e8ge vos donn\u00e9es personnelles.',
+    heroTitle: 'Politique de Confidentialit\u00e9',
+    heroSubtitle: 'Votre vie priv\u00e9e est importante pour nous. D\u00e9couvrez comment nous g\u00e9rons vos donn\u00e9es.',
+  },
+};
+
+const t = meta[lang];
+const lastUpdated = '1 March 2026';
+const lastUpdatedFr = '1er mars 2026';
+
+const privacyHtml = {
+  en: `
+<p><strong>Last updated:</strong> ${lastUpdated}</p>
+
+<h2>1. Introduction</h2>
+<p>Chwezi Core Systems Limited ("Company", "we", "us", or "our") operates the AQAR property management platform ("Service"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Service.</p>
+<p>By using the Service, you consent to the data practices described in this policy. If you do not agree, please do not use the Service.</p>
+
+<h2>2. Information We Collect</h2>
+<p>We may collect the following types of information:</p>
+
+<h3>2.1 Information You Provide</h3>
+<ul>
+<li><strong>Account information:</strong> Name, email address, phone number, and company details when you register</li>
+<li><strong>Property data:</strong> Property details, tenant information, lease agreements, financial records, and maintenance logs you enter into the system</li>
+<li><strong>Communication data:</strong> Messages sent through the contact form, WhatsApp, email, or other communication channels</li>
+</ul>
+
+<h3>2.2 Automatically Collected Information</h3>
+<ul>
+<li><strong>Usage data:</strong> Pages visited, features used, and time spent on the platform</li>
+<li><strong>Device information:</strong> Browser type, operating system, IP address, and device identifiers</li>
+<li><strong>Cookies:</strong> Small data files stored on your device to improve your experience</li>
+</ul>
+
+<h2>3. How We Use Your Information</h2>
+<p>We use the information we collect to:</p>
+<ul>
+<li>Provide, operate, and maintain the Service</li>
+<li>Process transactions and send related information</li>
+<li>Improve, personalise, and expand the Service</li>
+<li>Communicate with you, including for customer support</li>
+<li>Send administrative information such as updates, security alerts, and support messages</li>
+<li>Monitor and analyse usage trends to improve user experience</li>
+<li>Detect, prevent, and address technical issues or security threats</li>
+</ul>
+
+<h2>4. Data Storage and Security</h2>
+<p>Your data is stored on secure servers with industry-standard encryption in transit and at rest. We implement appropriate technical and organisational measures to protect your personal information, including:</p>
+<ul>
+<li>SSL/TLS encryption for all data in transit</li>
+<li>Encrypted database storage</li>
+<li>Role-based access controls</li>
+<li>Regular security audits and updates</li>
+<li>Employee access limited to those who require it for their role</li>
+</ul>
+
+<h2>5. Data Sharing</h2>
+<p>We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:</p>
+<ul>
+<li><strong>Service providers:</strong> With trusted third-party providers who assist in operating the Service (e.g., hosting, analytics), under strict confidentiality agreements</li>
+<li><strong>Legal requirements:</strong> When required by law, regulation, or legal process</li>
+<li><strong>Business transfers:</strong> In connection with a merger, acquisition, or sale of assets, with continued protection of your data</li>
+<li><strong>With your consent:</strong> When you explicitly authorise us to share specific information</li>
+</ul>
+
+<h2>6. Data Retention</h2>
+<p>We retain your personal data for as long as your account is active or as needed to provide the Service. Upon account termination, we will retain your data for a reasonable period to allow for data export, after which it will be securely deleted. We may retain certain data as required by law or for legitimate business purposes.</p>
+
+<h2>7. Your Rights</h2>
+<p>Depending on your location, you may have the following rights regarding your personal data:</p>
+<ul>
+<li><strong>Access:</strong> Request a copy of the personal data we hold about you</li>
+<li><strong>Correction:</strong> Request correction of inaccurate or incomplete data</li>
+<li><strong>Deletion:</strong> Request deletion of your personal data, subject to legal obligations</li>
+<li><strong>Data portability:</strong> Request your data in a structured, commonly used format</li>
+<li><strong>Objection:</strong> Object to certain processing of your personal data</li>
+<li><strong>Withdrawal of consent:</strong> Withdraw consent where processing is based on consent</li>
+</ul>
+<p>To exercise any of these rights, please contact us using the details provided below.</p>
+
+<h2>8. Cookies</h2>
+<p>We use cookies and similar tracking technologies to enhance your experience. These include:</p>
+<ul>
+<li><strong>Essential cookies:</strong> Required for the Service to function (e.g., session management, authentication)</li>
+<li><strong>Analytics cookies:</strong> Help us understand how users interact with the Service</li>
+<li><strong>Preference cookies:</strong> Remember your settings and preferences</li>
+</ul>
+<p>You can control cookie settings through your browser. Disabling certain cookies may affect the functionality of the Service.</p>
+
+<h2>9. Children's Privacy</h2>
+<p>The Service is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children. If we become aware that we have collected data from a child, we will take steps to delete it promptly.</p>
+
+<h2>10. Changes to This Policy</h2>
+<p>We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the updated policy on this page and, where appropriate, notifying you via email. Your continued use of the Service after changes are posted constitutes acceptance of the updated policy.</p>
+
+<h2>11. Contact Us</h2>
+<p>If you have questions about this Privacy Policy or wish to exercise your data rights, please contact us:</p>
+<ul>
+<li>Email: <a href="mailto:info@aqarproperty.co.uk">info@aqarproperty.co.uk</a></li>
+<li>Phone: <a href="tel:+256784464178">+256 784 464178</a></li>
+<li>Address: Sserumaga Road, Bukoto, Kampala, Uganda</li>
+</ul>
+`,
+  fr: `
+<p><strong>Derni\u00e8re mise \u00e0 jour :</strong> ${lastUpdatedFr}</p>
+
+<h2>1. Introduction</h2>
+<p>Chwezi Core Systems Limited (\u00ab Soci\u00e9t\u00e9 \u00bb, \u00ab nous \u00bb ou \u00ab notre \u00bb) exploite la plateforme de gestion immobili\u00e8re AQAR (\u00ab Service \u00bb). Cette Politique de Confidentialit\u00e9 explique comment nous collectons, utilisons, divulguons et prot\u00e9geons vos informations lorsque vous utilisez notre Service.</p>
+<p>En utilisant le Service, vous consentez aux pratiques de donn\u00e9es d\u00e9crites dans cette politique. Si vous n\u2019\u00eates pas d\u2019accord, veuillez ne pas utiliser le Service.</p>
+
+<h2>2. Informations que Nous Collectons</h2>
+<p>Nous pouvons collecter les types d\u2019informations suivants :</p>
+
+<h3>2.1 Informations que Vous Fournissez</h3>
+<ul>
+<li><strong>Informations de compte :</strong> Nom, adresse e-mail, num\u00e9ro de t\u00e9l\u00e9phone et d\u00e9tails de l\u2019entreprise lors de votre inscription</li>
+<li><strong>Donn\u00e9es immobili\u00e8res :</strong> D\u00e9tails des propri\u00e9t\u00e9s, informations sur les locataires, contrats de bail, registres financiers et journaux de maintenance que vous saisissez dans le syst\u00e8me</li>
+<li><strong>Donn\u00e9es de communication :</strong> Messages envoy\u00e9s via le formulaire de contact, WhatsApp, e-mail ou autres canaux de communication</li>
+</ul>
+
+<h3>2.2 Informations Collect\u00e9es Automatiquement</h3>
+<ul>
+<li><strong>Donn\u00e9es d\u2019utilisation :</strong> Pages visit\u00e9es, fonctionnalit\u00e9s utilis\u00e9es et temps pass\u00e9 sur la plateforme</li>
+<li><strong>Informations sur l\u2019appareil :</strong> Type de navigateur, syst\u00e8me d\u2019exploitation, adresse IP et identifiants d\u2019appareil</li>
+<li><strong>Cookies :</strong> Petits fichiers de donn\u00e9es stock\u00e9s sur votre appareil pour am\u00e9liorer votre exp\u00e9rience</li>
+</ul>
+
+<h2>3. Comment Nous Utilisons Vos Informations</h2>
+<p>Nous utilisons les informations que nous collectons pour :</p>
+<ul>
+<li>Fournir, exploiter et maintenir le Service</li>
+<li>Traiter les transactions et envoyer les informations associ\u00e9es</li>
+<li>Am\u00e9liorer, personnaliser et d\u00e9velopper le Service</li>
+<li>Communiquer avec vous, y compris pour le support client</li>
+<li>Envoyer des informations administratives telles que des mises \u00e0 jour, des alertes de s\u00e9curit\u00e9 et des messages de support</li>
+<li>Surveiller et analyser les tendances d\u2019utilisation pour am\u00e9liorer l\u2019exp\u00e9rience utilisateur</li>
+<li>D\u00e9tecter, pr\u00e9venir et r\u00e9soudre les probl\u00e8mes techniques ou les menaces de s\u00e9curit\u00e9</li>
+</ul>
+
+<h2>4. Stockage et S\u00e9curit\u00e9 des Donn\u00e9es</h2>
+<p>Vos donn\u00e9es sont stock\u00e9es sur des serveurs s\u00e9curis\u00e9s avec un chiffrement conforme aux normes de l\u2019industrie en transit et au repos. Nous mettons en \u0153uvre des mesures techniques et organisationnelles appropri\u00e9es pour prot\u00e9ger vos informations personnelles, notamment :</p>
+<ul>
+<li>Chiffrement SSL/TLS pour toutes les donn\u00e9es en transit</li>
+<li>Stockage chiffr\u00e9 de la base de donn\u00e9es</li>
+<li>Contr\u00f4les d\u2019acc\u00e8s bas\u00e9s sur les r\u00f4les</li>
+<li>Audits de s\u00e9curit\u00e9 r\u00e9guliers et mises \u00e0 jour</li>
+<li>Acc\u00e8s des employ\u00e9s limit\u00e9 \u00e0 ceux qui en ont besoin pour leur r\u00f4le</li>
+</ul>
+
+<h2>5. Partage des Donn\u00e9es</h2>
+<p>Nous ne vendons, n\u2019\u00e9changeons ni ne louons vos informations personnelles \u00e0 des tiers. Nous pouvons partager vos informations dans les circonstances suivantes :</p>
+<ul>
+<li><strong>Prestataires de services :</strong> Avec des prestataires tiers de confiance qui aident \u00e0 exploiter le Service (h\u00e9bergement, analyses), dans le cadre d\u2019accords de confidentialit\u00e9 stricts</li>
+<li><strong>Exigences l\u00e9gales :</strong> Lorsque la loi, la r\u00e9glementation ou une proc\u00e9dure judiciaire l\u2019exige</li>
+<li><strong>Transferts d\u2019entreprise :</strong> En lien avec une fusion, une acquisition ou une vente d\u2019actifs, avec une protection continue de vos donn\u00e9es</li>
+<li><strong>Avec votre consentement :</strong> Lorsque vous nous autorisez explicitement \u00e0 partager des informations sp\u00e9cifiques</li>
+</ul>
+
+<h2>6. Conservation des Donn\u00e9es</h2>
+<p>Nous conservons vos donn\u00e9es personnelles aussi longtemps que votre compte est actif ou selon les besoins pour fournir le Service. Apr\u00e8s la r\u00e9siliation du compte, nous conserverons vos donn\u00e9es pendant une p\u00e9riode raisonnable pour permettre l\u2019exportation des donn\u00e9es, apr\u00e8s quoi elles seront supprim\u00e9es de mani\u00e8re s\u00e9curis\u00e9e. Nous pouvons conserver certaines donn\u00e9es selon les exigences l\u00e9gales ou pour des objectifs commerciaux l\u00e9gitimes.</p>
+
+<h2>7. Vos Droits</h2>
+<p>Selon votre localisation, vous pouvez disposer des droits suivants concernant vos donn\u00e9es personnelles :</p>
+<ul>
+<li><strong>Acc\u00e8s :</strong> Demander une copie des donn\u00e9es personnelles que nous d\u00e9tenons \u00e0 votre sujet</li>
+<li><strong>Correction :</strong> Demander la correction de donn\u00e9es inexactes ou incompl\u00e8tes</li>
+<li><strong>Suppression :</strong> Demander la suppression de vos donn\u00e9es personnelles, sous r\u00e9serve des obligations l\u00e9gales</li>
+<li><strong>Portabilit\u00e9 :</strong> Demander vos donn\u00e9es dans un format structur\u00e9 et couramment utilis\u00e9</li>
+<li><strong>Opposition :</strong> Vous opposer \u00e0 certains traitements de vos donn\u00e9es personnelles</li>
+<li><strong>Retrait du consentement :</strong> Retirer votre consentement lorsque le traitement est bas\u00e9 sur celui-ci</li>
+</ul>
+<p>Pour exercer l\u2019un de ces droits, veuillez nous contacter en utilisant les coordonn\u00e9es fournies ci-dessous.</p>
+
+<h2>8. Cookies</h2>
+<p>Nous utilisons des cookies et des technologies de suivi similaires pour am\u00e9liorer votre exp\u00e9rience. Cela inclut :</p>
+<ul>
+<li><strong>Cookies essentiels :</strong> N\u00e9cessaires au fonctionnement du Service (gestion de session, authentification)</li>
+<li><strong>Cookies d\u2019analyse :</strong> Nous aident \u00e0 comprendre comment les utilisateurs interagissent avec le Service</li>
+<li><strong>Cookies de pr\u00e9f\u00e9rences :</strong> M\u00e9morisent vos param\u00e8tres et pr\u00e9f\u00e9rences</li>
+</ul>
+<p>Vous pouvez contr\u00f4ler les param\u00e8tres des cookies via votre navigateur. La d\u00e9sactivation de certains cookies peut affecter le fonctionnement du Service.</p>
+
+<h2>9. Vie Priv\u00e9e des Enfants</h2>
+<p>Le Service n\u2019est pas destin\u00e9 aux personnes de moins de 18 ans. Nous ne collectons pas sciemment d\u2019informations personnelles aupr\u00e8s d\u2019enfants. Si nous apprenons que nous avons collect\u00e9 des donn\u00e9es d\u2019un enfant, nous prendrons des mesures pour les supprimer rapidement.</p>
+
+<h2>10. Modifications de Cette Politique</h2>
+<p>Nous pouvons mettre \u00e0 jour cette Politique de Confidentialit\u00e9 de temps en temps. Nous vous informerons de tout changement important en publiant la politique mise \u00e0 jour sur cette page et, le cas \u00e9ch\u00e9ant, en vous notifiant par e-mail. Votre utilisation continu\u00e9e du Service apr\u00e8s la publication des modifications constitue une acceptation de la politique mise \u00e0 jour.</p>
+
+<h2>11. Nous Contacter</h2>
+<p>Si vous avez des questions concernant cette Politique de Confidentialit\u00e9 ou souhaitez exercer vos droits sur les donn\u00e9es, veuillez nous contacter :</p>
+<ul>
+<li>E-mail : <a href="mailto:info@aqarproperty.co.uk">info@aqarproperty.co.uk</a></li>
+<li>T\u00e9l\u00e9phone : <a href="tel:+256784464178">+256 784 464178</a></li>
+<li>Adresse : Sserumaga Road, Bukoto, Kampala, Ouganda</li>
+</ul>
+`,
+};
+---
+
+<BaseLayout lang={lang} title={t.title} description={t.description} pageKey="privacy">
+  <Hero lang={lang} title={t.heroTitle} subtitle={t.heroSubtitle} bgImage={heroBg} />
+
+  <section class="bg-surface py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <article class="animate-on-scroll prose" set:html={privacyHtml[lang]} />
+    </div>
+  </section>
+</BaseLayout>

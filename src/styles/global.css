@@ -1,0 +1,268 @@
+@import 'tailwindcss';
+
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
+@import '@fontsource/source-sans-3/400.css';
+@import '@fontsource/source-sans-3/600.css';
+
+/* ------------------------------------------------
+   Tailwind v4 Theme — Kampala Dusk palette
+   ------------------------------------------------ */
+@theme {
+  /* Primary — Deep Teal (centered on #0D7377) */
+  --color-primary-50: #e6f5f5;
+  --color-primary-100: #b3e2e3;
+  --color-primary-200: #80cfd1;
+  --color-primary-300: #4dbcbf;
+  --color-primary-400: #26acb0;
+  --color-primary-500: #0d9498;
+  --color-primary-600: #0d7377;
+  --color-primary-700: #0a5c5f;
+  --color-primary-800: #074547;
+  --color-primary-900: #042e2f;
+  --color-primary-950: #021a1b;
+
+  /* Secondary — Warm Amber (centered on #E8913A) */
+  --color-secondary-50: #fef4e8;
+  --color-secondary-100: #fce0bb;
+  --color-secondary-200: #f9cc8e;
+  --color-secondary-300: #f6b861;
+  --color-secondary-400: #f2a44d;
+  --color-secondary-500: #e8913a;
+  --color-secondary-600: #d47e2e;
+  --color-secondary-700: #b56823;
+  --color-secondary-800: #955219;
+  --color-secondary-900: #6b3b11;
+  --color-secondary-950: #42240a;
+
+  /* Charcoal (dark) */
+  --color-charcoal: #1A1F2E;
+
+  /* Surface (light background) */
+  --color-surface: #FAFAF7;
+
+  /* Success */
+  --color-success-50: #e8f5eb;
+  --color-success-100: #c5e6cd;
+  --color-success-200: #9ed6ab;
+  --color-success-300: #72c589;
+  --color-success-400: #52b86f;
+  --color-success-500: #34a853;
+  --color-success-600: #2d924a;
+  --color-success-700: #24793d;
+  --color-success-800: #1b6030;
+  --color-success-900: #124721;
+  --color-success-950: #092e14;
+
+  /* Neutral grays */
+  --color-neutral-50: #f8f8f8;
+  --color-neutral-100: #f0f0ef;
+  --color-neutral-200: #e0e0dd;
+  --color-neutral-300: #c8c8c4;
+  --color-neutral-400: #a0a09b;
+  --color-neutral-500: #787873;
+  --color-neutral-600: #5c5c58;
+  --color-neutral-700: #454542;
+  --color-neutral-800: #2e2e2c;
+  --color-neutral-900: #1a1a18;
+  --color-neutral-950: #0d0d0c;
+
+  /* Font families */
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Source Sans 3', sans-serif;
+}
+
+/* ------------------------------------------------
+   Custom CSS Properties
+   ------------------------------------------------ */
+:root {
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-blur: 12px;
+  --glass-border: rgba(255, 255, 255, 0.25);
+}
+
+/* ------------------------------------------------
+   Base layer
+   ------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-body);
+  }
+
+  ::selection {
+    background-color: var(--color-primary-200);
+    color: var(--color-charcoal);
+  }
+
+  img {
+    display: block;
+  }
+}
+
+/* ------------------------------------------------
+   Glassmorphism utility
+   ------------------------------------------------ */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+/* ------------------------------------------------
+   Scroll-triggered animations
+   ------------------------------------------------ */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay classes */
+.stagger-1 { transition-delay: 100ms; }
+.stagger-2 { transition-delay: 200ms; }
+.stagger-3 { transition-delay: 300ms; }
+.stagger-4 { transition-delay: 400ms; }
+.stagger-5 { transition-delay: 500ms; }
+
+/* ------------------------------------------------
+   Screenshot trigger styles
+   ------------------------------------------------ */
+.screenshot-trigger {
+  cursor: zoom-in;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.screenshot-trigger:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.screenshot-trigger .expand-hint {
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.screenshot-trigger:hover .expand-hint {
+  opacity: 1;
+}
+
+/* ------------------------------------------------
+   Prose styles (blog / legal pages)
+   ------------------------------------------------ */
+.prose {
+  max-width: 72ch;
+  line-height: 1.75;
+  color: var(--color-neutral-800);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-charcoal);
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  line-height: 1.3;
+}
+
+.prose h1 { font-size: 2.25rem; }
+.prose h2 { font-size: 1.75rem; }
+.prose h3 { font-size: 1.375rem; }
+.prose h4 { font-size: 1.125rem; }
+
+.prose p {
+  margin-bottom: 1.25em;
+}
+
+.prose a {
+  color: var(--color-primary-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast);
+}
+
+.prose a:hover {
+  color: var(--color-primary-800);
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 1.25em;
+  padding-left: 1.5em;
+}
+
+.prose ul { list-style-type: disc; }
+.prose ol { list-style-type: decimal; }
+
+.prose li {
+  margin-bottom: 0.5em;
+}
+
+.prose blockquote {
+  border-left: 4px solid var(--color-primary-200);
+  padding-left: 1em;
+  margin: 1.5em 0;
+  color: var(--color-neutral-600);
+  font-style: italic;
+}
+
+.prose code {
+  background: var(--color-neutral-100);
+  padding: 0.15em 0.35em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.prose pre {
+  background: var(--color-charcoal);
+  color: var(--color-neutral-100);
+  padding: 1.25em;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 1.5em;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.875em;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--color-neutral-200);
+  margin: 2em 0;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid var(--color-neutral-200);
+  padding: 0.625em 1em;
+  text-align: left;
+}
+
+.prose th {
+  background: var(--color-neutral-50);
+  font-weight: 600;
+}

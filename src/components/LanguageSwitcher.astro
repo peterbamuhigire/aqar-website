@@ -1,0 +1,39 @@
+---
+import type { Language } from '../utils/i18n';
+import { getLocalizedPath } from '../utils/i18n';
+
+interface Props {
+  currentLang: Language;
+  currentPath: string;
+}
+
+const { currentLang, currentPath } = Astro.props;
+---
+
+<div class="flex items-center gap-1 text-sm">
+  <a
+    href={getLocalizedPath(currentPath, 'en')}
+    class:list={[
+      'px-1.5 py-0.5 rounded transition-colors duration-200',
+      currentLang === 'en'
+        ? 'text-white font-bold'
+        : 'text-neutral-400 hover:text-white',
+    ]}
+    aria-label="Switch to English"
+  >
+    EN
+  </a>
+  <span class="text-neutral-600">|</span>
+  <a
+    href={getLocalizedPath(currentPath, 'fr')}
+    class:list={[
+      'px-1.5 py-0.5 rounded transition-colors duration-200',
+      currentLang === 'fr'
+        ? 'text-white font-bold'
+        : 'text-neutral-400 hover:text-white',
+    ]}
+    aria-label="Passer en fran\u00e7ais"
+  >
+    FR
+  </a>
+</div>

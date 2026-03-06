@@ -1,0 +1,68 @@
+---
+import BlogPost from '../../../components/pages/BlogPost.astro';
+import blogImage from '../../../assets/images/AQAR-PROPERTY-12.jpg';
+
+const postContent = `
+<p>Vous avez trouv&eacute; une soci&eacute;t&eacute; de gestion. Avant de lui confier vos biens, un seul document compte : le contrat de gestion immobili&egrave;re. Ce contrat juridiquement contraignant d&eacute;finit l&rsquo;&eacute;tendue des services, les responsabilit&eacute;s, les honoraires et les attentes des deux parties. Voici ce qu&rsquo;il doit contenir &mdash; et pourquoi chaque clause est importante.</p>
+
+<h2>L&rsquo;Importance d&rsquo;un Contrat de Gestion Solide</h2>
+<p>Un contrat de gestion immobili&egrave;re bien r&eacute;dig&eacute; est plus qu&rsquo;une simple paperasse ; c&rsquo;est un outil vital pour la protection des actifs et une collaboration r&eacute;ussie.</p>
+
+<h3>D&eacute;finir Clairement les R&ocirc;les et les Responsabilit&eacute;s</h3>
+<ul>
+<li><strong>&Eacute;viter les malentendus :</strong> Sans accord clair, les deux parties pourraient fonctionner sous des hypoth&egrave;ses diff&eacute;rentes concernant les responsabilit&eacute;s de chacun.</li>
+<li><strong>Garantir la responsabilit&eacute; :</strong> L&rsquo;accord d&eacute;taille les devoirs du gestionnaire immobilier, le rendant responsable d&rsquo;actions et de r&eacute;sultats sp&eacute;cifiques.</li>
+<li><strong>Fixer les attentes :</strong> Il d&eacute;finit le niveau de service que le propri&eacute;taire peut attendre, de la fr&eacute;quence de perception des loyers aux d&eacute;lais de r&eacute;ponse pour la maintenance.</li>
+</ul>
+
+<h3>Prot&eacute;ger Votre Investissement</h3>
+<ul>
+<li><strong>Garanties financi&egrave;res :</strong> L&rsquo;accord doit d&eacute;tailler comment vos fonds seront g&eacute;r&eacute;s, emp&ecirc;chant le m&eacute;lange de fonds et assurant des versements en temps opportun des revenus locatifs.</li>
+<li><strong>Recours juridique :</strong> En cas de litige ou de rupture de contrat, un accord solide fournit le cadre juridique pour r&eacute;soudre les probl&egrave;mes.</li>
+<li><strong>Att&eacute;nuation des risques :</strong> En d&eacute;finissant les responsabilit&eacute;s en mati&egrave;re d&rsquo;assurance, de conformit&eacute; juridique et de proc&eacute;dures d&rsquo;urgence, l&rsquo;accord aide &agrave; att&eacute;nuer divers risques.</li>
+</ul>
+
+<h2>Conditions Essentielles</h2>
+
+<h3>Nomination et &Eacute;tendue de l&rsquo;Autorit&eacute;</h3>
+<p>Cette section nomme formellement la soci&eacute;t&eacute; de gestion comme agent exclusif du propri&eacute;taire et d&eacute;finit clairement l&rsquo;&eacute;tendue de son autorit&eacute;.</p>
+<p><strong>Responsabilit&eacute;s du Gestionnaire :</strong></p>
+<ul>
+<li>Maximiser l&rsquo;occupation selon les conditions actuelles du march&eacute;</li>
+<li>Percevoir et faire respecter la perception de toutes les charges financi&egrave;res</li>
+<li>Promouvoir les unit&eacute;s locatives de mani&egrave;re raisonnable et efficace</li>
+<li>Tenir des registres pr&eacute;cis de tous les fonds re&ccedil;us et d&eacute;bours&eacute;s</li>
+<li>Verser les fonds nets per&ccedil;us au propri&eacute;taire apr&egrave;s d&eacute;duction des d&eacute;penses et honoraires approuv&eacute;s</li>
+</ul>
+<p><strong>Responsabilit&eacute;s du Propri&eacute;taire :</strong></p>
+<ul>
+<li>Fournir rapidement tous les documents et registres n&eacute;cessaires</li>
+<li>Payer tous les honoraires de gestion immobili&egrave;re convenus</li>
+<li>Accorder &agrave; la soci&eacute;t&eacute; de gestion l&rsquo;autorit&eacute; de signer les baux</li>
+</ul>
+
+<h3>Gestion et Contr&ocirc;les Financiers</h3>
+<p>Cette section est primordiale pour assurer une supervision financi&egrave;re claire et prot&eacute;ger les actifs mon&eacute;taires du propri&eacute;taire. Elle couvre les obligations d&rsquo;assurance, les comptes fiduciaires, les r&eacute;serves d&rsquo;exploitation et les d&eacute;p&ocirc;ts de garantie des locataires.</p>
+
+<h3>Gestion Op&eacute;rationnelle et Maintenance</h3>
+<p>La soci&eacute;t&eacute; de gestion est autoris&eacute;e &agrave; effectuer les r&eacute;parations ordinaires, les remplacements et la maintenance raisonnablement n&eacute;cessaires, au nom et aux frais du propri&eacute;taire. L&rsquo;approbation du propri&eacute;taire est requise pour les d&eacute;penses d&eacute;passant un certain seuil, sauf en cas d&rsquo;urgence.</p>
+
+<h3>Normes Administratives et de Reporting</h3>
+<p>La soci&eacute;t&eacute; de gestion doit maintenir des registres complets de toutes les transactions et sp&eacute;cifier le type et la fr&eacute;quence des rapports, y compris les &eacute;tats de revenus mensuels.</p>
+
+<h3>Dur&eacute;e, R&eacute;siliation et R&eacute;mun&eacute;ration</h3>
+<p>L&rsquo;accord sp&eacute;cifie la dur&eacute;e initiale et inclut g&eacute;n&eacute;ralement des clauses de renouvellement automatique. Les frais de gestion sont typiquement d&eacute;finis comme un pourcentage des revenus bruts.</p>
+
+<h2>Conclusion</h2>
+<p>Un bon contrat prot&egrave;ge les deux parties. Faites-le r&eacute;diger correctement, faites-le relire par un avocat, et vous aurez une base solide pour une relation de gestion productive.</p>
+`;
+---
+<BlogPost
+  lang="fr"
+  title="Fixer les Conditions : Le Contrat de Gestion Immobili&egrave;re"
+  excerpt="Le succ&egrave;s de la gestion immobili&egrave;re repose enti&egrave;rement sur un document crucial : le contrat de gestion immobili&egrave;re. D&eacute;couvrez les clauses essentielles &agrave; inclure."
+  author="Peter Bamuhigire"
+  date="22 mai 2025"
+  content={postContent}
+  image={blogImage}
+/>
