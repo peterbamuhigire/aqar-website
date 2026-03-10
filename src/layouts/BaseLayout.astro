@@ -11,9 +11,16 @@ interface Props {
   description: string;
   ogImage?: string;
   pageKey: string;
+  articleData?: {
+    title: string;
+    excerpt: string;
+    author: string;
+    date: string;
+    image: string;
+  };
 }
 
-const { lang, title, description, ogImage, pageKey } = Astro.props;
+const { lang, title, description, ogImage, pageKey, articleData } = Astro.props;
 
 const siteUrl = 'https://aqarproperty.co.uk';
 const canonicalUrl = new URL(getHrefLangPath(lang, pageKey), siteUrl).href;
@@ -58,14 +65,103 @@ const organizationSchema = {
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
 
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
     <!-- Hreflang -->
     {languages.map((l) => (
       <link rel="alternate" hreflang={l} href={new URL(getHrefLangPath(l, pageKey), siteUrl).href} />
     ))}
     <link rel="alternate" hreflang="x-default" href={new URL(getHrefLangPath('en', pageKey), siteUrl).href} />
 
-    <!-- JSON-LD -->
+    <!-- JSON-LD: Organization (all pages) -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+    <!-- JSON-LD: WebSite (homepage only) -->
+    {pageKey === '' && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'AQAR Property Management',
+        url: siteUrl,
+        inLanguage: [lang === 'en' ? 'en-GB' : 'fr-FR'],
+      })} />
+    )}
+
+    <!-- JSON-LD: SoftwareApplication (homepage and features) -->
+    {(pageKey === '' || pageKey === 'features') && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: 'AQAR',
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web',
+        description: lang === 'en'
+          ? 'Cloud-based property management software for landlords and property managers. Rent collection, tenant management, maintenance tracking, and financial reports.'
+          : 'Logiciel de gestion immobilière basé sur le cloud pour les propriétaires et les gestionnaires de biens.',
+        url: siteUrl,
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+          description: lang === 'en' ? 'Free demo available' : 'Démo gratuite disponible',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Chwezi Core Systems',
+        },
+      })} />
+    )}
+
+    <!-- JSON-LD: Article (blog posts) -->
+    {articleData && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: articleData.title,
+        description: articleData.excerpt,
+        image: articleData.image ? new URL(articleData.image, siteUrl).href : ogImageUrl,
+        author: {
+          '@type': 'Person',
+          name: articleData.author,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'AQAR Property Management',
+          logo: {
+            '@type': 'ImageObject',
+            url: `${siteUrl}/favicon.svg`,
+          },
+        },
+        datePublished: articleData.date,
+        mainEntityOfPage: canonicalUrl,
+      })} />
+    )}
+
+    <!-- JSON-LD: BreadcrumbList (non-homepage) -->
+    {pageKey !== '' && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: lang === 'en' ? 'Home' : 'Accueil',
+            item: new URL(`/${lang}/`, siteUrl).href,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: title.split(' | ')[0].split(' — ')[0],
+            item: canonicalUrl,
+          },
+        ],
+      })} />
+    )}
   </head>
   <body class="bg-surface text-neutral-800 font-body min-h-screen flex flex-col">
     <Header lang={lang} />

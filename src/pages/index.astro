@@ -1,3 +1,19 @@
 ---
-return Astro.redirect('/en/');
 ---
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script is:inline>
+      (function () {
+        var lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+        var dest = lang.startsWith('fr') ? '/fr/' : '/en/';
+        window.location.replace(dest);
+      })();
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0;url=/en/" />
+    </noscript>
+  </head>
+  <body></body>
+</html>

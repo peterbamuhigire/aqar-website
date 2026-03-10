@@ -36,7 +36,7 @@ const blogUrl = getLocalizedPath('blog', lang);
 const pageTitle = `${title} | AQAR Blog`;
 ---
 
-<BaseLayout lang={lang} title={pageTitle} description={excerpt} pageKey="blog">
+<BaseLayout lang={lang} title={pageTitle} description={excerpt} pageKey="blog" articleData={{ title, excerpt, author, date, image: '' }}>
   <!-- Hero -->
   <Hero lang={lang} title={title} subtitle={excerpt} bgImage={image} />
 

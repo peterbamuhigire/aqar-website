@@ -23,6 +23,9 @@ const routeMap: Record<string, Record<Language, string>> = {
   demo: { en: 'demo', fr: 'demo' },
   terms: { en: 'terms', fr: 'conditions' },
   privacy: { en: 'privacy', fr: 'confidentialite' },
+  'blog/choosing-property-management-company': { en: 'blog/choosing-property-management-company', fr: 'blog/choisir-societe-gestion-immobiliere' },
+  'blog/marketing-rental-properties': { en: 'blog/marketing-rental-properties', fr: 'blog/commercialiser-proprietes-locatives' },
+  'blog/property-management-agreement': { en: 'blog/property-management-agreement', fr: 'blog/contrat-gestion-immobiliere' },
 };
 
 // Get the localized path for a given page and language

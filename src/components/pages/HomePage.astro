@@ -22,8 +22,8 @@ const { lang } = Astro.props;
 
 const t = {
   en: {
-    title: 'AQAR — Property Management Software',
-    description: 'Cloud-based property management software for landlords and property managers. Rent collection, tenant management, maintenance tracking, and financial reports.',
+    title: 'Property Management Software for Landlords & Property Managers | AQAR',
+    description: 'AQAR is cloud-based property management software that handles rent collection, tenant management, maintenance tracking, and financial reports. Used by 36+ property management companies in East Africa.',
     heroTitle: 'Property Management Software That Works as Hard as You Do',
     heroSubtitle: 'Rent collection, tenant management, maintenance tracking, and financial reports — all in one place. No installation required.',
     tryDemo: 'Try Demo',
@@ -64,8 +64,8 @@ const t = {
     ],
   },
   fr: {
-    title: 'AQAR — Logiciel de Gestion Immobilière',
-    description: 'Logiciel de gestion immobilière basé sur le cloud pour les propriétaires et les gestionnaires de biens. Perception des loyers, gestion des locataires, suivi de l\'entretien et rapports financiers.',
+    title: 'Logiciel de Gestion Immobilière pour Propriétaires et Gestionnaires | AQAR',
+    description: 'AQAR est un logiciel de gestion immobilière basé sur le cloud pour la perception des loyers, la gestion des locataires, le suivi de l\'entretien et les rapports financiers. Utilisé par plus de 36 sociétés de gestion immobilière en Afrique de l\'Est.',
     heroTitle: 'Un logiciel de gestion immobilière qui travaille aussi dur que vous',
     heroSubtitle: 'Perception des loyers, gestion des locataires, suivi de l\'entretien et rapports financiers — tout en un seul endroit. Aucune installation requise.',
     tryDemo: 'Essayer la Démo',
@@ -136,6 +136,19 @@ const whyCards = [
   { title: c.why3Title, desc: c.why3Desc, icon: 'lock' },
   { title: c.why4Title, desc: c.why4Desc, icon: 'smartphone' },
 ];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: c.faqs.map((faq: { q: string; a: string }) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+};
 ---
 
 <BaseLayout lang={lang} title={c.title} description={c.description} pageKey="">
@@ -413,6 +426,9 @@ const whyCards = [
 
   <!-- ===================== 7. CTA BANNER ===================== -->
   <CtaBanner lang={lang} />
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Lightbox -->
   <Lightbox />
