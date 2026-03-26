@@ -217,16 +217,7 @@ const faqSchema = {
         <!-- Clients -->
         <div class="animate-on-scroll flex-1 py-6 sm:py-0 sm:px-8 first:sm:pl-0 last:sm:pr-0">
           <div class="flex items-baseline gap-3">
-            <span
-              class="text-5xl sm:text-6xl font-display font-extrabold text-primary-700 tracking-tight"
-              x-data="{ count: 0, target: 78 }"
-              x-intersect.once="
-                let interval = setInterval(() => {
-                  if (count < target) { count += 2; if (count > target) count = target; } else { clearInterval(interval); }
-                }, 30);
-              "
-              x-text="count"
-            >78</span>
+            <span class="text-5xl sm:text-6xl font-display font-extrabold text-primary-700 tracking-tight">78</span>
             <span class="text-lg font-display font-bold text-neutral-500 uppercase tracking-wider">{c.trustClientsLabel}</span>
           </div>
           <p class="mt-1 text-sm text-neutral-500">{lang === 'en' ? 'Property management companies trust AQAR' : 'Sociétés de gestion immobilière font confiance à AQAR'}</p>
@@ -235,16 +226,7 @@ const faqSchema = {
         <div class="animate-on-scroll stagger-1 flex-1 py-6 sm:py-0 sm:px-8">
           <div class="flex items-baseline gap-3">
             <span class="text-lg font-display font-bold text-neutral-500 uppercase tracking-wider">{c.trustSinceLabel}</span>
-            <span
-              class="text-5xl sm:text-6xl font-display font-extrabold text-primary-700 tracking-tight"
-              x-data="{ count: 2000, target: 2018 }"
-              x-intersect.once="
-                let interval = setInterval(() => {
-                  if (count < target) { count++; } else { clearInterval(interval); }
-                }, 50);
-              "
-              x-text="count"
-            >2018</span>
+            <span class="text-5xl sm:text-6xl font-display font-extrabold text-primary-700 tracking-tight">2018</span>
           </div>
           <p class="mt-1 text-sm text-neutral-500">{lang === 'en' ? 'Building property tech for East Africa' : 'Développer la tech immobilière pour l\'Afrique de l\'Est'}</p>
         </div>
