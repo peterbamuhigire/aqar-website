@@ -23,12 +23,12 @@ const { lang } = Astro.props;
 const t = {
   en: {
     title: 'Property Management Software for Landlords & Property Managers | AQAR',
-    description: 'AQAR is cloud-based property management software that handles rent collection, tenant management, maintenance tracking, and financial reports. Used by 36+ property management companies in East Africa.',
+    description: 'AQAR is cloud-based property management software that handles rent collection, tenant management, maintenance tracking, and financial reports. Used by 78+ property management companies in East Africa.',
     heroTitle: 'Property Management Software That Works as Hard as You Do',
     heroSubtitle: 'Rent collection, tenant management, maintenance tracking, and financial reports — all in one place. No installation required.',
     tryDemo: 'Try Demo',
     whatsappUs: 'WhatsApp Us',
-    trustClients: '36+',
+    trustClients: '78',
     trustClientsLabel: 'Clients',
     trustSince: '2018',
     trustSinceLabel: 'Since',
@@ -65,12 +65,12 @@ const t = {
   },
   fr: {
     title: 'Logiciel de Gestion Immobilière pour Propriétaires et Gestionnaires | AQAR',
-    description: 'AQAR est un logiciel de gestion immobilière basé sur le cloud pour la perception des loyers, la gestion des locataires, le suivi de l\'entretien et les rapports financiers. Utilisé par plus de 36 sociétés de gestion immobilière en Afrique de l\'Est.',
+    description: 'AQAR est un logiciel de gestion immobilière basé sur le cloud pour la perception des loyers, la gestion des locataires, le suivi de l\'entretien et les rapports financiers. Utilisé par plus de 78 sociétés de gestion immobilière en Afrique de l\'Est.',
     heroTitle: 'Un logiciel de gestion immobilière qui travaille aussi dur que vous',
     heroSubtitle: 'Perception des loyers, gestion des locataires, suivi de l\'entretien et rapports financiers — tout en un seul endroit. Aucune installation requise.',
     tryDemo: 'Essayer la Démo',
     whatsappUs: 'WhatsApp',
-    trustClients: '36+',
+    trustClients: '78',
     trustClientsLabel: 'Clients',
     trustSince: '2018',
     trustSinceLabel: 'Depuis',
@@ -166,7 +166,7 @@ const faqSchema = {
         href="https://property.chwezi.co.za"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center rounded-lg bg-primary-600 px-8 py-3.5 text-base font-bold text-white shadow-lg hover:bg-primary-700 transition-colors duration-200"
+        class="btn inline-flex items-center justify-center rounded-lg bg-primary-600 px-8 py-4 text-base font-bold text-white shadow-lg hover:bg-primary-700 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
       >
         {c.tryDemo}
       </a>
@@ -174,7 +174,7 @@ const faqSchema = {
         href="https://wa.me/256784464178"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center rounded-lg bg-secondary-500 px-8 py-3.5 text-base font-bold text-white shadow-lg hover:bg-secondary-600 transition-colors duration-200"
+        class="btn inline-flex items-center justify-center rounded-lg bg-secondary-500 px-8 py-4 text-base font-bold text-white shadow-lg hover:bg-secondary-600 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
       >
         {c.whatsappUs}
       </a>
@@ -211,42 +211,49 @@ const faqSchema = {
   </Hero>
 
   <!-- ===================== 2. TRUST BAR ===================== -->
-  <section class="bg-surface py-16">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-        <div class="animate-on-scroll">
-          <div
-            class="text-4xl sm:text-5xl font-display font-extrabold text-primary-600"
-            x-data="{ count: 0, target: 36 }"
-            x-intersect.once="
-              let interval = setInterval(() => {
-                if (count < target) { count++; } else { clearInterval(interval); }
-              }, 40);
-            "
-          >
-            <span x-text="count + '+'">36+</span>
+  <section class="bg-surface py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-stretch gap-0 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200">
+        <!-- Clients -->
+        <div class="animate-on-scroll flex-1 py-6 sm:py-0 sm:px-8 first:sm:pl-0 last:sm:pr-0">
+          <div class="flex items-baseline gap-3">
+            <span
+              class="text-5xl sm:text-6xl font-display font-extrabold text-primary-700 tracking-tight"
+              x-data="{ count: 0, target: 78 }"
+              x-intersect.once="
+                let interval = setInterval(() => {
+                  if (count < target) { count += 2; if (count > target) count = target; } else { clearInterval(interval); }
+                }, 30);
+              "
+              x-text="count"
+            >78</span>
+            <span class="text-lg font-display font-bold text-neutral-500 uppercase tracking-wider">{c.trustClientsLabel}</span>
           </div>
-          <p class="mt-2 text-neutral-600 font-semibold">{c.trustClientsLabel}</p>
+          <p class="mt-1 text-sm text-neutral-500">{lang === 'en' ? 'Property management companies trust AQAR' : 'Sociétés de gestion immobilière font confiance à AQAR'}</p>
         </div>
-        <div class="animate-on-scroll stagger-1">
-          <div
-            class="text-4xl sm:text-5xl font-display font-extrabold text-primary-600"
-            x-data="{ count: 2000, target: 2018 }"
-            x-intersect.once="
-              let interval = setInterval(() => {
-                if (count < target) { count++; } else { clearInterval(interval); }
-              }, 50);
-            "
-          >
-            <span x-text="count">2018</span>
+        <!-- Since -->
+        <div class="animate-on-scroll stagger-1 flex-1 py-6 sm:py-0 sm:px-8">
+          <div class="flex items-baseline gap-3">
+            <span class="text-lg font-display font-bold text-neutral-500 uppercase tracking-wider">{c.trustSinceLabel}</span>
+            <span
+              class="text-5xl sm:text-6xl font-display font-extrabold text-primary-700 tracking-tight"
+              x-data="{ count: 2000, target: 2018 }"
+              x-intersect.once="
+                let interval = setInterval(() => {
+                  if (count < target) { count++; } else { clearInterval(interval); }
+                }, 50);
+              "
+              x-text="count"
+            >2018</span>
           </div>
-          <p class="mt-2 text-neutral-600 font-semibold">{c.trustSinceLabel}</p>
+          <p class="mt-1 text-sm text-neutral-500">{lang === 'en' ? 'Building property tech for East Africa' : 'Développer la tech immobilière pour l\'Afrique de l\'Est'}</p>
         </div>
-        <div class="animate-on-scroll stagger-2">
-          <div class="text-2xl sm:text-3xl font-display font-extrabold text-primary-600">
+        <!-- Reach -->
+        <div class="animate-on-scroll stagger-2 flex-1 py-6 sm:py-0 sm:px-8 last:sm:pr-0">
+          <div class="text-2xl sm:text-3xl font-display font-extrabold text-primary-700 leading-tight">
             {c.trustReach}
           </div>
-          <p class="mt-2 text-neutral-600 font-semibold">{c.trustReachLabel}</p>
+          <p class="mt-1 text-sm text-neutral-500">{lang === 'en' ? 'Uganda, Kenya, Tanzania, and growing' : 'Ouganda, Kenya, Tanzanie, et en expansion'}</p>
         </div>
       </div>
     </div>
@@ -266,7 +273,7 @@ const faqSchema = {
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {featureCards.map((card, i) => (
-          <div class={`animate-on-scroll stagger-${i + 1} bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-primary-500/40 transition-colors duration-300`}>
+          <div class={`animate-on-scroll stagger-${i + 1} card-hover bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-primary-500/40`}>
             <!-- Screenshot thumbnail -->
             <div
               class="screenshot-trigger relative overflow-hidden"
@@ -285,25 +292,25 @@ const faqSchema = {
                 </svg>
               </div>
             </div>
-            <!-- Card body -->
+            <!-- Card body (nested radius: parent 16px - padding 24px = inner uses rounded-lg 8px) -->
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
                 {card.icon === 'rent' && (
-                  <div class="flex-shrink-0 h-10 w-10 rounded-lg bg-primary-600/20 flex items-center justify-center">
+                  <div class="flex-shrink-0 h-10 w-10 rounded-md bg-primary-600/20 flex items-center justify-center">
                     <svg class="h-5 w-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                 )}
                 {card.icon === 'tenant' && (
-                  <div class="flex-shrink-0 h-10 w-10 rounded-lg bg-primary-600/20 flex items-center justify-center">
+                  <div class="flex-shrink-0 h-10 w-10 rounded-md bg-primary-600/20 flex items-center justify-center">
                     <svg class="h-5 w-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
                 )}
                 {card.icon === 'report' && (
-                  <div class="flex-shrink-0 h-10 w-10 rounded-lg bg-primary-600/20 flex items-center justify-center">
+                  <div class="flex-shrink-0 h-10 w-10 rounded-md bg-primary-600/20 flex items-center justify-center">
                     <svg class="h-5 w-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
@@ -365,10 +372,10 @@ const faqSchema = {
         {c.whyTitle}
       </h2>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {whyCards.map((card, i) => (
-          <div class={`animate-on-scroll stagger-${i + 1} glass rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300`}>
-            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary-600/20">
+          <div class={`animate-on-scroll stagger-${i + 1} card-hover glass rounded-2xl p-8 text-left`}>
+            <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-lg bg-primary-600/20">
               {card.icon === 'cloud' && <Cloud class="h-7 w-7 text-primary-400" />}
               {card.icon === 'download' && <Download class="h-7 w-7 text-primary-400" />}
               {card.icon === 'lock' && <Lock class="h-7 w-7 text-primary-400" />}
@@ -391,9 +398,9 @@ const faqSchema = {
 
       <div class="space-y-4" x-data="{ active: null }">
         {c.faqs.map((faq, i) => (
-          <div class={`animate-on-scroll stagger-${i + 1} rounded-xl border border-neutral-200 bg-white overflow-hidden`}>
+          <div class={`animate-on-scroll stagger-${i + 1} rounded-xl border border-neutral-200 bg-white overflow-hidden shadow-sm`}>
             <button
-              class="flex w-full items-center justify-between px-6 py-4 text-left font-display font-bold text-charcoal hover:bg-neutral-50 transition-colors duration-200"
+              class="flex w-full items-center justify-between px-6 py-5 text-left font-display font-bold text-charcoal hover:bg-neutral-50 transition-colors duration-200 min-h-[56px]"
               @click={`active = active === ${i} ? null : ${i}`}
               :aria-expanded={`active === ${i}`}
             >

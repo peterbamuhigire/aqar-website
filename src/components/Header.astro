@@ -86,7 +86,7 @@ const pageKey = getPageKey();
           href="https://property.chwezi.co.za"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 transition-colors duration-200"
+          class="btn inline-flex items-center rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-700 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
         >
           {cta.demo}
         </a>
@@ -94,15 +94,15 @@ const pageKey = getPageKey();
           href="https://wa.me/256784464178"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center rounded-lg bg-secondary-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-secondary-600 transition-colors duration-200"
+          class="btn inline-flex items-center rounded-lg bg-secondary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-secondary-600 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
         >
           {cta.whatsapp}
         </a>
       </div>
 
-      <!-- Mobile hamburger -->
+      <!-- Mobile hamburger (44px touch target) -->
       <button
-        class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-neutral-300 hover:text-white focus:outline-none"
+        class="md:hidden inline-flex items-center justify-center rounded-md p-2.5 min-h-[44px] min-w-[44px] text-neutral-300 hover:text-white focus-visible:ring-2 focus-visible:ring-primary-400"
         @click="open = !open"
         :aria-expanded="open"
         aria-label="Toggle navigation"
@@ -134,7 +134,7 @@ const pageKey = getPageKey();
         <a
           href={getLocalizedPath(link.page, lang)}
           class:list={[
-            'block rounded-md px-3 py-2 text-base font-semibold transition-colors duration-200',
+            'block rounded-md px-3 py-3 text-base font-semibold transition-colors duration-200 min-h-[44px]',
             isActive(link.page)
               ? 'text-secondary-400 bg-white/5'
               : 'text-neutral-300 hover:text-white hover:bg-white/5',
@@ -151,7 +151,7 @@ const pageKey = getPageKey();
           href="https://property.chwezi.co.za"
           target="_blank"
           rel="noopener noreferrer"
-          class="block rounded-lg bg-primary-600 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-primary-700 transition-colors duration-200"
+          class="btn block rounded-lg bg-primary-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-primary-700 min-h-[44px]"
         >
           {cta.demo}
         </a>
@@ -159,7 +159,7 @@ const pageKey = getPageKey();
           href="https://wa.me/256784464178"
           target="_blank"
           rel="noopener noreferrer"
-          class="block rounded-lg bg-secondary-500 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-secondary-600 transition-colors duration-200"
+          class="btn block rounded-lg bg-secondary-500 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-secondary-600 min-h-[44px]"
         >
           {cta.whatsapp}
         </a>

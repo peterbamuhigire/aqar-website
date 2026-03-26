@@ -66,17 +66,17 @@ const year = new Date().getFullYear();
         <h3 class="text-sm font-display font-bold text-white uppercase tracking-wider mb-4">
           {labels.navTitle}
         </h3>
-        <ul class="space-y-2">
-          <li><a href={getLocalizedPath('', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.home}</a></li>
-          <li><a href={getLocalizedPath('features', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.features}</a></li>
-          <li><a href={getLocalizedPath('about', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.about}</a></li>
-          <li><a href={getLocalizedPath('blog', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.blog}</a></li>
-          <li><a href={getLocalizedPath('contact', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.contact}</a></li>
+        <ul class="space-y-1">
+          <li><a href={getLocalizedPath('', lang)} class="inline-block text-sm py-1.5 hover:text-white transition-colors duration-200">{labels.home}</a></li>
+          <li><a href={getLocalizedPath('features', lang)} class="inline-block text-sm py-1.5 hover:text-white transition-colors duration-200">{labels.features}</a></li>
+          <li><a href={getLocalizedPath('about', lang)} class="inline-block text-sm py-1.5 hover:text-white transition-colors duration-200">{labels.about}</a></li>
+          <li><a href={getLocalizedPath('blog', lang)} class="inline-block text-sm py-1.5 hover:text-white transition-colors duration-200">{labels.blog}</a></li>
+          <li><a href={getLocalizedPath('contact', lang)} class="inline-block text-sm py-1.5 hover:text-white transition-colors duration-200">{labels.contact}</a></li>
           <li class="pt-2 border-t border-white/10">
-            <a href={getLocalizedPath('terms', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.terms}</a>
+            <a href={getLocalizedPath('terms', lang)} class="inline-block text-sm py-1.5 hover:text-white transition-colors duration-200">{labels.terms}</a>
           </li>
           <li>
-            <a href={getLocalizedPath('privacy', lang)} class="text-sm hover:text-white transition-colors duration-200">{labels.privacy}</a>
+            <a href={getLocalizedPath('privacy', lang)} class="inline-block text-sm py-1.5 hover:text-white transition-colors duration-200">{labels.privacy}</a>
           </li>
         </ul>
       </div>

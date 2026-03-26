@@ -238,9 +238,9 @@ const c = t[lang];
                 class="animate-on-scroll screenshot-trigger relative"
                 onclick={`window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: this.querySelector('img').currentSrc || this.querySelector('img').src, alt: '${feature.screenshotAlt.replace(/'/g, "\\'")}', caption: '${feature.title.replace(/'/g, "\\'")}' } }))`}
               >
-                <div class="rounded-xl bg-neutral-800 p-2 sm:p-3 shadow-2xl">
+                <div class="rounded-xl bg-neutral-800 p-2 sm:p-3" style="box-shadow: var(--shadow-xl);">
                   <!-- Browser chrome -->
-                  <div class="flex items-center gap-1.5 px-3 py-2 bg-neutral-700 rounded-t-lg">
+                  <div class="flex items-center gap-1.5 px-3 py-2 bg-neutral-700 rounded-t-md">
                     <span class="h-2.5 w-2.5 rounded-full bg-red-400"></span>
                     <span class="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
                     <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>

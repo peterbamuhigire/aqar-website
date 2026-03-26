@@ -76,12 +76,21 @@
    Custom CSS Properties
    ------------------------------------------------ */
 :root {
+  --transition-instant: 0ms;
+  --transition-micro: 100ms ease;
   --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 400ms ease;
+  --transition-base: 250ms ease-out;
+  --transition-slow: 400ms ease-out;
+  --transition-emphasis: 600ms ease-out;
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
   --glass-bg: rgba(255, 255, 255, 0.65);
   --glass-blur: 12px;
   --glass-border: rgba(255, 255, 255, 0.25);
+  /* Two-layer shadow system */
+  --shadow-sm: 0 1px 2px rgba(13, 115, 119, 0.06), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 2px 4px rgba(13, 115, 119, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 8px rgba(13, 115, 119, 0.1), 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 8px 16px rgba(13, 115, 119, 0.1), 0 16px 48px rgba(0, 0, 0, 0.15);
 }
 
 /* ------------------------------------------------
@@ -93,6 +102,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   ::selection {
@@ -102,6 +113,16 @@
 
   img {
     display: block;
+  }
+
+  /* Focus-visible for keyboard navigation */
+  :focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
   }
 }
 
@@ -146,7 +167,7 @@
 
 .screenshot-trigger:hover {
   transform: scale(1.02);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-xl);
 }
 
 .screenshot-trigger .expand-hint {
@@ -156,6 +177,54 @@
 
 .screenshot-trigger:hover .expand-hint {
   opacity: 1;
+}
+
+/* ------------------------------------------------
+   Button micro-interactions
+   ------------------------------------------------ */
+.btn {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ------------------------------------------------
+   Card hover micro-interactions
+   ------------------------------------------------ */
+.card-hover {
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ------------------------------------------------
+   Respect prefers-reduced-motion (MANDATORY)
+   ------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ------------------------------------------------

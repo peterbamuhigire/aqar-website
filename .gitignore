@@ -5,6 +5,12 @@ dist/
 
 # dependencies
 node_modules/
+vendor/
+composer.phar
+composer-setup.php
+
+# email rate limit data
+data/
 
 # logs
 npm-debug.log*
