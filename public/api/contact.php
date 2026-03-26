@@ -54,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Allow: POST, OPTIONS');
     jsonResponse(405, false, $messages['en']['method']);
 }
 
