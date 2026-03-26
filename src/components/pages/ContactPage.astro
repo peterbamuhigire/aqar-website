@@ -80,6 +80,9 @@ const content = {
 };
 
 const t = content[lang];
+const fallbackError = lang === 'fr'
+  ? 'Une erreur est survenue. Veuillez réessayer ou nous contacter via WhatsApp.'
+  : 'Something went wrong. Please try again or contact us via WhatsApp.';
 ---
 
 <BaseLayout lang={lang} title={t.title} description={t.description} pageKey="contact">
@@ -96,7 +99,7 @@ const t = content[lang];
           <h2 class="font-display text-2xl font-bold text-charcoal mb-6">{t.formTitle}</h2>
 
           <form
-            x-data="{
+            x-data={`{
               state: 'idle',
               responseMessage: '',
               fieldErrors: [],
@@ -111,7 +114,7 @@ const t = content[lang];
                   const data = await res.json();
                   this.csrfToken = data.token;
                   this.csrfTs = data.ts;
-                } catch (e) { /* CSRF fetch failed — form still works with mailto fallback */ }
+                } catch (e) { /* CSRF fetch failed */ }
               },
 
               async submitForm() {
@@ -140,10 +143,10 @@ const t = content[lang];
                   }
                 } catch (e) {
                   this.state = 'error';
-                  this.responseMessage = '${lang === 'fr' ? 'Une erreur est survenue. Veuillez réessayer ou nous contacter via WhatsApp.' : 'Something went wrong. Please try again or contact us via WhatsApp.'}';
+                  this.responseMessage = '${fallbackError}';
                 }
               }
-            }"
+            }`}
             @submit.prevent="submitForm()"
             class="space-y-5"
           >
