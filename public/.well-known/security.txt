@@ -1,0 +1,3 @@
+Contact: mailto:info@aqarproperty.co.uk
+Preferred-Languages: en, fr
+Canonical: https://aqarproperty.co.uk/.well-known/security.txt

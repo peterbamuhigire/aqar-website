@@ -14,8 +14,9 @@ export const ogLocales: Record<Language, string> = {
   fr: 'fr_FR',
 };
 
-// Route mapping: English slug -> French slug
-const routeMap: Record<string, Record<Language, string>> = {
+// Stable route key -> localized slug. This single map drives canonical URLs,
+// hreflang, language switching, and internal links.
+export const routeMap: Record<string, Record<Language, string>> = {
   features: { en: 'features', fr: 'fonctionnalites' },
   about: { en: 'about', fr: 'a-propos' },
   blog: { en: 'blog', fr: 'blog' },
@@ -34,6 +35,19 @@ export function getLocalizedPath(page: string, lang: Language): string {
   const route = routeMap[page];
   if (route) return `/${lang}/${route[lang]}/`;
   return `/${lang}/${page}/`;
+}
+
+export function getPageKeyFromPath(pathname: string): string {
+  const cleanPath = pathname.replace(/^\/+|\/+$/g, '');
+  const [langSegment, ...slugParts] = cleanPath.split('/');
+
+  if (!isValidLang(langSegment || '')) return '';
+  if (slugParts.length === 0) return '';
+
+  const localizedSlug = slugParts.join('/');
+  const match = Object.entries(routeMap).find(([, localized]) => localized[langSegment] === localizedSlug);
+
+  return match ? match[0] : localizedSlug;
 }
 
 // Get the path for hreflang from a page key

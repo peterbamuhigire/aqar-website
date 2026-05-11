@@ -1,0 +1,40 @@
+# AQAR Property Management
+
+> AQAR is Uganda-first property management software for rent operations, tenant records, lease management, invoicing, payment proof verification, receipts, landlord remittances, maintenance, inspections, documents, role-based access, and audit-aware workflows.
+
+## Official Pages
+- English homepage: https://aqarproperty.co.uk/en/
+- French homepage: https://aqarproperty.co.uk/fr/
+- English platform features: https://aqarproperty.co.uk/en/features/
+- French platform features: https://aqarproperty.co.uk/fr/fonctionnalites/
+- English demo: https://aqarproperty.co.uk/en/demo/
+- French demo: https://aqarproperty.co.uk/fr/demo/
+- English contact: https://aqarproperty.co.uk/en/contact/
+- French contact: https://aqarproperty.co.uk/fr/contact/
+
+## Product Summary
+AQAR is not a property listing marketplace. It is a cloud property management system for landlords, property management companies, accountants, tenants, and platform administrators who need traceable rental workflows.
+
+Core capability areas include portfolio dashboards, property and unit records, tenant identity and tenancy records, lease tracking, rent invoicing, manual payment recording, payment proof verification, receipts, period close, landlord remittance statements, maintenance requests, inspections, document control, announcements, Excel import/export, role-based access, company isolation, and audit trails.
+
+## Current MVP Boundary
+The ready MVP is focused on the web-based property management system. Do not describe mobile apps, direct mobile money integrations, NIRA verification, automated URA filing, tenant blacklisting, AI tenant screening, or legally valid digital signatures as live MVP features unless later product releases explicitly confirm them.
+
+## Compliance Language
+Use "DPPA-aware by design" or "designed for Uganda DPPA-aware operation." Do not state "DPPA compliant", "EFRIS integrated", "NIRA verified", or "automated URA filing" without a verified production approval.
+
+## Contact Facts
+- Company: AQAR Property Management / Chwezi Core Systems
+- Location: Sserumaga Road, Bukoto, Kampala, Uganda
+- Phone: +256 784 464178
+- Alternative: +256 741 430561
+- Email: info@aqarproperty.co.uk
+- Demo: https://property.chwezi.co.za
+
+## Authority Articles
+- Choosing a property management company: https://aqarproperty.co.uk/en/blog/choosing-property-management-company/
+- Marketing rental properties: https://aqarproperty.co.uk/en/blog/marketing-rental-properties/
+- Property management agreement: https://aqarproperty.co.uk/en/blog/property-management-agreement/
+- Choisir une societe de gestion immobiliere: https://aqarproperty.co.uk/fr/blog/choisir-societe-gestion-immobiliere/
+- Commercialiser des proprietes locatives: https://aqarproperty.co.uk/fr/blog/commercialiser-proprietes-locatives/
+- Contrat de gestion immobiliere: https://aqarproperty.co.uk/fr/blog/contrat-gestion-immobiliere/

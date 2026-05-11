@@ -1,6 +1,6 @@
 ---
 import type { Language } from '../utils/i18n';
-import { getLocalizedPath } from '../utils/i18n';
+import { getLocalizedPath, getPageKeyFromPath } from '../utils/i18n';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 
 interface Props {
@@ -13,14 +13,14 @@ const currentPath = Astro.url.pathname;
 const navLinks = {
   en: [
     { label: 'Home', page: '' },
-    { label: 'Features', page: 'features' },
+    { label: 'Platform', page: 'features' },
     { label: 'About', page: 'about' },
     { label: 'Blog', page: 'blog' },
     { label: 'Contact', page: 'contact' },
   ],
   fr: [
     { label: 'Accueil', page: '' },
-    { label: 'Fonctionnalit\u00e9s', page: 'features' },
+    { label: 'Plateforme', page: 'features' },
     { label: '\u00c0 propos', page: 'about' },
     { label: 'Blog', page: 'blog' },
     { label: 'Contact', page: 'contact' },
@@ -28,8 +28,8 @@ const navLinks = {
 };
 
 const ctaLabels = {
-  en: { demo: 'Try Demo', whatsapp: 'WhatsApp Us' },
-  fr: { demo: 'Essayer la D\u00e9mo', whatsapp: 'WhatsApp' },
+  en: { demo: 'Open demo', whatsapp: 'Talk to us' },
+  fr: { demo: 'Ouvrir la d\u00e9mo', whatsapp: 'Nous parler' },
 };
 
 const links = navLinks[lang];
@@ -43,12 +43,7 @@ function isActive(page: string): boolean {
   return currentPath.startsWith(localizedPath);
 }
 
-// Derive pageKey from current path for the language switcher
-function getPageKey(): string {
-  const segments = currentPath.replace(/^\//, '').replace(/\/$/, '').split('/');
-  return segments.length > 1 ? segments[1] : '';
-}
-const pageKey = getPageKey();
+const pageKey = getPageKeyFromPath(currentPath);
 ---
 
 <header

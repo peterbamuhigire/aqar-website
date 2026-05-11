@@ -9,30 +9,24 @@ const { lang } = Astro.props;
 
 const content = {
   en: {
-    headline: 'Ready to Simplify Property Management?',
-    subtitle: 'Join landlords and property managers across East Africa who trust AQAR to streamline operations, boost collections, and grow their portfolios.',
-    demo: 'Try Demo',
-    whatsapp: 'WhatsApp Us',
+    headline: 'See how AQAR would run your rent operations.',
+    subtitle: 'Open the live demo or speak with us about your portfolio size, reporting needs, payment workflow, and onboarding path.',
+    demo: 'Open live demo',
+    whatsapp: 'Discuss your portfolio',
   },
   fr: {
-    headline: 'Pr\u00eat \u00e0 Simplifier la Gestion Immobili\u00e8re ?',
-    subtitle: 'Rejoignez les propri\u00e9taires et gestionnaires immobiliers d\'Afrique de l\'Est qui font confiance \u00e0 AQAR pour optimiser leurs op\u00e9rations, am\u00e9liorer les recouvrements et d\u00e9velopper leurs portefeuilles.',
-    demo: 'Essayer la D\u00e9mo',
-    whatsapp: 'WhatsApp',
+    headline: 'Voyez comment AQAR peut organiser vos operations locatives.',
+    subtitle: 'Ouvrez la demo en ligne ou parlez-nous de votre portefeuille, de vos rapports, de vos paiements et de votre onboarding.',
+    demo: 'Ouvrir la demo',
+    whatsapp: 'Discuter du portefeuille',
   },
 };
 
 const t = content[lang];
 ---
 
-<section class="relative overflow-hidden bg-gradient-to-br from-primary-700 via-primary-600 to-primary-500 py-20">
-  <!-- Decorative shapes -->
-  <div class="absolute inset-0 opacity-10">
-    <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-secondary-500"></div>
-    <div class="absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-white"></div>
-  </div>
-
-  <div class="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+<section class="bg-primary-700 py-20">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
     <h2 class="animate-on-scroll font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
       {t.headline}
     </h2>

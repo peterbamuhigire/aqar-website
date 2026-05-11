@@ -14,9 +14,11 @@ interface Props {
   date: string;
   content: string;
   image: ImageMetadata;
+  pageKey: string;
+  dateModified?: string;
 }
 
-const { lang, title, excerpt, author, date, content, image } = Astro.props;
+const { lang, title, excerpt, author, date, content, image, pageKey, dateModified } = Astro.props;
 
 const labels = {
   en: {
@@ -36,7 +38,7 @@ const blogUrl = getLocalizedPath('blog', lang);
 const pageTitle = `${title} | AQAR Blog`;
 ---
 
-<BaseLayout lang={lang} title={pageTitle} description={excerpt} pageKey="blog" articleData={{ title, excerpt, author, date, image: '' }}>
+<BaseLayout lang={lang} title={pageTitle} description={excerpt} pageKey={pageKey} ogImage={image.src} articleData={{ title, excerpt, author, date, image: image.src, dateModified }}>
   <!-- Hero -->
   <Hero lang={lang} title={title} subtitle={excerpt} bgImage={image} />
 
