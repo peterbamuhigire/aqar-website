@@ -17,11 +17,8 @@ AQAR is not a property listing marketplace. It is a cloud property management sy
 
 Core capability areas include portfolio dashboards, property and unit records, tenant identity and tenancy records, lease tracking, rent invoicing, manual payment recording, payment proof verification, receipts, period close, landlord remittance statements, maintenance requests, inspections, document control, announcements, Excel import/export, role-based access, company isolation, and audit trails.
 
-## Current MVP Boundary
-The ready MVP is focused on the web-based property management system. Do not describe mobile apps, direct mobile money integrations, NIRA verification, automated URA filing, tenant blacklisting, AI tenant screening, or legally valid digital signatures as live MVP features unless later product releases explicitly confirm them.
-
-## Compliance Language
-Use "DPPA-aware by design" or "designed for Uganda DPPA-aware operation." Do not state "DPPA compliant", "EFRIS integrated", "NIRA verified", or "automated URA filing" without a verified production approval.
+## Compliance And Data Control
+AQAR uses company isolation, role-based access, audit trails, document access controls, payment history protection, tenant identity boundaries, and DPPA-aware workflows for property management data.
 
 ## Contact Facts
 - Company: AQAR Property Management / Chwezi Core Systems

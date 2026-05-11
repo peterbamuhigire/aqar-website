@@ -15,7 +15,6 @@ import {
   MessageSquareText,
   ReceiptText,
   ShieldCheck,
-  Smartphone,
   Wrench,
 } from 'lucide-astro';
 
@@ -38,9 +37,9 @@ const { lang } = Astro.props;
 const content = {
   en: {
     title: 'Property Management Software Uganda | AQAR Rent Operations Platform',
-    description: 'AQAR is Uganda-first property management software for serious landlords and property management firms. Manage rent, tenants, invoices, payment proof, maintenance, landlord reports, remittances, documents, and audit-ready workflows.',
+    description: 'AQAR is Uganda-first property management software for landlords and property management firms. Manage rent, tenants, invoices, payment proof, maintenance, landlord reports, remittances, documents, and audit-ready workflows.',
     eyebrow: 'Property management software for Uganda and East Africa',
-    heroTitle: 'Replace Excel and WhatsApp with a serious rent operations system.',
+    heroTitle: 'Run rent collection, tenants, maintenance, and landlord reports from one system.',
     heroSubtitle: 'AQAR helps property managers, portfolio landlords, accountants, and tenants run rent collection, payment proof, leases, maintenance, inspections, remittances, and landlord reporting from one cloud platform.',
     primaryCta: 'Open live demo',
     secondaryCta: 'Discuss your portfolio',
@@ -60,8 +59,8 @@ const content = {
       'Maintenance requests, inspection photos, lease files, and receipts get scattered across phones, paper folders, and email threads.',
       'Managers need to know what needs action today, not just browse another table of records.',
     ],
-    systemTitle: 'The operating system for rent collection and landlord confidence',
-    systemIntro: 'Aqar is designed to remove operational work, not merely store data. The platform turns rent collection, reporting, tenant service, maintenance, and compliance evidence into traceable workflows.',
+    systemTitle: 'Daily property management, organized by workflow',
+    systemIntro: 'Aqar connects the work your team handles every month: billing tenants, verifying payments, following up arrears, resolving maintenance, closing periods, and reporting to landlords.',
     modules: [
       { title: 'Command centre', desc: 'Portfolio health, occupancy, arrears, lease expiries, unverified payments, maintenance queues, and manager actions in one dashboard.', icon: Building2 },
       { title: 'Rent and payments', desc: 'Generate invoices, record payments, verify tenant proof, issue receipts, track arrears, and keep balances explainable.', icon: ReceiptText },
@@ -74,24 +73,24 @@ const content = {
     workflows: [
       { step: '01', title: 'Set up the portfolio', desc: 'Import properties, units, landlords, tenants, leases, rent amounts, deposits, documents, and opening balances.' },
       { step: '02', title: 'Run monthly billing', desc: 'Generate rent invoices, send approved reminders, track unpaid balances, and keep communication tied to each tenancy.' },
-      { step: '03', title: 'Verify collections', desc: 'Move payment proof from chat chaos into a review queue where accountants can verify, reject, receipt, and allocate.' },
+      { step: '03', title: 'Verify collections', desc: 'Move payment proof from chat threads into a review queue where accountants can verify, reject, receipt, and allocate.' },
       { step: '04', title: 'Report and remit', desc: 'Produce landlord statements, remittance summaries, deductions, arrears views, maintenance costs, and clear downloadable reports.' },
     ],
-    proofTitle: 'Product proof, not brochure promises',
-    proofIntro: 'The website keeps the software visible because serious buyers need to inspect the operational surface before they trust the claim.',
+    proofTitle: 'Product screens',
+    proofIntro: 'Review the main work areas in AQAR: dashboards, payment records, vacancy views, maintenance reports, role management, and landlord remittance outputs.',
     screenshotCards: [
       { title: 'Portfolio dashboard', desc: 'Properties, occupancy, status, and portfolio visibility for managers.', image: screenshotProperties },
       { title: 'Rent payment records', desc: 'Track rent payments, references, balances, and collection activity.', image: screenshotRent },
       { title: 'Vacancy control', desc: 'Know which units are vacant, occupied, due, or needing action.', image: screenshotVacant },
       { title: 'Maintenance reports', desc: 'Review requests, costs, status, and maintenance evidence.', image: screenshotMaintenance },
     ],
-    complianceTitle: 'Uganda-first compliance posture',
-    complianceIntro: 'Aqar is designed for DPPA-aware operation and strict tenant-data boundaries. We avoid unsupported public claims such as automated URA filing, NIRA verification, or DPPA compliance until the required legal and production approvals are complete.',
+    complianceTitle: 'Data control for property operations',
+    complianceIntro: 'AQAR keeps tenant, payment, lease, document, and maintenance records inside controlled company workflows with role-based access, audit history, and DPPA-aware data handling.',
     compliance: [
       { title: 'Company isolation', desc: 'Operational data belongs to the subscriber company. Cross-company tenant rental history is not exposed.' },
       { title: 'Global tenant identity boundary', desc: 'Tenant identity can reduce duplicate records while keeping tenancy-specific data private.' },
       { title: 'Auditable sensitive actions', desc: 'Payments, remittances, role changes, document access, identity linking, and support activity need a traceable record.' },
-      { title: 'DPPA-aware workflows', desc: 'The product model accounts for notices, data subject requests, retention decisions, breach handling, and DPO review.' },
+      { title: 'DPPA-aware workflows', desc: 'The product model supports notices, data subject requests, retention handling, breach records, and DPO review.' },
     ],
     fitTitle: 'Who AQAR is for',
     fit: [
@@ -100,20 +99,18 @@ const content = {
       'Accountants who need receipts, balances, verification queues, remittances, and audit trails.',
       'Tenants who need balances, receipts, maintenance requests, notices, and documents in one place.',
     ],
-    limitsTitle: 'MVP scope stated clearly',
-    limitsIntro: 'The current MVP focuses on the web-based property management system. Mobile apps, direct MTN MoMo/Airtel Money integrations, NIRA verification, automated URA filing, tenant blacklisting, and digital lease signatures are not presented as live MVP features.',
     faqTitle: 'Property management software questions',
     faqs: [
       { q: 'Is AQAR a property listing marketplace?', a: 'No. AQAR is not positioned as a real estate marketplace. It is property management software for rent operations after properties, landlords, units, tenants, and leases already need to be managed.' },
-      { q: 'Can AQAR replace Excel for property managers?', a: 'Yes, that is the main operational goal. Aqar replaces scattered sheets with workflow queues, tenant records, rent invoices, payment proof verification, receipts, landlord reports, remittances, maintenance records, documents, and audit history.' },
-      { q: 'Does AQAR support mobile money payments?', a: 'The MVP supports manual payment recording and proof verification. Direct MTN MoMo and Airtel Money payment integrations should only be claimed after provider approval, reconciliation, reversal handling, idempotency, and audit testing are complete.' },
-      { q: 'Is AQAR DPPA compliant?', a: 'The careful claim is DPPA-aware by design. Production compliance depends on approved lawful basis, notice or consent model, controller/processor roles, retention, DSR, DPO, breach, and DPIA decisions.' },
+      { q: 'Can AQAR replace Excel for property managers?', a: 'Yes. Aqar replaces scattered sheets with workflow queues, tenant records, rent invoices, payment proof verification, receipts, landlord reports, remittances, maintenance records, documents, and audit history.' },
+      { q: 'Does AQAR support payment tracking?', a: 'Yes. AQAR supports rent invoices, manual payment records, tenant payment proof, verification workflows, receipts, balances, arrears, and landlord remittance reporting.' },
+      { q: 'How does AQAR handle sensitive tenant and payment data?', a: 'AQAR is designed with company isolation, role-based access, audit trails, document controls, and DPPA-aware workflows for tenant, payment, lease, and maintenance records.' },
       { q: 'Can I try AQAR without installing software?', a: 'Yes. AQAR is browser-based, and the live demo can be opened without local installation.' },
     ],
   },
   fr: {
     title: 'Logiciel de gestion immobiliere Uganda | AQAR',
-    description: 'AQAR est un logiciel de gestion immobiliere concu pour les proprietaires serieux et les societes de gestion immobiliere. Gere les loyers, locataires, factures, preuves de paiement, maintenance, rapports proprietaires, versements, documents et workflows auditables.',
+    description: 'AQAR est un logiciel de gestion immobiliere concu pour les proprietaires et les societes de gestion immobiliere. Gere les loyers, locataires, factures, preuves de paiement, maintenance, rapports proprietaires, versements, documents et workflows auditables.',
     eyebrow: 'Logiciel de gestion immobiliere pour l Ouganda et l Afrique de l Est',
     heroTitle: 'Remplacez Excel et WhatsApp par un vrai systeme d operations locatives.',
     heroSubtitle: 'AQAR aide les gestionnaires immobiliers, proprietaires de portefeuille, comptables et locataires a gerer loyers, preuves de paiement, baux, maintenance, inspections, versements et rapports proprietaires depuis une plateforme cloud.',
@@ -135,8 +132,8 @@ const content = {
       'Demandes de maintenance, photos d inspection, baux et recus se dispersent entre telephones, dossiers papier et e-mails.',
       'Les gestionnaires doivent savoir quoi traiter aujourd hui, pas seulement consulter une autre table de donnees.',
     ],
-    systemTitle: 'Le systeme d exploitation de la collecte des loyers et de la confiance proprietaire',
-    systemIntro: 'Aqar est concu pour retirer du travail operationnel, pas seulement stocker des donnees. La plateforme transforme collecte, reporting, service locataire, maintenance et preuve de conformite en workflows tracables.',
+    systemTitle: 'La gestion quotidienne organisee par workflow',
+    systemIntro: 'Aqar relie le travail mensuel de votre equipe : facturer les locataires, verifier les paiements, suivre les arrieres, traiter la maintenance, cloturer les periodes et reporter aux proprietaires.',
     modules: [
       { title: 'Centre de commande', desc: 'Sante du portefeuille, occupation, arrieres, expirations de bail, paiements non verifies, maintenance et actions du gestionnaire.', icon: Building2 },
       { title: 'Loyers et paiements', desc: 'Generez factures, enregistrez paiements, verifiez les preuves, emettez recus et gardez des soldes explicables.', icon: ReceiptText },
@@ -149,24 +146,24 @@ const content = {
     workflows: [
       { step: '01', title: 'Configurer le portefeuille', desc: 'Importer biens, unites, proprietaires, locataires, baux, loyers, cautions, documents et soldes initiaux.' },
       { step: '02', title: 'Lancer la facturation', desc: 'Generer factures, envoyer rappels approuves, suivre soldes impayes et rattacher la communication au bail.' },
-      { step: '03', title: 'Verifier les encaissements', desc: 'Sortir les preuves de paiement des discussions et les placer dans une file de verification comptable.' },
+      { step: '03', title: 'Verifier les encaissements', desc: 'Sortir les preuves de paiement des discussions et les traiter dans une file de verification comptable.' },
       { step: '04', title: 'Reporter et verser', desc: 'Produire releves proprietaires, resumes de versement, deductions, arrieres, couts maintenance et rapports telechargeables.' },
     ],
-    proofTitle: 'Des preuves produit, pas des promesses de brochure',
-    proofIntro: 'Le site garde le logiciel visible parce que les acheteurs serieux doivent inspecter l interface operationnelle avant de faire confiance.',
+    proofTitle: 'Ecrans produit',
+    proofIntro: 'Parcourez les principaux espaces de travail dans AQAR : tableaux de bord, paiements, vacances, maintenance, roles et sorties de versement proprietaire.',
     screenshotCards: [
       { title: 'Tableau de bord portefeuille', desc: 'Biens, occupation, statut et visibilite pour les gestionnaires.', image: screenshotProperties },
       { title: 'Paiements de loyer', desc: 'Suivez paiements, references, soldes et activite de collecte.', image: screenshotRent },
       { title: 'Controle des vacances', desc: 'Identifiez les unites vacantes, occupees, dues ou a traiter.', image: screenshotVacant },
       { title: 'Rapports maintenance', desc: 'Consultez demandes, couts, statuts et preuves de maintenance.', image: screenshotMaintenance },
     ],
-    complianceTitle: 'Posture de conformite pensee pour l Ouganda',
-    complianceIntro: 'Aqar est concu pour une exploitation sensible a la DPPA et des limites strictes sur les donnees locataires. Nous evitons les affirmations non verifiees comme depot URA automatise, verification NIRA ou conformite DPPA certifiee.',
+    complianceTitle: 'Controle des donnees pour les operations immobilieres',
+    complianceIntro: 'AQAR garde les dossiers locataires, paiements, baux, documents et maintenance dans des workflows controles par societe, avec acces par role, historique d audit et traitement DPPA-aware.',
     compliance: [
       { title: 'Isolation par societe', desc: 'Les donnees operationnelles appartiennent a la societe abonne. L historique locatif inter-societes n est pas expose.' },
       { title: 'Limite identite locataire', desc: 'L identite globale peut reduire les doublons tout en gardant privees les donnees propres a chaque bail.' },
       { title: 'Actions sensibles auditables', desc: 'Paiements, versements, roles, documents, liaison identite et support doivent laisser une trace.' },
-      { title: 'Workflows DPPA-aware', desc: 'Le modele prevoit avis, demandes de droits, retention, violation de donnees et revue DPO.' },
+      { title: 'Workflows DPPA-aware', desc: 'Le modele supporte avis, demandes de droits, retention, dossiers de violation et revue DPO.' },
     ],
     fitTitle: 'Pour qui AQAR est fait',
     fit: [
@@ -175,14 +172,12 @@ const content = {
       'Comptables qui ont besoin de recus, soldes, verification, versements et audit.',
       'Locataires qui veulent soldes, recus, maintenance, avis et documents au meme endroit.',
     ],
-    limitsTitle: 'Perimetre MVP clair',
-    limitsIntro: 'Le MVP actuel se concentre sur le systeme web de gestion immobiliere. Les applications mobiles, integrations directes MTN MoMo/Airtel Money, verification NIRA, depot URA automatise, liste noire locataire et signature numerique des baux ne sont pas presentes comme fonctionnalites MVP en production.',
     faqTitle: 'Questions sur le logiciel de gestion immobiliere',
     faqs: [
       { q: 'AQAR est-il une place de marche immobiliere ?', a: 'Non. AQAR n est pas positionne comme un portail d annonces. C est un logiciel de gestion immobiliere pour les operations locatives apres qu il faut gerer biens, proprietaires, unites, locataires et baux.' },
-      { q: 'AQAR peut-il remplacer Excel ?', a: 'Oui, c est l objectif operationnel central. Aqar remplace les feuilles dispersees par des files de travail, dossiers locataires, factures, verification de paiement, recus, rapports, versements, maintenance, documents et historique.' },
-      { q: 'AQAR gere-t-il les paiements mobile money ?', a: 'Le MVP gere l enregistrement manuel et la verification des preuves de paiement. Les integrations directes MTN MoMo et Airtel Money ne doivent etre revendiquees qu apres approbation fournisseur et tests complets.' },
-      { q: 'AQAR est-il conforme DPPA ?', a: 'L affirmation prudente est DPPA-aware by design. La conformite production depend de decisions approuvees sur base legale, avis ou consentement, roles, retention, DSR, DPO, breach et DPIA.' },
+      { q: 'AQAR peut-il remplacer Excel ?', a: 'Oui. Aqar remplace les feuilles dispersees par des files de travail, dossiers locataires, factures, verification de paiement, recus, rapports, versements, maintenance, documents et historique.' },
+      { q: 'AQAR gere-t-il le suivi des paiements ?', a: 'Oui. AQAR gere factures de loyer, enregistrements de paiement, preuves locataires, verification, recus, soldes, arrieres et rapports de versement proprietaire.' },
+      { q: 'Comment AQAR protege-t-il les donnees sensibles ?', a: 'AQAR est concu avec isolation par societe, acces par role, journaux d audit, controles documentaires et workflows DPPA-aware pour les dossiers locataires, paiements, baux et maintenance.' },
       { q: 'Puis-je essayer AQAR sans installation ?', a: 'Oui. AQAR est base sur navigateur et la demo en ligne peut etre ouverte sans installation locale.' },
     ],
   },
@@ -237,7 +232,7 @@ const faqSchema = {
             <div class="flex items-center gap-3">
               <div class="flex h-10 w-10 items-center justify-center rounded-md bg-success-50 text-success-700"><BadgeCheck class="h-5 w-5" /></div>
               <div>
-                <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500">Operational proof</p>
+                <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500">Portfolio control</p>
                 <p class="font-display text-lg font-extrabold text-charcoal">Live dashboards</p>
               </div>
             </div>
@@ -393,25 +388,16 @@ const faqSchema = {
   </section>
 
   <section class="bg-white py-20 sm:py-24">
-    <div class="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-      <div>
-        <h2 class="font-display text-3xl font-extrabold text-charcoal sm:text-4xl">{c.fitTitle}</h2>
-        <ul class="mt-7 space-y-4">
-          {c.fit.map((item) => (
-            <li class="flex gap-3 text-lg leading-relaxed text-neutral-700">
-              <BadgeCheck class="mt-1 h-5 w-5 shrink-0 text-primary-600" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div class="rounded-lg border border-neutral-200 bg-surface p-7">
-        <div class="flex h-12 w-12 items-center justify-center rounded-md bg-primary-50 text-primary-700">
-          <Smartphone class="h-6 w-6" />
-        </div>
-        <h2 class="mt-6 font-display text-2xl font-extrabold text-charcoal">{c.limitsTitle}</h2>
-        <p class="mt-4 leading-relaxed text-neutral-700">{c.limitsIntro}</p>
-      </div>
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-3xl font-extrabold text-charcoal sm:text-4xl">{c.fitTitle}</h2>
+      <ul class="mt-7 grid grid-cols-1 gap-4 md:grid-cols-2">
+        {c.fit.map((item) => (
+          <li class="flex gap-3 rounded-lg border border-neutral-200 bg-surface p-5 text-lg leading-relaxed text-neutral-700">
+            <BadgeCheck class="mt-1 h-5 w-5 shrink-0 text-primary-600" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 

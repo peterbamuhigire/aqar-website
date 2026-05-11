@@ -5,9 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaBanner from '../CtaBanner.astro';
 import Lightbox from '../Lightbox.astro';
 import {
-  BellRing,
   Building2,
-  ClipboardList,
   Database,
   FileSpreadsheet,
   FileText,
@@ -20,7 +18,6 @@ import {
 } from 'lucide-astro';
 
 import heroBg from '../../assets/images/AQAR-PROPERTY-05.jpg';
-import planPhoto from '../../assets/images/PHOTO-BANK-ARCHITECTURE-PLAN.jpg';
 import screenshotDashboard from '../../assets/images/SCREENSHOT-PROPERTIES-LIST.jpg';
 import screenshotRent from '../../assets/images/SCREENSHOT-RENT-PAYMENT.jpg';
 import screenshotRemittance from '../../assets/images/SCREENSHOT-MONTHLY-REPORT-REMMITANCE-DETAILS-FOR-LANDLORD-WITH-COMMISION-DUE-TO-COMPANY.jpg';
@@ -42,7 +39,7 @@ const content = {
     title: 'AQAR Platform Features | Rent Collection, Tenants, Maintenance, Reports',
     description: 'Explore AQAR property management software features: portfolio dashboard, tenant identity, leases, rent invoicing, payment proof verification, receipts, landlord remittances, maintenance, inspections, documents, communications, RBAC, audit trails, and Excel import/export.',
     heroTitle: 'A property management platform built around real rent operations',
-    heroSubtitle: 'Aqar gives every role the workflows they need: managers see action queues, accountants verify collections, landlords see trusted reports, and tenants get self-service records.',
+    heroSubtitle: 'Aqar gives every role a clear workspace: managers see action queues, accountants verify collections, landlords view reports, and tenants access their records.',
     directTitle: 'What does AQAR include?',
     directAnswer: 'AQAR includes the core web workflows required to operate rental property portfolios: properties, units, tenants, leases, invoices, manual payments, payment proof verification, receipts, maintenance, inspections, landlord statements, remittances, documents, announcements, access control, audit trails, and Excel import/export.',
     sections: [
@@ -63,7 +60,7 @@ const content = {
       {
         title: 'Rent invoicing and payment proof verification',
         desc: 'Move collections from screenshots and informal messages into invoices, proof review, receipts, balances, and arrears workflows.',
-        bullets: ['Rent invoices and payment records', 'Manual payment capture for MVP operations', 'Proof verification and rejection workflow', 'Receipts, tenant balances, arrears, and partial payment tracking'],
+        bullets: ['Rent invoices and payment records', 'Manual payment capture for payment-proof operations', 'Proof verification and rejection workflow', 'Receipts, tenant balances, arrears, and partial payment tracking'],
         image: screenshotRent,
         icon: ReceiptText,
       },
@@ -96,9 +93,9 @@ const content = {
         icon: LockKeyhole,
       },
       {
-        title: 'GIS, reports, and future-ready country adapters',
-        desc: 'Support location-aware property management and keep expansion clean through country adapters rather than hard-coded launch-market assumptions.',
-        bullets: ['GPS and location reports', 'Exports for operational review', 'Uganda-first workflows with planned adapter boundaries', 'Future payment, tax, identity, currency, and communication adapter model'],
+        title: 'GIS, reports, and country configuration',
+        desc: 'Support location-aware property management and keep regional requirements organized through clear payment, tax, identity, currency, and communication settings.',
+        bullets: ['GPS and location reports', 'Exports for operational review', 'Uganda-first workflows for rent operations', 'Configuration points for payment, tax, identity, currency, and communication differences'],
         image: screenshotGps,
         icon: MapPinned,
       },
@@ -111,22 +108,20 @@ const content = {
       ['Access control', 'Shared files and informal permissions', 'Roles, company isolation, support controls, and sensitive-action logs'],
       ['Tenant service', 'Repeated calls for balances, receipts, and documents', 'Self-service records and structured notices where enabled'],
     ],
-    currentTitle: 'Current MVP boundary',
-    currentDesc: 'The ready MVP is the web-based property management system. The website intentionally does not claim live mobile apps, direct mobile money integrations, NIRA verification, automated URA filing, tenant blacklisting, AI tenant screening, or legally valid digital signatures.',
     faqTitle: 'Feature questions',
     faqs: [
-      { q: 'Does AQAR work for property management companies?', a: 'Yes. Property management firms are a primary buyer because they need tenant records, collections, landlord reporting, maintenance tracking, remittances, documents, and access control across many owners and units.' },
-      { q: 'Can landlords log in to see their reports?', a: 'Aqar is designed with landlord visibility as a core product surface. The web MVP should show portfolio health, collections, arrears, vacancies, maintenance costs, remittances, and downloadable reports according to approved access permissions.' },
-      { q: 'Can tenants submit payment proof?', a: 'The product model supports tenant payment proof submission and manager or accountant verification. Direct mobile money collection is separate from this MVP claim.' },
+      { q: 'Does AQAR work for property management companies?', a: 'Yes. Property management firms use AQAR to manage tenant records, collections, landlord reporting, maintenance tracking, remittances, documents, and access control across many owners and units.' },
+      { q: 'Can landlords log in to see their reports?', a: 'Yes. Aqar gives landlords portfolio visibility, collections, arrears, vacancies, maintenance costs, remittances, and downloadable reports according to their access permissions.' },
+      { q: 'Can tenants submit payment proof?', a: 'Yes. AQAR supports tenant payment proof submission and manager or accountant verification so payment records move through a structured workflow.' },
       { q: 'Does AQAR support Excel import and export?', a: 'Yes. Excel import/export is part of the onboarding and exit workflow so teams can migrate from spreadsheets without losing control of their records.' },
-      { q: 'What makes AQAR different from a generic imported PMS?', a: 'AQAR is positioned around Uganda-first rent operations, payment proof realities, landlord remittances, SMS-ready communication, DPPA-aware tenant data, and company isolation rather than broad real estate listing workflows.' },
+      { q: 'What makes AQAR different from a generic imported PMS?', a: 'AQAR is built around Uganda-first rent operations, payment proof workflows, landlord remittances, SMS-ready communication, DPPA-aware tenant data, and company isolation rather than broad real estate listing workflows.' },
     ],
   },
   fr: {
     title: 'Fonctionnalites AQAR | Loyers, locataires, maintenance, rapports',
     description: 'Decouvrez les fonctionnalites AQAR : tableau de bord, identite locataire, baux, facturation, verification des preuves de paiement, recus, versements proprietaires, maintenance, inspections, documents, communications, roles, audits et import/export Excel.',
     heroTitle: 'Une plateforme de gestion immobiliere construite autour des vraies operations locatives',
-    heroSubtitle: 'Aqar donne a chaque role les workflows necessaires : les gestionnaires voient les actions, les comptables verifient les encaissements, les proprietaires consultent les rapports, et les locataires retrouvent leurs dossiers.',
+    heroSubtitle: 'Aqar donne a chaque role un espace clair : les gestionnaires voient les actions, les comptables verifient les encaissements, les proprietaires consultent les rapports et les locataires accedent a leurs dossiers.',
     directTitle: 'Que comprend AQAR ?',
     directAnswer: 'AQAR comprend les workflows web essentiels pour gerer un portefeuille locatif : biens, unites, locataires, baux, factures, paiements manuels, verification de preuves, recus, maintenance, inspections, releves proprietaires, versements, documents, annonces, controle d acces, audits et import/export Excel.',
     sections: [
@@ -147,7 +142,7 @@ const content = {
       {
         title: 'Facturation et verification des preuves',
         desc: 'Transformez les collections en factures, preuves a verifier, recus, soldes et workflows d arrieres.',
-        bullets: ['Factures de loyer et enregistrements de paiement', 'Capture manuelle des paiements pour le MVP', 'Workflow verification/rejet des preuves', 'Recus, soldes locataires, arrieres et paiements partiels'],
+        bullets: ['Factures de loyer et enregistrements de paiement', 'Capture manuelle des paiements pour les operations de preuve', 'Workflow verification/rejet des preuves', 'Recus, soldes locataires, arrieres et paiements partiels'],
         image: screenshotRent,
         icon: ReceiptText,
       },
@@ -180,9 +175,9 @@ const content = {
         icon: LockKeyhole,
       },
       {
-        title: 'GIS, rapports et adaptateurs pays',
-        desc: 'Soutenez la gestion geolocalisee et preparez l extension regionale sans coder les regles d un pays dans le noyau.',
-        bullets: ['Rapports GPS et localisation', 'Exports operationnels', 'Workflows Uganda-first avec limites adaptateurs', 'Futurs adaptateurs paiement, taxe, identite, devise et communication'],
+        title: 'GIS, rapports et configuration pays',
+        desc: 'Soutenez la gestion geolocalisee et gardez les exigences regionales organisees par paiement, taxe, identite, devise et communication.',
+        bullets: ['Rapports GPS et localisation', 'Exports operationnels', 'Workflows Uganda-first pour les operations locatives', 'Points de configuration pour paiement, taxe, identite, devise et communication'],
         image: screenshotGps,
         icon: MapPinned,
       },
@@ -195,15 +190,13 @@ const content = {
       ['Controle d acces', 'Fichiers partages et permissions informelles', 'Roles, isolation, controles support et journaux'],
       ['Service locataire', 'Appels repetes pour soldes, recus et documents', 'Dossiers self-service et avis structures selon configuration'],
     ],
-    currentTitle: 'Limite MVP actuelle',
-    currentDesc: 'Le MVP pret est le systeme web de gestion immobiliere. Le site ne revendique pas applications mobiles live, integrations mobile money directes, verification NIRA, depot URA automatise, liste noire locataire, screening IA ou signatures numeriques legalement valides.',
     faqTitle: 'Questions sur les fonctionnalites',
     faqs: [
-      { q: 'AQAR convient-il aux societes de gestion ?', a: 'Oui. Les societes de gestion sont une cible primaire car elles ont besoin de dossiers locataires, collections, rapports proprietaires, maintenance, versements, documents et acces controle sur plusieurs proprietaires et unites.' },
-      { q: 'Les proprietaires peuvent-ils consulter leurs rapports ?', a: 'Aqar est concu avec une visibilite proprietaire centrale : sante du portefeuille, collections, arrieres, vacances, maintenance, versements et rapports telechargeables selon les permissions.' },
-      { q: 'Les locataires peuvent-ils soumettre une preuve de paiement ?', a: 'Le modele produit supporte la soumission de preuves par locataire et la verification par gestionnaire ou comptable. La collecte mobile money directe est une revendication separee.' },
+      { q: 'AQAR convient-il aux societes de gestion ?', a: 'Oui. Les societes de gestion utilisent AQAR pour gerer dossiers locataires, collections, rapports proprietaires, maintenance, versements, documents et acces controle sur plusieurs proprietaires et unites.' },
+      { q: 'Les proprietaires peuvent-ils consulter leurs rapports ?', a: 'Oui. Aqar donne aux proprietaires la visibilite sur portefeuille, collections, arrieres, vacances, couts de maintenance, versements et rapports telechargeables selon leurs permissions.' },
+      { q: 'Les locataires peuvent-ils soumettre une preuve de paiement ?', a: 'Oui. AQAR supporte la soumission de preuves par locataire et la verification par gestionnaire ou comptable dans un workflow structure.' },
       { q: 'AQAR supporte-t-il import et export Excel ?', a: 'Oui. L import/export Excel fait partie de l onboarding et de la sortie afin de migrer depuis les tableurs sans perdre le controle des donnees.' },
-      { q: 'Quelle difference avec un PMS importe ?', a: 'AQAR est positionne sur les operations locatives Uganda-first, preuves de paiement, versements proprietaires, communication SMS-ready, donnees locataires DPPA-aware et isolation par societe.' },
+      { q: 'Quelle difference avec un PMS importe ?', a: 'AQAR est construit autour des operations locatives Uganda-first, preuves de paiement, versements proprietaires, communication SMS-ready, donnees locataires DPPA-aware et isolation par societe.' },
     ],
   },
 };
@@ -308,19 +301,6 @@ const faqSchema = {
             ))}
           </tbody>
         </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-surface py-20">
-    <div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
-      <Image src={planPhoto} alt="Architectural planning desk for property portfolio operations" class="h-80 w-full rounded-lg object-cover" widths={[480, 760, 1024]} sizes="(max-width: 1024px) 100vw, 430px" />
-      <div>
-        <div class="flex h-12 w-12 items-center justify-center rounded-md bg-secondary-50 text-secondary-700">
-          <BellRing class="h-6 w-6" />
-        </div>
-        <h2 class="mt-6 font-display text-3xl font-extrabold text-charcoal">{c.currentTitle}</h2>
-        <p class="mt-4 text-lg leading-relaxed text-neutral-700">{c.currentDesc}</p>
       </div>
     </div>
   </section>

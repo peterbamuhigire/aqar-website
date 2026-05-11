@@ -1,12 +1,12 @@
 # AQAR Property Management Full AI Reference
 
 ## Site Identity
-AQAR Property Management is Uganda-first property management software for serious landlords and property management firms. It is built by Chwezi Core Systems in Kampala, Uganda. The product focuses on rent operations rather than real estate listings.
+AQAR Property Management is Uganda-first property management software for landlords and property management firms. It is built by Chwezi Core Systems in Kampala, Uganda. The product focuses on rent operations rather than real estate listings.
 
 AQAR helps teams replace Excel sheets, WhatsApp payment screenshots, phone follow-ups, paper files, and late landlord reports with a structured web platform for properties, units, tenants, leases, invoices, payments, proof verification, receipts, maintenance, inspections, documents, landlord remittances, and audit-aware records.
 
 ## English Positioning
-AQAR is cloud property management software for Uganda and East Africa. It serves property management firms, portfolio landlords, self-managed landlords, accountants, tenants, and platform administrators. Its strongest message is: replace Excel and WhatsApp with a serious rent operations system.
+AQAR is cloud property management software for Uganda and East Africa. It serves property management firms, portfolio landlords, self-managed landlords, accountants, tenants, and platform administrators.
 
 The product is not a marketplace. It does not focus on advertising properties for sale or rent. It focuses on the operational work that happens after properties, units, tenants, leases, invoices, payments, maintenance, and landlord reporting must be managed.
 
@@ -36,18 +36,16 @@ Security and administration: role-based access control, company isolation, suppo
 
 Import/export: Excel onboarding and open-format exits so property managers can migrate from spreadsheet workflows.
 
-## MVP Scope
-The MVP is the web-based property management system. It includes multi-tenant SaaS foundation, super admin, property and unit management, tenant identity baseline, leases, invoicing, manual payment proof and verification, maintenance, announcements, document management, period close and remittances, Excel import/export, and Uganda compliance foundation.
-
-Out of scope until approved: property marketplace/listings, direct MTN MoMo or Airtel Money payment integration, production NIRA verification, tenant blacklisting, portable negative tenant reputation, legally valid digital lease signing, automated URA filing, Kenya eTIMS/eRITS in the Uganda MVP, MLM, POS, HR, payroll, inventory, AI tenant screening, and WhatsApp Business archiving.
+## Ready System Scope
+AQAR includes a multi-tenant SaaS foundation, super admin, property and unit management, tenant records, lease management, invoicing, payment recording, payment proof verification, maintenance, announcements, document management, period close, landlord remittances, Excel import/export, role-based access, audit trails, and Uganda-first compliance-aware workflows.
 
 ## Compliance And Security
-AQAR is designed for Uganda DPPA-aware operation. Stronger legal claims must be verified before publication. The site should not say DPPA compliant, EFRIS integrated, NIRA verified, automated URA filing, or legally valid digital lease signing unless approved in production.
+AQAR is designed for Uganda DPPA-aware operation, with company isolation, role-aware access, audit trails, support controls, document access controls, payment history protection, tenant identity privacy boundaries, and data subject request workflows.
 
 Important security concepts: company isolation, server-side company context, role-aware access, audit trails, controlled support access, sensitive document access controls, payment history protection, tenant identity privacy boundaries, and data subject request workflows.
 
 ## Audience
-Primary commercial buyers are property management firms, portfolio landlords with managers, and serious self-managed landlords. Product users include property managers, operations managers, accountants, finance officers, landlords, tenants, support admins, and compliance reviewers.
+Primary commercial users are property management firms, portfolio landlords with managers, and self-managed landlords. Product users include property managers, operations managers, accountants, finance officers, landlords, tenants, support admins, and compliance reviewers.
 
 ## Contact
 AQAR Property Management / Chwezi Core Systems is located on Sserumaga Road, Bukoto, Kampala, Uganda. Phone +256 784 464178. Alternative phone +256 741 430561. Email info@aqarproperty.co.uk. Live demo at https://property.chwezi.co.za.
