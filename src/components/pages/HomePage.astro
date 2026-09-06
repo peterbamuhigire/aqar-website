@@ -45,10 +45,10 @@ const content = {
     secondaryCta: 'Discuss your portfolio',
     demoNote: 'No installation. Browser-based demo with real product screens.',
     proof: [
-      { value: '78+', label: 'property management clients served' },
-      { value: '2018', label: 'software delivery experience behind the product' },
-      { value: 'UG-first', label: 'built around Kampala rent operations and local workflows' },
-      { value: 'EN + FR', label: 'bilingual product and support capability' },
+      { value: 'UG-first', label: 'rent operations built around Uganda workflows' },
+      { value: 'Since 2018', label: 'company history recorded in the project profile' },
+      { value: 'EN + FR', label: 'English and French site content' },
+      { value: 'Live demo', label: 'browser-based product screens to explore' },
     ],
     answerTitle: 'What is AQAR?',
     answer: 'AQAR is cloud property management software for rental operations. It gives property managers and landlords a structured system for properties, units, tenants, leases, rent invoices, payment proof verification, receipts, maintenance requests, inspections, landlord remittance statements, documents, and role-based access.',
@@ -118,10 +118,10 @@ const content = {
     secondaryCta: 'Parler de votre portefeuille',
     demoNote: 'Aucune installation. Demo web avec de vrais ecrans produit.',
     proof: [
-      { value: '78+', label: 'clients de gestion immobiliere servis' },
-      { value: '2018', label: 'experience logicielle derriere le produit' },
-      { value: 'UG-first', label: 'pense pour les operations locatives de Kampala' },
-      { value: 'EN + FR', label: 'capacite produit et support bilingue' },
+      { value: 'UG-first', label: 'operations locatives pensees pour l Ouganda' },
+      { value: 'Depuis 2018', label: 'historique de la societe indique dans le profil' },
+      { value: 'EN + FR', label: 'contenu du site en anglais et en francais' },
+      { value: 'Demo en ligne', label: 'ecrans produit accessibles dans le navigateur' },
     ],
     answerTitle: 'Qu est-ce qu AQAR ?',
     answer: 'AQAR est un logiciel cloud de gestion immobiliere pour les operations locatives. Il donne aux gestionnaires et proprietaires un systeme structure pour biens, unites, locataires, baux, factures de loyer, verification des preuves de paiement, recus, maintenance, inspections, versements aux proprietaires, documents et acces par role.',
@@ -185,21 +185,9 @@ const content = {
 
 const c = content[lang];
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: c.faqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.q,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.a,
-    },
-  })),
-};
 ---
 
-<BaseLayout lang={lang} title={c.title} description={c.description} pageKey="" extraSchemas={[faqSchema]}>
+<BaseLayout lang={lang} title={c.title} description={c.description} pageKey="">
   <Lightbox />
 
   <section class="relative overflow-hidden bg-charcoal">
@@ -244,7 +232,7 @@ const faqSchema = {
               <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>
               <span class="ml-3 text-xs text-neutral-400">property.chwezi.co.za</span>
             </div>
-            <Image src={screenshotProperties} alt="AQAR property management dashboard showing managed properties" class="rounded-b-lg" widths={[640, 1024, 1536]} sizes="(max-width: 1024px) 92vw, 560px" />
+            <Image src={screenshotProperties} alt="AQAR property management dashboard showing managed properties" loading="eager" fetchpriority="high" class="rounded-b-lg" widths={[640, 1024, 1536]} sizes="(max-width: 1024px) 92vw, 560px" />
           </div>
         </div>
       </div>
@@ -407,11 +395,11 @@ const faqSchema = {
       <div class="mt-8 space-y-4" x-data="{ active: 0 }">
         {c.faqs.map((faq, i) => (
           <div class="rounded-lg border border-neutral-200 bg-white shadow-sm">
-            <button class="flex min-h-[56px] w-full items-center justify-between gap-4 px-5 py-4 text-left font-display font-bold text-charcoal" @click={`active = active === ${i} ? null : ${i}`} :aria-expanded={`active === ${i}`}>
+            <button type="button" id={`faq-question-${i}`} aria-controls={`faq-answer-${i}`} class="flex min-h-[56px] w-full items-center justify-between gap-4 px-5 py-4 text-left font-display font-bold text-charcoal" @click={`active = active === ${i} ? null : ${i}`} :aria-expanded={`active === ${i}`}>
               <span>{faq.q}</span>
               <MessageSquareText class="h-5 w-5 shrink-0 text-primary-600" />
             </button>
-            <div x-show={`active === ${i}`} x-cloak>
+            <div id={`faq-answer-${i}`} role="region" aria-labelledby={`faq-question-${i}`} x-show={`active === ${i}`} x-cloak>
               <p class="px-5 pb-5 leading-relaxed text-neutral-700">{faq.a}</p>
             </div>
           </div>

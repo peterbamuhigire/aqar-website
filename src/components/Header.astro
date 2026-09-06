@@ -28,8 +28,8 @@ const navLinks = {
 };
 
 const ctaLabels = {
-  en: { demo: 'Open demo', whatsapp: 'Talk to us' },
-  fr: { demo: 'Ouvrir la d\u00e9mo', whatsapp: 'Nous parler' },
+  en: { demo: 'Open demo', whatsapp: 'Talk to us', navOpen: 'Open navigation', navClose: 'Close navigation' },
+  fr: { demo: 'Ouvrir la d\u00e9mo', whatsapp: 'Nous parler', navOpen: 'Ouvrir la navigation', navClose: 'Fermer la navigation' },
 };
 
 const links = navLinks[lang];
@@ -47,9 +47,11 @@ const pageKey = getPageKeyFromPath(currentPath);
 ---
 
 <header
-  class="fixed top-0 inset-x-0 z-50 transition-colors duration-300 bg-charcoal/95 backdrop-blur-lg"
+  class="fixed top-0 inset-x-0 z-50 transition-colors duration-300 bg-charcoal"
   x-data="{ open: false }"
+  @keydown.escape.window="open = false; $refs.menuButton?.focus()"
 >
+  <a href="#main-content" class="skip-link">{lang === 'en' ? 'Skip to content' : 'Aller au contenu'}</a>
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <!-- Logo -->
@@ -62,6 +64,7 @@ const pageKey = getPageKeyFromPath(currentPath);
         {links.map((link) => (
           <a
             href={getLocalizedPath(link.page, lang)}
+            aria-current={isActive(link.page) ? 'page' : undefined}
             class:list={[
               'text-sm font-semibold transition-colors duration-200',
               isActive(link.page)
@@ -97,10 +100,12 @@ const pageKey = getPageKeyFromPath(currentPath);
 
       <!-- Mobile hamburger (44px touch target) -->
       <button
+        x-ref="menuButton"
         class="md:hidden inline-flex items-center justify-center rounded-md p-2.5 min-h-[44px] min-w-[44px] text-neutral-300 hover:text-white focus-visible:ring-2 focus-visible:ring-primary-400"
         @click="open = !open"
         :aria-expanded="open"
-        aria-label="Toggle navigation"
+        :aria-label={`open ? '${cta.navClose}' : '${cta.navOpen}'`}
+        aria-controls="site-menu"
       >
         <svg x-show="!open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -116,18 +121,22 @@ const pageKey = getPageKeyFromPath(currentPath);
   <div
     x-show="open"
     x-cloak
+    id="site-menu"
+    @click.outside="open = false"
     x-transition:enter="transition ease-out duration-200"
     x-transition:enter-start="opacity-0 -translate-y-2"
     x-transition:enter-end="opacity-100 translate-y-0"
     x-transition:leave="transition ease-in duration-150"
     x-transition:leave-start="opacity-100 translate-y-0"
     x-transition:leave-end="opacity-0 -translate-y-2"
-    class="md:hidden border-t border-white/10 bg-charcoal/95 backdrop-blur-lg"
+    class="md:hidden border-t border-white/10 bg-charcoal"
   >
     <div class="space-y-1 px-4 pb-4 pt-3">
       {links.map((link) => (
         <a
           href={getLocalizedPath(link.page, lang)}
+          @click="open = false"
+          aria-current={isActive(link.page) ? 'page' : undefined}
           class:list={[
             'block rounded-md px-3 py-3 text-base font-semibold transition-colors duration-200 min-h-[44px]',
             isActive(link.page)

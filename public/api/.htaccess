@@ -2,10 +2,9 @@
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
     Header set X-Frame-Options "DENY"
-    Header set Access-Control-Allow-Origin "*"
-    Header set Access-Control-Allow-Methods "POST, GET, OPTIONS"
-    Header set Access-Control-Allow-Headers "Content-Type"
 </IfModule>
+
+Options -Indexes
 
 # Deny access to all non-PHP files
 <FilesMatch "^(?!.*\.php$)">

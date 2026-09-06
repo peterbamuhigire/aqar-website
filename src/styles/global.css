@@ -82,10 +82,6 @@
   --transition-base: 250ms ease-out;
   --transition-slow: 400ms ease-out;
   --transition-emphasis: 600ms ease-out;
-  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
-  --glass-bg: rgba(255, 255, 255, 0.65);
-  --glass-blur: 12px;
-  --glass-border: rgba(255, 255, 255, 0.25);
   /* Two-layer shadow system */
   --shadow-sm: 0 1px 2px rgba(13, 115, 119, 0.06), 0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 2px 4px rgba(13, 115, 119, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -99,6 +95,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: var(--font-body);
@@ -117,8 +114,9 @@
 
   /* Focus-visible for keyboard navigation */
   :focus-visible {
-    outline: 2px solid var(--color-primary-500);
-    outline-offset: 2px;
+    outline: 3px solid var(--color-secondary-300);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 2px var(--color-charcoal);
   }
 
   :focus:not(:focus-visible) {
@@ -126,28 +124,37 @@
   }
 }
 
-/* ------------------------------------------------
-   Glassmorphism utility
-   ------------------------------------------------ */
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
+[x-cloak] {
+  display: none !important;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 1rem;
+  z-index: 60;
+  transform: translateY(-200%);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  color: var(--color-charcoal);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 /* ------------------------------------------------
    Scroll-triggered animations
    ------------------------------------------------ */
 .animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
-}
-
-.animate-on-scroll.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 /* Stagger delay classes */
@@ -161,6 +168,12 @@
    Screenshot trigger styles
    ------------------------------------------------ */
 .screenshot-trigger {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  text-align: left;
   cursor: zoom-in;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
@@ -225,6 +238,7 @@
     opacity: 1;
     transform: none;
   }
+
 }
 
 /* ------------------------------------------------

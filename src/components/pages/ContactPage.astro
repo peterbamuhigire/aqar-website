@@ -2,7 +2,6 @@
 import type { Language } from '../../utils/i18n';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
-import { Image } from 'astro:assets';
 
 import heroBg from '../../assets/images/AQAR-PROPERTY-06.jpg';
 
@@ -108,6 +107,10 @@ const fallbackError = lang === 'fr'
               loadedAt: Math.floor(Date.now() / 1000),
               formData: { name: '', email: '', phone: '', message: '', website: '' },
 
+              focusStatus() {
+                this.$nextTick(() => (this.$refs.successStatus || this.$refs.errorStatus)?.focus());
+              },
+
               async init() {
                 try {
                   const res = await fetch('/api/csrf-token.php');
@@ -135,19 +138,22 @@ const fallbackError = lang === 'fr'
                   const data = await res.json();
                   if (data.success) {
                     this.state = 'success';
-                    this.responseMessage = data.message;
+                    this.responseMessage = data.message || '${t.successMsg}';
                   } else {
                     this.state = 'error';
-                    this.responseMessage = data.message;
+                    this.responseMessage = data.message || '${fallbackError}';
                     this.fieldErrors = data.errors || [];
                   }
+                  this.focusStatus();
                 } catch (e) {
                   this.state = 'error';
                   this.responseMessage = '${fallbackError}';
+                  this.focusStatus();
                 }
               }
             }`}
             @submit.prevent="submitForm()"
+            :aria-busy="state === 'submitting'"
             class="space-y-5"
           >
             <!-- Honeypot (hidden from humans, bots fill it) -->
@@ -156,17 +162,17 @@ const fallbackError = lang === 'fr'
             </div>
 
             <!-- Success message -->
-            <div x-show="state === 'success'" x-cloak class="rounded-lg bg-success-50 border border-success-200 p-4 text-success-800 text-sm">
+            <div x-ref="successStatus" tabindex="-1" x-show="state === 'success'" x-cloak role="status" aria-live="polite" class="rounded-lg bg-success-50 border border-success-200 p-4 text-success-800 text-sm">
               <p x-text="responseMessage"></p>
             </div>
 
             <!-- Error message -->
-            <div x-show="state === 'error'" x-cloak class="rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm">
+            <div id="form-errors" x-ref="errorStatus" tabindex="-1" x-show="state === 'error'" x-cloak role="alert" aria-live="assertive" class="rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm">
               <p x-text="responseMessage"></p>
               <template x-if="fieldErrors.length > 0">
                 <ul class="mt-2 list-disc list-inside">
-                  <template x-for="err in fieldErrors" :key="err">
-                    <li x-text="err"></li>
+                  <template x-for="err in fieldErrors" :key="err.field">
+                    <li><a :href="`#${err.field}`" class="underline underline-offset-2" x-text="err.message"></a></li>
                   </template>
                 </ul>
               </template>
@@ -181,6 +187,9 @@ const fallbackError = lang === 'fr'
                     id="name"
                     name="name"
                     required
+                    autocomplete="name"
+                    aria-describedby="form-errors"
+                    :aria-invalid="fieldErrors.some(error => error.field === 'name')"
                     x-model="formData.name"
                     placeholder={t.namePlaceholder}
                     class="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3.5 text-base text-neutral-800 placeholder:text-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-colors min-h-[48px]"
@@ -194,6 +203,9 @@ const fallbackError = lang === 'fr'
                     id="email"
                     name="email"
                     required
+                    autocomplete="email"
+                    aria-describedby="form-errors"
+                    :aria-invalid="fieldErrors.some(error => error.field === 'email')"
                     x-model="formData.email"
                     placeholder={t.emailPlaceholder}
                     class="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3.5 text-base text-neutral-800 placeholder:text-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-colors min-h-[48px]"
@@ -206,6 +218,10 @@ const fallbackError = lang === 'fr'
                     type="tel"
                     id="phone"
                     name="phone"
+                    autocomplete="tel"
+                    inputmode="tel"
+                    aria-describedby="form-errors"
+                    :aria-invalid="fieldErrors.some(error => error.field === 'phone')"
                     x-model="formData.phone"
                     placeholder={t.phonePlaceholder}
                     class="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3.5 text-base text-neutral-800 placeholder:text-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-colors min-h-[48px]"
@@ -219,6 +235,8 @@ const fallbackError = lang === 'fr'
                     name="message"
                     required
                     rows="5"
+                    aria-describedby="form-errors"
+                    :aria-invalid="fieldErrors.some(error => error.field === 'message')"
                     x-model="formData.message"
                     placeholder={t.messagePlaceholder}
                     class="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3.5 text-base text-neutral-800 placeholder:text-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-colors resize-y"

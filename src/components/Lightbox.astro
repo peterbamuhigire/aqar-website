@@ -3,16 +3,31 @@
 ---
 
 <div
-  x-data="{ show: false, src: '', alt: '', caption: '' }"
+  x-data="{
+    show: false,
+    src: '',
+    alt: '',
+    caption: '',
+    trigger: null,
+    open(event) {
+      trigger = event.detail.trigger || document.activeElement;
+      src = event.detail.src;
+      alt = event.detail.alt || '';
+      caption = event.detail.caption || '';
+      show = true;
+      $nextTick(() => $refs.close?.focus());
+    },
+    close() {
+      show = false;
+      $nextTick(() => trigger?.focus());
+    }
+  }"
   x-init="
     window.addEventListener('open-lightbox', (e) => {
-      src = e.detail.src;
-      alt = e.detail.alt || '';
-      caption = e.detail.caption || '';
-      show = true;
+      open(e);
     });
   "
-  @keydown.escape.window="show = false"
+  @keydown.escape.window="if (show) close()"
 >
   <!-- Overlay -->
   <template x-teleport="body">
@@ -25,13 +40,19 @@
       x-transition:leave="transition ease-in duration-200"
       x-transition:leave-start="opacity-100"
       x-transition:leave-end="opacity-0"
-      class="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal/90 backdrop-blur-sm p-4"
-      @click.self="show = false"
+      class="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal/95 p-4"
+      role="dialog"
+      aria-modal="true"
+      :aria-label="caption || 'Image preview'"
+      @keydown.tab.prevent="$refs.close.focus()"
+      @click.self="close()"
     >
       <!-- Close button -->
       <button
+        x-ref="close"
+        type="button"
         class="absolute top-4 right-4 text-white/80 hover:text-white transition-colors duration-200 z-10"
-        @click="show = false"
+        @click="close()"
         aria-label="Close lightbox"
       >
         <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -54,7 +75,8 @@
         <!-- Caption bar -->
         <div
           x-show="caption"
-          class="mt-3 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white text-sm text-center max-w-lg"
+          id="lightbox-caption"
+          class="mt-3 max-w-lg rounded-lg border border-white/20 bg-charcoal/90 px-4 py-2 text-center text-sm text-white"
           x-text="caption"
         ></div>
       </div>

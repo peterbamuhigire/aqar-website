@@ -22,7 +22,6 @@ import screenshotDashboard from '../../assets/images/SCREENSHOT-PROPERTIES-LIST.
 import screenshotRent from '../../assets/images/SCREENSHOT-RENT-PAYMENT.jpg';
 import screenshotRemittance from '../../assets/images/SCREENSHOT-MONTHLY-REPORT-REMMITANCE-DETAILS-FOR-LANDLORD-WITH-COMMISION-DUE-TO-COMPANY.jpg';
 import screenshotMaintenance from '../../assets/images/SCREENSHOT-ADD-MAINTENANCE-RECORD.jpg';
-import screenshotInspection from '../../assets/images/SCREENSHOT-INSPECTION-TEMPLATES.jpg';
 import screenshotDocuments from '../../assets/images/SCREENSHOT-LEASE-EXPIRY-REPORT.jpg';
 import screenshotRoles from '../../assets/images/SCREENSHOT-PERMISSIONS-ROLES-MANAGEMENT-RBAC.jpg';
 import screenshotGps from '../../assets/images/SCREENSHOT-GPS-REPORTS.jpg';
@@ -202,21 +201,9 @@ const content = {
 };
 
 const c = content[lang];
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: c.faqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.q,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.a,
-    },
-  })),
-};
 ---
 
-<BaseLayout lang={lang} title={c.title} description={c.description} pageKey="features" extraSchemas={[faqSchema]}>
+<BaseLayout lang={lang} title={c.title} description={c.description} pageKey="features">
   <Lightbox />
 
   <section class="relative overflow-hidden bg-charcoal">
@@ -228,7 +215,7 @@ const faqSchema = {
         <p class="animate-on-scroll stagger-1 mt-6 max-w-2xl text-lg leading-relaxed text-neutral-200 sm:text-xl">{c.heroSubtitle}</p>
       </div>
       <div class="animate-on-scroll stagger-2 rounded-lg bg-white/[0.06] p-5">
-        <Image src={screenshotDashboard} alt="AQAR dashboard feature screen" class="rounded-md" widths={[480, 760, 1024]} sizes="(max-width: 1024px) 92vw, 480px" />
+        <Image src={screenshotDashboard} alt="AQAR dashboard feature screen" loading="eager" fetchpriority="high" class="rounded-md" widths={[480, 760, 1024]} sizes="(max-width: 1024px) 92vw, 480px" />
       </div>
     </div>
   </section>

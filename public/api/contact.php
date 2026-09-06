@@ -16,7 +16,7 @@ $dotenv->load();
 // ── Bilingual messages ─────────────────────────────────────
 $messages = [
     'en' => [
-        'success' => 'Thank you! Your message has been sent. We shall get back to you within 24 hours.',
+        'success' => 'Thank you! Your message has been sent. Our team will review it and reply using the contact details you provided.',
         'invalid_input' => 'Please check your input and try again.',
         'rate_limit' => 'Too many messages. Please try again later.',
         'csrf_fail' => 'Security validation failed. Please reload the page and try again.',
@@ -24,7 +24,7 @@ $messages = [
         'server_error' => 'Something went wrong. Please try again or contact us via WhatsApp.',
     ],
     'fr' => [
-        'success' => 'Merci ! Votre message a été envoyé. Nous vous répondrons dans les 24 heures.',
+        'success' => 'Merci ! Votre message a été envoyé. Notre équipe l’examinera et vous répondra aux coordonnées fournies.',
         'invalid_input' => 'Veuillez vérifier vos informations et réessayer.',
         'rate_limit' => 'Trop de messages. Veuillez réessayer plus tard.',
         'csrf_fail' => 'Échec de la validation de sécurité. Veuillez recharger la page et réessayer.',
@@ -101,12 +101,7 @@ if (abs(time() - $csrfTs) > 3600) {
 }
 
 // ── 6. Rate limiting ──────────────────────────────────────
-$dataDir = $projectRoot . '/data';
-if (!is_dir($dataDir)) {
-    mkdir($dataDir, 0755, true);
-}
-
-$rateLimitFile = $dataDir . '/rate_limits.json';
+$rateLimitFile = __DIR__ . '/.rate_limits.json';
 $maxAttempts = (int) ($_ENV['RATE_LIMIT_MAX'] ?? 5);
 $window = (int) ($_ENV['RATE_LIMIT_WINDOW'] ?? 3600);
 
@@ -132,7 +127,10 @@ if (count($attempts) >= $maxAttempts) {
 }
 
 $rateLimits[$ipHash][] = $now;
-file_put_contents($rateLimitFile, json_encode($rateLimits), LOCK_EX);
+if (file_put_contents($rateLimitFile, json_encode($rateLimits), LOCK_EX) === false) {
+    error_log('AQAR Contact Form Error: unable to persist rate limit state');
+    jsonResponse(503, false, $msg['server_error']);
+}
 
 // ── 7. Input validation ───────────────────────────────────
 $errors = [];
@@ -143,19 +141,31 @@ $phone = trim($data['phone'] ?? '');
 $message = trim($data['message'] ?? '');
 
 if (strlen($name) < 2 || strlen($name) > 200) {
-    $errors[] = $lang === 'en' ? 'Name must be between 2 and 200 characters.' : 'Le nom doit contenir entre 2 et 200 caractères.';
+    $errors[] = [
+        'field' => 'name',
+        'message' => $lang === 'en' ? 'Name must be between 2 and 200 characters.' : 'Le nom doit contenir entre 2 et 200 caractères.',
+    ];
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $errors[] = $lang === 'en' ? 'Please enter a valid email address.' : 'Veuillez saisir une adresse e-mail valide.';
+    $errors[] = [
+        'field' => 'email',
+        'message' => $lang === 'en' ? 'Please enter a valid email address.' : 'Veuillez saisir une adresse e-mail valide.',
+    ];
 }
 
 if ($phone !== '' && !preg_match('/^[\+\d\s\-\(\)]{7,20}$/', $phone)) {
-    $errors[] = $lang === 'en' ? 'Please enter a valid phone number.' : 'Veuillez saisir un numéro de téléphone valide.';
+    $errors[] = [
+        'field' => 'phone',
+        'message' => $lang === 'en' ? 'Please enter a valid phone number.' : 'Veuillez saisir un numéro de téléphone valide.',
+    ];
 }
 
 if (strlen($message) < 10 || strlen($message) > 5000) {
-    $errors[] = $lang === 'en' ? 'Message must be between 10 and 5000 characters.' : 'Le message doit contenir entre 10 et 5000 caractères.';
+    $errors[] = [
+        'field' => 'message',
+        'message' => $lang === 'en' ? 'Message must be between 10 and 5000 characters.' : 'Le message doit contenir entre 10 et 5000 caractères.',
+    ];
 }
 
 if (!empty($errors)) {
@@ -266,7 +276,7 @@ try {
     } else {
         $userMail->Subject = 'Thank you for your message — AQAR';
         $greeting = "Dear {$h($name)},";
-        $thankYou = 'We have received your message and shall get back to you within 24 hours.';
+        $thankYou = 'We have received your message. Our team will review it and reply as soon as possible.';
         $teamSign = 'The AQAR Team';
         $noReply = 'This is an automated message. Please do not reply directly to this email.';
     }

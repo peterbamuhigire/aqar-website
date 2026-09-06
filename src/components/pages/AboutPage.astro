@@ -114,9 +114,11 @@ const t = content[lang];
                 <span class="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
                 <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>
               </div>
-              <div
+              <button
                 class="screenshot-trigger relative overflow-hidden rounded-t-sm"
-                @click={`$dispatch('open-lightbox', { src: '${screenshotProperties.src}', alt: '${t.screenshotAlt}', caption: '${t.screenshotCaption}' })`}
+                type="button"
+                aria-label={lang === 'en' ? 'Expand AQAR properties dashboard' : 'Agrandir le tableau de bord AQAR'}
+                @click={`$dispatch('open-lightbox', { src: '${screenshotProperties.src}', alt: '${t.screenshotAlt}', caption: '${t.screenshotCaption}', trigger: $el })`}
               >
                 <Image
                   src={screenshotProperties}
@@ -130,7 +132,7 @@ const t = content[lang];
                     {lang === 'en' ? 'Click to expand' : 'Cliquez pour agrandir'}
                   </span>
                 </div>
-              </div>
+              </button>
             </div>
             <!-- Laptop base -->
             <div class="h-4 rounded-b-xl bg-neutral-700"></div>
@@ -164,7 +166,6 @@ const t = content[lang];
         <!-- Photo -->
         <div class="animate-on-scroll flex justify-center">
           <div class="relative">
-            <div class="absolute -inset-3 rounded-full bg-gradient-to-br from-primary-400 to-secondary-400 opacity-30 blur-lg"></div>
             <Image
               src={peterPhoto}
               alt="Peter Bamuhigire"

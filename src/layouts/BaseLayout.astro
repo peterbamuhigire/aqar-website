@@ -31,7 +31,7 @@ const locale = lang === 'en' ? 'en-GB' : 'fr-FR';
 
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': ['Organization', 'LocalBusiness'],
+  '@type': 'Organization',
   name: 'AQAR Property Management',
   alternateName: 'Aqar',
   url: siteUrl,
@@ -39,7 +39,6 @@ const organizationSchema = {
   description: lang === 'en'
     ? 'Uganda-first property management software for rent operations, tenant self-service, landlord reporting, maintenance, inspections, documents, and compliance-aware workflows.'
     : 'Logiciel de gestion immobiliere pour les operations locatives, le self-service locataire, les rapports proprietaires, la maintenance, les inspections, les documents et les processus sensibles a la conformite.',
-  areaServed: ['Uganda', 'Kenya', 'Tanzania', 'Rwanda', 'East Africa', 'Francophone Africa'],
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+256-784-464178',
@@ -52,11 +51,6 @@ const organizationSchema = {
     addressLocality: 'Kampala',
     addressCountry: 'UG',
   },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 0.3485,
-    longitude: 32.594,
-  },
 };
 
 const websiteSchema = {
@@ -65,11 +59,6 @@ const websiteSchema = {
   name: 'AQAR Property Management',
   url: siteUrl,
   inLanguage: locale,
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${siteUrl}/${lang}/blog/?q={search_term_string}`,
-    'query-input': 'required name=search_term_string',
-  },
 };
 
 const softwareSchema = {
@@ -86,13 +75,6 @@ const softwareSchema = {
   featureList: lang === 'en'
     ? ['Portfolio dashboard', 'Property and unit management', 'Tenant identity and lease records', 'Rent invoicing', 'Payment proof verification', 'Receipts', 'Landlord remittances', 'Maintenance tracking', 'Inspection evidence', 'Document control', 'Role-based access control', 'Audit trails', 'Excel import and export']
     : ['Tableau de bord portefeuille', 'Gestion des biens et unites', 'Identite locataire et dossiers de bail', 'Facturation des loyers', 'Verification des preuves de paiement', 'Recus', 'Versements aux proprietaires', 'Suivi de maintenance', 'Preuves d inspection', 'Gestion documentaire', 'Controle d acces par role', 'Journaux d audit', 'Import et export Excel'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD',
-    description: lang === 'en' ? 'Live demo available' : 'Demo en ligne disponible',
-    availability: 'https://schema.org/InStock',
-  },
   publisher: {
     '@type': 'Organization',
     name: 'Chwezi Core Systems',
@@ -105,13 +87,16 @@ const softwareSchema = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1A1F2E" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalUrl} />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={title} />
     <meta property="og:locale" content={ogLocales[lang]} />
     <meta property="og:type" content={articleData ? 'article' : 'website'} />
     <meta property="og:url" content={canonicalUrl} />
@@ -120,6 +105,7 @@ const softwareSchema = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={title} />
 
     {languages.map((l) => (
       <link rel="alternate" hreflang={l} href={new URL(getHrefLangPath(l, pageKey), siteUrl).href} />
@@ -185,7 +171,7 @@ const softwareSchema = {
   </head>
   <body class="bg-surface text-neutral-800 font-body min-h-screen flex flex-col">
     <Header lang={lang} />
-    <main class="flex-1">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
     <Footer lang={lang} />
@@ -196,22 +182,5 @@ const softwareSchema = {
       Alpine.start();
     </script>
 
-    <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-      );
-
-      document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-        observer.observe(el);
-      });
-    </script>
   </body>
 </html>
