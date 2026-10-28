@@ -1,0 +1,30 @@
+﻿---
+interface Props { lang: string; product: string; }
+const { lang, product } = Astro.props;
+const french = lang === "fr";
+const policyLang = french ? "fr" : "en";
+const securityUrl = `https://chwezicore.com/${policyLang}/information-security-policy/`;
+const privacyUrl = `https://chwezicore.com/${policyLang}/data-protection-policy/`;
+const external = french ? "s’ouvre dans un nouvel onglet" : "opens in a new tab";
+---
+<div class="ccs-policy-block">
+  <p class="ccs-policy-owner">{french ? `${product} est un produit de Chwezi Core Systems Limited, Kampala, Ouganda.` : `${product} is a product of Chwezi Core Systems Limited, Kampala, Uganda.`}</p>
+  <p class="ccs-policy-heading">{french ? "Sécurité et protection des données" : "Security and data protection"}</p>
+  <p class="ccs-policy-summary">{french ? `${product} est conçu, hébergé et maintenu par Chwezi Core Systems Limited. Vos données sont protégées par la Politique de sécurité de l’information et la Politique de protection des données et de la vie privée de Chwezi, approuvées le 27 octobre 2026.` : `${product} is built, hosted and supported by Chwezi Core Systems Limited. Your data is protected under Chwezi’s Information Security Policy and Data Protection and Privacy Policy, approved on 27 October 2026.`}</p>
+  <nav class="ccs-policy-links" aria-label={french ? "Politiques et mentions légales" : "Policies and legal"}>
+    <a href={securityUrl} target="_blank" rel="noopener noreferrer">{french ? "Politique de sécurité de l’information" : "Information Security Policy"}<span class="ccs-sr-only"> ({external})</span><svg aria-hidden="true" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    <span aria-hidden="true">|</span>
+    <a href={privacyUrl} target="_blank" rel="noopener noreferrer">{french ? "Politique de protection des données et de la vie privée" : "Data Protection and Privacy Policy"}<span class="ccs-sr-only"> ({external})</span><svg aria-hidden="true" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+  </nav>
+</div>
+<style>
+  .ccs-policy-block{border-top:1px solid rgba(255,255,255,.2);margin-top:1.5rem;padding-top:1rem;text-align:center;color:#d5e1e9;font-size:.875rem;line-height:1.55}
+  .ccs-policy-owner,.ccs-policy-heading,.ccs-policy-summary{margin:.25rem 0}
+  .ccs-policy-heading{font-weight:650;color:#fff}
+  .ccs-policy-summary{max-width:68ch;margin:.25rem auto .5rem}
+  .ccs-policy-links{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.25rem 1rem}
+  .ccs-policy-links a{display:inline-flex;align-items:center;gap:.3rem;min-height:44px;color:#fff;text-decoration:underline;text-underline-offset:.18em}
+  .ccs-policy-links a:hover{color:#d5e1e9}
+  .ccs-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
+

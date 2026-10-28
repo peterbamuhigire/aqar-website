@@ -252,6 +252,9 @@ const fallbackError = lang === 'fr'
                   <span x-show="state !== 'submitting'">{t.sendBtn}</span>
                   <span x-show="state === 'submitting'" x-cloak>{t.sending}</span>
                 </button>
+                <p class="mt-3 text-sm text-neutral-600">
+                  {lang === 'fr' ? <>En envoyant ce formulaire, vous acceptez que Chwezi Core Systems Limited traite vos coordonnées pour vous répondre, conformément à notre <a href="https://chwezicore.com/fr/data-protection-policy/" target="_blank" rel="noopener noreferrer" class="underline">Politique de protection des données et de la vie privée</a>. Nos serveurs sont situés aux États-Unis d’Amérique, en Finlande et en Allemagne.</> : <>By submitting this form, you agree that Chwezi Core Systems Limited will process your details to respond to you, as described in our <a href="https://chwezicore.com/en/data-protection-policy/" target="_blank" rel="noopener noreferrer" class="underline">Data Protection and Privacy Policy</a>. Our servers are located in the United States of America, Finland and Germany.</>}
+                </p>
               </div>
             </div>
           </form>

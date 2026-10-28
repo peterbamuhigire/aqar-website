@@ -35,3 +35,7 @@ AQAR uses company isolation, role-based access, audit trails, document access co
 - Choisir une societe de gestion immobiliere: https://aqarproperty.co.uk/fr/blog/choisir-societe-gestion-immobiliere/
 - Commercialiser des proprietes locatives: https://aqarproperty.co.uk/fr/blog/commercialiser-proprietes-locatives/
 - Contrat de gestion immobiliere: https://aqarproperty.co.uk/fr/blog/contrat-gestion-immobiliere/
+
+## Security and data protection
+
+Aqar is a product of Chwezi Core Systems Limited, Kampala, Uganda. Product data is covered by the company Information Security Policy and Data Protection and Privacy Policy. Read the [Information Security Policy](https://chwezicore.com/en/information-security-policy/) and [Data Protection and Privacy Policy](https://chwezicore.com/en/data-protection-policy/).
