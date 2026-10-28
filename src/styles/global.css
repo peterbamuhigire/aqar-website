@@ -1,7 +1,6 @@
 @import 'tailwindcss';
 
-@import '@fontsource/plus-jakarta-sans/700.css';
-@import '@fontsource/plus-jakarta-sans/800.css';
+@import '@fontsource/source-serif-4/700.css';
 @import '@fontsource/source-sans-3/400.css';
 @import '@fontsource/source-sans-3/600.css';
 
@@ -68,7 +67,7 @@
   --color-neutral-950: #0d0d0c;
 
   /* Font families */
-  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Source Serif 4', Georgia, serif;
   --font-body: 'Source Sans 3', sans-serif;
 }
 
